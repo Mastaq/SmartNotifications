@@ -1,0 +1,8 @@
+**/bin
+**/obj
+**/pkg
+**/pkgobj
+*.suo
+*.user
+/packages
+**/node_modules

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="c5adf7f1-2038-4818-be09-4a7f6ecd4d08" 
+        solutionId="c5adf7f1-2038-4818-be09-4a7f6ecd4d08" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="SmartNotifications"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="1e6932e4-2b3d-41ff-8916-635b58a2f67c" />
+  </features>
+</package>

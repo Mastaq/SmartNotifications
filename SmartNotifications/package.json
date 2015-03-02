@@ -1,0 +1,19 @@
+﻿{
+	"version": "0.0.0",
+	"name": "smart_notifications_app",
+	"description": "Smart Notifications app",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git clone https://sergei_sergeev@bitbucket.org/sergei_sergeev/smart-notification.git"
+	},
+	"devDependencies": {
+		"grunt": "0.4.5",
+		"grunt-bower-task": "0.4.0",
+		"grunt-contrib-uglify": "~0.8.0",
+		"grunt-sass": "~0.18.0",
+		"grunt-contrib-cssmin": "~0.12.2",
+		"grunt-contrib-copy": "~0.8.0",
+		"xml2js": "0.4.5"
+	}
+}
