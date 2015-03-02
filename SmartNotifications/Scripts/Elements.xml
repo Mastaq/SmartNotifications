@@ -1,5 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <Module Name="Scripts">
-  </Module>
+	<Module Name="Scripts">
+		<File Path="Scripts\Sample.txt" Url="Scripts/Sample.txt" ReplaceContent="TRUE" />
+		<File Path="Scripts\External\camljs.js" Url="Scripts/External/camljs.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\blockui\jquery.blockUI.js" Url="Scripts/AppExternal/blockui/jquery.blockUI.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap-theme.css" Url="Scripts/AppExternal/bootstrap/css/bootstrap-theme.css" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap-theme.css.map" Url="Scripts/AppExternal/bootstrap/css/bootstrap-theme.css.map" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap-theme.min.css" Url="Scripts/AppExternal/bootstrap/css/bootstrap-theme.min.css" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap.css" Url="Scripts/AppExternal/bootstrap/css/bootstrap.css" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap.css.map" Url="Scripts/AppExternal/bootstrap/css/bootstrap.css.map" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\css\bootstrap.min.css" Url="Scripts/AppExternal/bootstrap/css/bootstrap.min.css" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.eot" Url="Scripts/AppExternal/bootstrap/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.svg" Url="Scripts/AppExternal/bootstrap/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.ttf" Url="Scripts/AppExternal/bootstrap/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.woff" Url="Scripts/AppExternal/bootstrap/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.woff2" Url="Scripts/AppExternal/bootstrap/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\js\bootstrap.js" Url="Scripts/AppExternal/bootstrap/js/bootstrap.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\js\bootstrap.min.js" Url="Scripts/AppExternal/bootstrap/js/bootstrap.min.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\bootstrap\js\npm.js" Url="Scripts/AppExternal/bootstrap/js/npm.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\camljs\index.js" Url="Scripts/AppExternal/camljs/index.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\font-awesome.css" Url="Scripts/AppExternal/font-awesome/font-awesome.css" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\fontawesome-webfont.eot" Url="Scripts/AppExternal/font-awesome/fontawesome-webfont.eot" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\fontawesome-webfont.svg" Url="Scripts/AppExternal/font-awesome/fontawesome-webfont.svg" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\fontawesome-webfont.ttf" Url="Scripts/AppExternal/font-awesome/fontawesome-webfont.ttf" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\fontawesome-webfont.woff" Url="Scripts/AppExternal/font-awesome/fontawesome-webfont.woff" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\fontawesome-webfont.woff2" Url="Scripts/AppExternal/font-awesome/fontawesome-webfont.woff2" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\font-awesome\FontAwesome.otf" Url="Scripts/AppExternal/font-awesome/FontAwesome.otf" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\jquery\jquery.js" Url="Scripts/AppExternal/jquery/jquery.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\jsencrypt\jsencrypt.min.js" Url="Scripts/AppExternal/jsencrypt/jsencrypt.min.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\AppExternal\knockout\knockout.js" Url="Scripts/AppExternal/knockout/knockout.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\build\build_config.js" Url="Scripts/build/build_config.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\build\smartnotif.app.external.min.js" Url="Scripts/build/smartnotif.app.external.min.js" ReplaceContent="TRUE" />
+		<File Path="Scripts\build\smartnotif.app.external.min.js.map" Url="Scripts/build/smartnotif.app.external.min.js.map" ReplaceContent="TRUE" />
+	</Module>
 </Elements>
