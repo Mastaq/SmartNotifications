@@ -1,0 +1,9 @@
+﻿/* FIX for bootstrup UI */
+html * {
+	box-sizing: content-box;
+}
+
+#sn-app * {
+	box-sizing: border-box;
+}
+/* End of FIX */

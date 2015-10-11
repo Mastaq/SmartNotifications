@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C18E0FC9-B420-4478-9721-7DBA7F07EAD1}</ProjectGuid>
+    <ProjectGuid>{2383353B-4FBD-4F5D-9B6F-D287D58CE9FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartNotifications</RootNamespace>
     <AssemblyName>SmartNotifications</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <MinimumOfficeToolsVersion>12.1</MinimumOfficeToolsVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
     <ProjectMode>SharePointApp</ProjectMode>
-    <AppFeaturePartId>{d1bb285f-c33e-4505-98fb-81d1cd48dee7}</AppFeaturePartId>
-    <WspPartId>{52da0637-675f-4078-96ea-1ee152c5f449}</WspPartId>
-    <WorkflowPartId>{e2bc390a-8216-4931-96c4-5bcca08c04e7}</WorkflowPartId>
-    <CspkgPartId>{e547e01c-bef9-4377-91fe-ae2d24a98a10}</CspkgPartId>
-    <SqlPackagePartId>{31c136bc-c905-4147-86b6-76dfb7e639e8}</SqlPackagePartId>
+    <AppFeaturePartId>{1187a4a5-a77b-4f23-8120-b97c0fa3abad}</AppFeaturePartId>
+    <WspPartId>{c2a9e0b9-77e3-4341-b1ef-1c52e8addfe8}</WspPartId>
+    <WorkflowPartId>{1c2cf473-4494-4c10-82f9-3a87bdbd36a4}</WorkflowPartId>
+    <CspkgPartId>{73162d2f-82a8-4cde-bd67-3eabce41cce1}</CspkgPartId>
+    <SqlPackagePartId>{01dfdd70-5021-4430-8e29-88285af95977}</SqlPackagePartId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,52 +43,93 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Scripts\AppExternal\blockui\jquery.blockUI.js" />
-    <Content Include="Scripts\AppExternal\bootstrap\css\bootstrap-theme.css" />
-    <Content Include="Scripts\AppExternal\bootstrap\css\bootstrap-theme.min.css" />
-    <Content Include="Scripts\AppExternal\bootstrap\css\bootstrap.css" />
-    <Content Include="Scripts\AppExternal\bootstrap\css\bootstrap.min.css" />
-    <Content Include="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\AppExternal\bootstrap\js\bootstrap.js" />
-    <Content Include="Scripts\AppExternal\bootstrap\js\bootstrap.min.js" />
-    <Content Include="Scripts\AppExternal\bootstrap\js\npm.js" />
-    <Content Include="Scripts\AppExternal\camljs\index.js" />
-    <Content Include="Scripts\AppExternal\font-awesome\font-awesome.css" />
-    <Content Include="Scripts\AppExternal\font-awesome\fontawesome-webfont.svg" />
-    <Content Include="Scripts\AppExternal\jquery\jquery.js" />
-    <Content Include="Scripts\AppExternal\jsencrypt\jsencrypt.min.js" />
-    <Content Include="Scripts\AppExternal\knockout\knockout.js" />
-    <Content Include="Scripts\build\build_config.js" />
-    <Content Include="Scripts\build\smartnotif.app.external.min.js" />
-    <Content Include="Scripts\Elements.xml" />
-    <Content Include="Scripts\External\camljs.js" />
+    <Content Include="settings.js" />
+    <None Include="App\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="App\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="App\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="App\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="App\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="App\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="App\lib\font-awesome\fonts\FontAwesome.otf" />
     <None Include="bower.json" />
+    <None Include="Content\css\sn.app.scss" />
+    <None Include="App\fonts\fontawesome-webfont.eot" />
+    <None Include="App\fonts\fontawesome-webfont.ttf" />
+    <None Include="App\fonts\fontawesome-webfont.woff" />
+    <None Include="App\fonts\fontawesome-webfont.woff2" />
+    <None Include="App\fonts\FontAwesome.otf" />
+    <None Include="App\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="App\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="App\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="App\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\css\_partials\_fixes.scss" />
     <None Include="package.json" />
-    <Content Include="gruntfile.js" />
-    <Content Include="Pages\Elements.xml" />
-    <Content Include="Pages\Default.aspx" />
-    <None Include="Scripts\AppExternal\bootstrap\css\bootstrap-theme.css.map" />
-    <None Include="Scripts\AppExternal\bootstrap\css\bootstrap.css.map" />
-    <None Include="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Scripts\AppExternal\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Scripts\AppExternal\font-awesome\fontawesome-webfont.eot" />
-    <None Include="Scripts\AppExternal\font-awesome\fontawesome-webfont.ttf" />
-    <None Include="Scripts\AppExternal\font-awesome\fontawesome-webfont.woff" />
-    <None Include="Scripts\AppExternal\font-awesome\fontawesome-webfont.woff2" />
-    <None Include="Scripts\AppExternal\font-awesome\FontAwesome.otf" />
-    <None Include="Scripts\build\smartnotif.app.external.min.js.map" />
-    <None Include="Scripts\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{79c46ded-5676-4862-b412-b75a188c12ce}</SharePointProjectItemId>
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}</SharePointProjectItemId>
     </None>
+    <Content Include="App\build\app.js" />
+    <Content Include="App\build\sn.app.css" />
+    <Content Include="App\build\sn.app.external.css" />
+    <Content Include="App\build\sn.app.external.js" />
+    <Content Include="App\build\sn.app.js" />
+    <Content Include="App\js\app.js" />
+    <Content Include="App\js\controllers\HomeCtrl.js" />
+    <Content Include="App\js\interfaces\ICtrlScope.js" />
+    <Content Include="App\lib\angular-animate\angular-animate.js" />
+    <Content Include="App\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Content Include="App\lib\angular-route\angular-route.js" />
+    <Content Include="App\lib\angular-sanitize\angular-sanitize.js" />
+    <Content Include="App\lib\angular-translate\angular-translate.js" />
+    <Content Include="App\lib\angular-ui-router\release\angular-ui-router.js" />
+    <Content Include="App\lib\angular-ui-select\dist\select.css" />
+    <Content Include="App\lib\angular-ui-select\dist\select.js" />
+    <Content Include="App\lib\angular\angular.js" />
+    <Content Include="App\lib\animate.css\animate.css" />
+    <Content Include="App\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="App\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="App\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="App\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="App\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="App\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="App\lib\eeh-navigation\dist\eeh-navigation.css" />
+    <Content Include="App\lib\eeh-navigation\dist\eeh-navigation.js" />
+    <Content Include="App\lib\eeh-navigation\dist\eeh-navigation.tpl.js" />
+    <Content Include="App\lib\font-awesome\css\font-awesome.css" />
+    <Content Include="App\lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="App\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="App\lib\jquery\dist\jquery.js" />
+    <Content Include="App\templates\home.html" />
+    <Content Include="App\fonts\fontawesome-webfont.svg" />
+    <Content Include="App\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Elements.xml" />
+    <Content Include="gulpfile.js" />
+    <None Include="Pages\index.tmpl" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\index.aspx" />
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{0e7e8154-3c53-438f-9f54-d86691e0cb99}</SharePointProjectItemId>
+    </None>
+    <None Include="tsd.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{01dfdd70-5021-4430-8e29-88285af95977}</SharePointProjectItemId>
+    </None>
+    <Content Include="App\Elements.release.xml" />
+    <Content Include="App\Elements.debug.xml" />
+    <Content Include="App\Elements.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{a1814f2c-aa33-4a67-af99-825ae7d195ce}</SharePointProjectItemId>
+      <SharePointProjectItemId>{a2660b33-ebed-4af6-9d11-6122c3e8ea24}</SharePointProjectItemId>
     </None>
     <Content Include="Content\Elements.xml" />
-    <Content Include="Content\App.css" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\AppIcon.png">
@@ -96,21 +137,21 @@
     </Content>
     <Content Include="Images\Elements.xml" />
     <None Include="Images\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{de358fb5-98c8-4728-b34e-7876b4649ab2}</SharePointProjectItemId>
+      <SharePointProjectItemId>{20b09929-ca38-4e93-b58c-37bda8149531}</SharePointProjectItemId>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Package\Package.package">
-      <PackageId>{c5adf7f1-2038-4818-be09-4a7f6ecd4d08}</PackageId>
+      <PackageId>{58e8b688-1c86-47de-a690-eff933e0bbbe}</PackageId>
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
-    <None Include="Features\Smart Notifications\Smart Notifications.feature">
-      <FeatureId>{1e6932e4-2b3d-41ff-8916-635b58a2f67c}</FeatureId>
+    <None Include="Features\SmartNotificationsWeb\SmartNotificationsWeb.feature">
+      <FeatureId>{0e3cfd5c-8b45-4b66-b6b6-0fed9db8f511}</FeatureId>
     </None>
-    <None Include="Features\Smart Notifications\Smart Notifications.Template.xml">
-      <DependentUpon>Smart Notifications.feature</DependentUpon>
+    <None Include="Features\SmartNotificationsWeb\SmartNotificationsWeb.Template.xml">
+      <DependentUpon>SmartNotificationsWeb.feature</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -118,7 +159,23 @@
       <SubType>Designer</SubType>
     </AppManifestFile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AppWebComponents\" />
+    <Folder Include="Content\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="App\ng\app.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
+    <TypeScriptCompile Include="App\_references.ts" />
+    <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="typings\tsd.d.ts" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -127,9 +184,9 @@
   <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Release (
-  grunt release
+  gulp release
 ) ELSE (
-  grunt debug
+  gulp debug
 )
 </PreBuildEvent>
   </PropertyGroup>

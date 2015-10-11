@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="App">
+    <File Path="App\Elements.debug.xml" Url="App/Elements.debug.xml" ReplaceContent="TRUE" />
+    <File Path="App\Elements.release.xml" Url="App/Elements.release.xml" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular\angular.js" Url="App/lib/angular/angular.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-animate\angular-animate.js" Url="App/lib/angular-animate/angular-animate.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-bootstrap\ui-bootstrap-tpls.js" Url="App/lib/angular-bootstrap/ui-bootstrap-tpls.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-route\angular-route.js" Url="App/lib/angular-route/angular-route.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-sanitize\angular-sanitize.js" Url="App/lib/angular-sanitize/angular-sanitize.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-translate\angular-translate.js" Url="App/lib/angular-translate/angular-translate.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-ui-router\release\angular-ui-router.js" Url="App/lib/angular-ui-router/release/angular-ui-router.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-ui-select\dist\select.css" Url="App/lib/angular-ui-select/dist/select.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-ui-select\dist\select.js" Url="App/lib/angular-ui-select/dist/select.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\animate.css\animate.css" Url="App/lib/animate.css/animate.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap-theme.css" Url="App/lib/bootstrap/dist/css/bootstrap-theme.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap-theme.css.map" Url="App/lib/bootstrap/dist/css/bootstrap-theme.css.map" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap-theme.min.css" Url="App/lib/bootstrap/dist/css/bootstrap-theme.min.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap.css" Url="App/lib/bootstrap/dist/css/bootstrap.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap.css.map" Url="App/lib/bootstrap/dist/css/bootstrap.css.map" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\css\bootstrap.min.css" Url="App/lib/bootstrap/dist/css/bootstrap.min.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" Url="App/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" Url="App/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" Url="App/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" Url="App/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" Url="App/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\js\bootstrap.js" Url="App/lib/bootstrap/dist/js/bootstrap.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\js\bootstrap.min.js" Url="App/lib/bootstrap/dist/js/bootstrap.min.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap\dist\js\npm.js" Url="App/lib/bootstrap/dist/js/npm.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\eeh-navigation\dist\eeh-navigation.css" Url="App/lib/eeh-navigation/dist/eeh-navigation.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\eeh-navigation\dist\eeh-navigation.js" Url="App/lib/eeh-navigation/dist/eeh-navigation.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\eeh-navigation\dist\eeh-navigation.tpl.js" Url="App/lib/eeh-navigation/dist/eeh-navigation.tpl.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\css\font-awesome.css" Url="App/lib/font-awesome/css/font-awesome.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\css\font-awesome.min.css" Url="App/lib/font-awesome/css/font-awesome.min.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.eot" Url="App/lib/font-awesome/fonts/fontawesome-webfont.eot" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.svg" Url="App/lib/font-awesome/fonts/fontawesome-webfont.svg" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.ttf" Url="App/lib/font-awesome/fonts/fontawesome-webfont.ttf" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.woff" Url="App/lib/font-awesome/fonts/fontawesome-webfont.woff" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.woff2" Url="App/lib/font-awesome/fonts/fontawesome-webfont.woff2" ReplaceContent="TRUE" />
+    <File Path="App\lib\font-awesome\fonts\FontAwesome.otf" Url="App/lib/font-awesome/fonts/FontAwesome.otf" ReplaceContent="TRUE" />
+    <File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
+    <File Path="App\ng\app.ts" Url="App/ng/app.ts" ReplaceContent="TRUE" />
+    <File Path="App\_references.ts" Url="App/_references.ts" ReplaceContent="TRUE" />
+    <File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
+    <File Path="App\ng\controllers\HomeCtrl.ts" Url="App/ng/controllers/HomeCtrl.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\interfaces\ICtrlScope.ts" Url="App/ng/interfaces/ICtrlScope.ts" ReplaceContent="TRUE" />
+    <File Path="App\build\sn.app.external.css" Url="App/build/sn.app.external.css" ReplaceContent="TRUE" />
+    <File Path="App\build\sn.app.external.js" Url="App/build/sn.app.external.js" ReplaceContent="TRUE" />
+    <File Path="App\build\sn.app.js" Url="App/build/sn.app.js" ReplaceContent="TRUE" />
+    <File Path="App\js\app.js" Url="App/js/app.js" ReplaceContent="TRUE" />
+    <File Path="App\js\controllers\HomeCtrl.js" Url="App/js/controllers/HomeCtrl.js" ReplaceContent="TRUE" />
+    <File Path="App\js\interfaces\ICtrlScope.js" Url="App/js/interfaces/ICtrlScope.js" ReplaceContent="TRUE" />
+    <File Path="App\fonts\glyphicons-halflings-regular.woff2" Url="App/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
+    <File Path="App\fonts\glyphicons-halflings-regular.woff" Url="App/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+    <File Path="App\fonts\glyphicons-halflings-regular.ttf" Url="App/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+    <File Path="App\fonts\glyphicons-halflings-regular.svg" Url="App/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+    <File Path="App\fonts\glyphicons-halflings-regular.eot" Url="App/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+    <File Path="App\fonts\FontAwesome.otf" Url="App/fonts/FontAwesome.otf" ReplaceContent="TRUE" />
+    <File Path="App\fonts\fontawesome-webfont.woff2" Url="App/fonts/fontawesome-webfont.woff2" ReplaceContent="TRUE" />
+    <File Path="App\fonts\fontawesome-webfont.woff" Url="App/fonts/fontawesome-webfont.woff" ReplaceContent="TRUE" />
+    <File Path="App\fonts\fontawesome-webfont.ttf" Url="App/fonts/fontawesome-webfont.ttf" ReplaceContent="TRUE" />
+    <File Path="App\fonts\fontawesome-webfont.svg" Url="App/fonts/fontawesome-webfont.svg" ReplaceContent="TRUE" />
+    <File Path="App\fonts\fontawesome-webfont.eot" Url="App/fonts/fontawesome-webfont.eot" ReplaceContent="TRUE" />
+    <File Path="App\build\sn.app.css" Url="App/build/sn.app.css" ReplaceContent="TRUE" />
+    <File Path="App\build\app.js" Url="App/build/app.js" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

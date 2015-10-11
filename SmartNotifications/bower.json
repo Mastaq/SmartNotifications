@@ -1,20 +1,25 @@
 {
-	"name": "smart_notifications_app",
-	"private": true,
-	"dependencies": {
-		"bootstrap": "3.3.2",
-		"jquery": "2.1.3",
-		"camljs": "./Scripts/External/camljs.js",
-		"blockui": "2.70",
-		"jsencrypt": "2.1.0",
-		"font-awesome": "~4.3.0",
-		"knockout": "3.3.0"
-	},
-	"exportsOverride": {
-		"bootstrap": {
-			"js": "dist/js/*.*",
-			"css": "dist/css/*.{css,min.css,map}",
-			"fonts": "dist/fonts/*.*"
-		}
-	}
+    "name": "SmartNotifications",
+    "private": true,
+    "dependencies": {
+        "jquery": "2.1.4",
+        "angular": "1.4.6",
+        "angular-route": "1.4.6",
+        "angular-ui-router": "0.2.15",
+        "angular-animate": "1.4.6",
+        "angular-sanitize": "1.4.6",
+        "angular-ui-select": "0.12.1",
+        "animate.css": "3.4.0",
+        "eeh-navigation": "4.1.2",
+        "bootstrap": "3.3.5",
+        "font-awesome": "4.4.0"
+    },
+    "overrides": {
+        "bootstrap": {
+            "main": "./dist/**/*.*"
+        },
+        "font-awesome": {
+            "main": [ "./css/*.css", "./fonts/**/*" ]
+        }
+    }
 }

@@ -2,18 +2,17 @@
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="SmartNotifications"
-     ProductID="{645f466e-df59-4ab2-bf73-e599b7bc4b3a}"
+     ProductID="{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}"
      Version="1.0.0.0"
      SharePointMinVersion="16.0.0.0"
 >
   <Properties>
     <Title>SmartNotifications</Title>
-    <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
+    <StartPage>~appWebUrl/Pages/index.aspx?{StandardTokens}</StartPage>
   </Properties>
 
   <AppPrincipal>
     <Internal />
   </AppPrincipal>
-
 
 </App>

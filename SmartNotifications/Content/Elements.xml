@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Content">
-    <File Path="Content\App.css" Url="Content/App.css" ReplaceContent="TRUE" />
+    <File Path="Content\css\sn.app.scss" Url="Content/css/sn.app.scss" ReplaceContent="TRUE" />
+    <File Path="Content\css\_partials\_fixes.scss" Url="Content/css/_partials/_fixes.scss" ReplaceContent="TRUE" />
   </Module>
 </Elements>
