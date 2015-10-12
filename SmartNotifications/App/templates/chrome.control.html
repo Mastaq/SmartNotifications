@@ -4,15 +4,15 @@
 			<div id="suiteBar" class="ms-dialogHidden">
 				<div id="suiteBarLeft">
 					<div id="suiteBarLeft1">
-						<a id="chromeControl_topheader_siteurl" href="http://sp2013dev/sites/dev11/" class="ms-core-suiteLink-a" target="_top">
-							<span id="chromeControl_topheader_sitetitle">Test</span>
+						<a id="chromeControl_topheader_siteurl" ng-href="{{vm.hostUrl}}" class="ms-core-suiteLink-a" target="_top">
+							<span id="chromeControl_topheader_sitetitle">{{vm.hostTitle}}</span>
 						</a>
 					</div>
 					<div id="suiteBarLeft2">
-						<img id="chromeControl_topheader_arrowimage" src="http://sp2013dev/sites/dev11/_layouts/15/images/titleseparatordark.png" alt="Cravat Icon">
+						<img id="chromeControl_topheader_arrowimage" src="/_layouts/15/images/titleseparatordark.png" alt="Cravat Icon">
 					</div>
 					<div id="suiteBarLeft3">
-						<a id="chromeControl_topheader_apptitlelink" href="http://app-ff155d312cfb84.apps.dev.mastek.com/sites/dev111/ChromeControlCrossDomainREST" class="ms-core-suiteLink-a" target="_top">
+						<a id="chromeControl_topheader_apptitlelink" ng-href="{{vm.appUrl}}" class="ms-core-suiteLink-a" target="_top">
 							<span id="chromeControl_topheader_apptitle">Smart Notifications</span>
 						</a>
 					</div>

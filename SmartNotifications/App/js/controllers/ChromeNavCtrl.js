@@ -7,6 +7,9 @@ var SN;
             this.$http = $http;
             this.$window = $window;
             $scope.vm = this;
+            this.hostUrl = "http://host.url";
+            this.hostTitle = "COOL";
+            this.appUrl = "http://app.url";
         }
         ChromeNavCtrl.$inject = [
             "$scope",
