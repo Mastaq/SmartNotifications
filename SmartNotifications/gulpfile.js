@@ -100,10 +100,9 @@ gulp.task("template", function (callback) {
 		parser.parseString(data, function (err, result) {
 			if (err) return callback(err);
 
-			var version = result.App.$.Version;
 			gulp.src("Pages/index.tmpl")
-			.pipe($.template({ version: version }))
-			.pipe($.rename("index.aspx"))
+			.pipe($.template({ version: result.App.$.Version, appUrl: result.App.$.Name }))
+			.pipe($.rename("index.html"))
 			.pipe(gulp.dest("Pages"))
 			.on("end", function () { callback(); });
 
@@ -137,7 +136,7 @@ gulp.task("watch", function () {
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
 	gulp.watch("Pages/index.tmpl", ["template"]);
 
-	gulp.watch(["Pages/index.aspx"], function (event) {
+	gulp.watch(["Pages/index.html"], function (event) {
 		return gulp.src(event.path, { base: "Pages" })
 			.pipe($.spsave({
 				siteUrl: settings.siteUrl,
@@ -150,7 +149,7 @@ gulp.task("watch", function () {
 			}));
 	});
 
-	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html"], function (event) {
+	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html", "App/sp/*.js"], function (event) {
 		console.log(event.path);
 		gulp.src(event.path, { base: "App" })
 			.pipe($.spsave({

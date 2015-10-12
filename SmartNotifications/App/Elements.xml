@@ -63,5 +63,8 @@
     <File Path="App\fonts\fontawesome-webfont.eot" Url="App/fonts/fontawesome-webfont.eot" ReplaceContent="TRUE" />
     <File Path="App\build\sn.app.css" Url="App/build/sn.app.css" ReplaceContent="TRUE" />
     <File Path="App\build\app.js" Url="App/build/app.js" ReplaceContent="TRUE" />
+    <File Path="App\sp\chrome.loader.js" Url="App/sp/chrome.loader.js" ReplaceContent="TRUE" />
+    <File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
+    <File Path="App\ng\controllers\ChromeNavCtrl.ts" Url="App/ng/controllers/ChromeNavCtrl.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

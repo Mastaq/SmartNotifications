@@ -64,5 +64,8 @@
     <ProjectItemFile Source="fonts\fontawesome-webfont.eot" Target="App\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.css" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="build\app.js" Target="App\build\" Type="ElementFile" />
+    <ProjectItemFile Source="sp\chrome.loader.js" Target="App\sp\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\chrome.control.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\ChromeNavCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
   </Files>
 </ProjectItem>

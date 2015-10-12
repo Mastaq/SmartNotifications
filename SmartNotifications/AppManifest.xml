@@ -4,11 +4,11 @@
      Name="SmartNotifications"
      ProductID="{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}"
      Version="1.0.0.0"
-     SharePointMinVersion="16.0.0.0"
+     SharePointMinVersion="15.0.0.0"
 >
   <Properties>
     <Title>SmartNotifications</Title>
-    <StartPage>~appWebUrl/Pages/index.aspx?{StandardTokens}</StartPage>
+    <StartPage>~appWebUrl/Pages/index.html?SPHostUrl={HostUrl}</StartPage>
   </Properties>
 
   <AppPrincipal>

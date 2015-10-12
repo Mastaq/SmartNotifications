@@ -3,5 +3,7 @@
   <Module Name="Content">
     <File Path="Content\css\sn.app.scss" Url="Content/css/sn.app.scss" ReplaceContent="TRUE" />
     <File Path="Content\css\_partials\_fixes.scss" Url="Content/css/_partials/_fixes.scss" ReplaceContent="TRUE" />
+    <File Path="Content\css\_partials\_chrome.control.scss" Url="Content/css/_partials/_chrome.control.scss" ReplaceContent="TRUE" />
+    <File Path="Content\css\_partials\_app.scss" Url="Content/css/_partials/_app.scss" ReplaceContent="TRUE" />
   </Module>
 </Elements>

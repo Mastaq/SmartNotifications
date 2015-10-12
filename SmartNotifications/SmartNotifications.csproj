@@ -10,7 +10,7 @@
     <RootNamespace>SmartNotifications</RootNamespace>
     <AssemblyName>SmartNotifications</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetOfficeVersion>16.1</TargetOfficeVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
@@ -43,6 +43,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="App\build\app.js" />
+    <Content Include="App\sp\chrome.loader.js" />
+    <Content Include="App\templates\chrome.control.html" />
     <Content Include="settings.js" />
     <None Include="App\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="App\lib\bootstrap\dist\css\bootstrap.css.map" />
@@ -66,12 +69,12 @@
     <None Include="App\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="App\fonts\glyphicons-halflings-regular.woff" />
     <None Include="App\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\css\_partials\_chrome.control.scss" />
     <None Include="Content\css\_partials\_fixes.scss" />
     <None Include="package.json" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}</SharePointProjectItemId>
     </None>
-    <Content Include="App\build\app.js" />
     <Content Include="App\build\sn.app.css" />
     <Content Include="App\build\sn.app.external.css" />
     <Content Include="App\build\sn.app.external.js" />
@@ -111,7 +114,7 @@
     <Content Include="gulpfile.js" />
     <None Include="Pages\index.tmpl" />
     <Content Include="Pages\Elements.xml" />
-    <Content Include="Pages\index.aspx" />
+    <Content Include="Pages\index.html" />
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{0e7e8154-3c53-438f-9f54-d86691e0cb99}</SharePointProjectItemId>
     </None>
@@ -161,13 +164,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppWebComponents\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\ng\app.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
     <TypeScriptCompile Include="App\_references.ts" />
+    <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-route.d.ts" />

@@ -4,5 +4,7 @@
     <ProjectItemFile Source="Elements.xml" Target="Content\" Type="ElementManifest" />
     <ProjectItemFile Source="css\sn.app.scss" Target="Content\css\" Type="ElementFile" />
     <ProjectItemFile Source="css\_partials\_fixes.scss" Target="Content\css\_partials\" Type="ElementFile" />
+    <ProjectItemFile Source="css\_partials\_chrome.control.scss" Target="Content\css\_partials\" Type="ElementFile" />
+    <ProjectItemFile Source="css\_partials\_app.scss" Target="Content\css\_partials\" Type="ElementFile" />
   </Files>
 </ProjectItem>
