@@ -2,19 +2,17 @@
 var SN;
 (function (SN) {
     var ChromeNavCtrl = (function () {
-        function ChromeNavCtrl($scope, $http, $window) {
+        function ChromeNavCtrl($scope, context) {
             this.$scope = $scope;
-            this.$http = $http;
-            this.$window = $window;
+            this.context = context;
             $scope.vm = this;
-            this.hostUrl = "http://host.url";
-            this.hostTitle = "COOL";
-            this.appUrl = "http://app.url";
+            this.hostUrl = this.context.hostUrl;
+            this.hostTitle = this.context.hostTitle;
+            this.appUrl = this.context.appUrl;
         }
         ChromeNavCtrl.$inject = [
             "$scope",
-            "$http",
-            "$window"
+            "ContextService"
         ];
         return ChromeNavCtrl;
     })();

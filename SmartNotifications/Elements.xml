@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <Module Name="RootModule">
-    <File Path="settings.js" Url="settings.js" ReplaceContent="TRUE" />
-    <File Path="typings\angular-translate\angular-translate.d.ts" Url="typings/angular-translate/angular-translate.d.ts" ReplaceContent="TRUE" />
-  </Module>
-</Elements>

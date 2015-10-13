@@ -67,5 +67,10 @@
     <ProjectItemFile Source="sp\chrome.loader.js" Target="App\sp\" Type="ElementFile" />
     <ProjectItemFile Source="templates\chrome.control.html" Target="App\templates\" Type="ElementFile" />
     <ProjectItemFile Source="ng\controllers\ChromeNavCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\ContextService.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\model\Context.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\SideNavCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
+    <ProjectItemFile Source="index.tmpl" Target="App\" Type="ElementFile" />
+    <ProjectItemFile Source="index.html" Target="App\" Type="ElementFile" />
   </Files>
 </ProjectItem>

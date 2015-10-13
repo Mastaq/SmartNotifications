@@ -66,5 +66,10 @@
     <File Path="App\sp\chrome.loader.js" Url="App/sp/chrome.loader.js" ReplaceContent="TRUE" />
     <File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
     <File Path="App\ng\controllers\ChromeNavCtrl.ts" Url="App/ng/controllers/ChromeNavCtrl.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\ContextService.ts" Url="App/ng/services/ContextService.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\model\Context.ts" Url="App/ng/model/Context.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\controllers\SideNavCtrl.ts" Url="App/ng/controllers/SideNavCtrl.ts" ReplaceContent="TRUE" />
+    <File Path="App\index.tmpl" Url="App/index.tmpl" ReplaceContent="TRUE" />
+    <File Path="App\index.html" Url="App/index.html" ReplaceContent="TRUE" />
   </Module>
 </Elements>

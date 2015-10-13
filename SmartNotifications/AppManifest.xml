@@ -8,7 +8,7 @@
 >
   <Properties>
     <Title>SmartNotifications</Title>
-    <StartPage>~appWebUrl/Pages/index.html?SPHostUrl={HostUrl}</StartPage>
+    <StartPage>~appWebUrl/App/index.html?SPHostUrl={HostUrl}&amp;HostTitle={HostTitle}</StartPage>
   </Properties>
 
   <AppPrincipal>

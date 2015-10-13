@@ -100,10 +100,10 @@ gulp.task("template", function (callback) {
 		parser.parseString(data, function (err, result) {
 			if (err) return callback(err);
 
-			gulp.src("Pages/index.tmpl")
+			gulp.src("App/index.tmpl")
 			.pipe($.template({ version: result.App.$.Version, appUrl: result.App.$.Name }))
 			.pipe($.rename("index.html"))
-			.pipe(gulp.dest("Pages"))
+			.pipe(gulp.dest("App"))
 			.on("end", function () { callback(); });
 
 		});
@@ -134,15 +134,15 @@ gulp.task("debug", function (callback) {
 gulp.task("watch", function () {
 	gulp.watch("App/ng/**/*.ts", ["ts", "build-app-only"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
-	gulp.watch("Pages/index.tmpl", ["template"]);
+	gulp.watch("App/index.tmpl", ["template"]);
 
-	gulp.watch(["Pages/index.html"], function (event) {
-		return gulp.src(event.path, { base: "Pages" })
+	gulp.watch(["App/index.html"], function (event) {
+		return gulp.src(event.path, {base: "App"})
 			.pipe($.spsave({
 				siteUrl: settings.siteUrl,
 				username: settings.username,
 				password: settings.password,
-				folder: "Pages",
+				folder: "App",
 				appWebUrl: "SmartNotifications",
 				flatten: false,
 				log: false
@@ -150,7 +150,6 @@ gulp.task("watch", function () {
 	});
 
 	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html", "App/sp/*.js"], function (event) {
-		console.log(event.path);
 		gulp.src(event.path, { base: "App" })
 			.pipe($.spsave({
 				siteUrl: settings.siteUrl,

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<ListInstance Title="AppSettings"
+                OnQuickLaunch="TRUE"
+                TemplateType="100"
+                Url="AppSettings"
+								 Hidden="TRUE"
+                Description="">
+	</ListInstance>
+</Elements>

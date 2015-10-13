@@ -17,5 +17,5 @@ var SN;
         return HomeCtrl;
     })();
     SN.HomeCtrl = HomeCtrl;
-    angular.module("SN.app.controllers").controller("WelcomeCtrl", HomeCtrl);
+    angular.module("SN.app.controllers").controller("HomeCtrl", HomeCtrl);
 })(SN || (SN = {}));

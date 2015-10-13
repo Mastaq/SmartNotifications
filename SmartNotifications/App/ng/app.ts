@@ -3,7 +3,7 @@
 namespace SN {
 	"use strict";
 
-	angular.module("SN.app.controllers", []);
+	angular.module("SN.app.controllers", ["SN.app.services"]);
 	angular.module("SN.app.directives", []);
 	angular.module("SN.app.services", []);
 
@@ -19,55 +19,57 @@ namespace SN {
 					.state("home", {
 						url: "/",
 						templateUrl: "../App/templates/home.html",
-						controller: "WelcomeCtrl"
-					})
-					.state("sitecreation", {
-						url: "/sitecreation",
-						templateUrl: "App/templates/site.creation.html",
-						controller: "SiteCreationCtrl"
-					}).state("sitecreationprogress", {
-						url: "/sitecreationprogress",
-						templateUrl: "App/templates/site.creation.progress.html",
-						controller: "SiteCreationProgressCtrl"
+						controller: "HomeCtrl"
 					});
 
-				eehNavigationProvider
-					.menuItem("TopNav.home", {
-						text: "Smart Notifications App",
-						weight: -1,
-						state: "home"
-					});
 
 				eehNavigationProvider
 					.menuItem("SideNav.home", {
 						text: "Home",
 						iconClass: "glyphicon-home",
-						state: "home",
-						weight: 1
+						state: "home"
 					})
-					.menuItem("SideNav.diveder1", {
-						isDivider: true,
-						weight: 2
+					.menuItem("SideNav.host", {
+						text: " ",
+						iconClass: "fa fa-sitemap",
+						target: "_blank",
+						href: "#"
 					})
-					.menuItem("SideNav.appSettings", {
-						text: "Application Parameters",
+					.menuItem("SideNav.customizationStatus", {
+						text: "[Host customization status]",
 						iconClass: "glyphicon-th-list",
 						target: "_blank",
-						href: "#",
-						weight: 4
+						href: "#"
 					})
-					.menuItem("SideNav.permissionSettings", {
-						text: "Permissions Settings",
-						iconClass: "glyphicon-lock",
+					.menuItem("SideNav.allNotifications", {
+						text: "All Notifications",
+						iconClass: "glyphicon-th-list",
 						target: "_blank",
-						href: "#",
-						weight: 5
+						href: "#"
 					})
-					.menuItem("SideNav.sitecreation", {
-						text: "Site Creation",
-						iconClass: "glyphicon-wrench",
-						state: "sitecreation",
-						weight: 6
+					.menuItem("SideNav.addNotification", {
+						text: "Add New Notification",
+						iconClass: "glyphicon-plus",
+						target: "_blank",
+						href: "#"
+					})
+					.menuItem("SideNav.permissions", {
+						text: "[Permissions]",
+						iconClass: "glyphicon-th-list",
+						target: "_blank",
+						href: "#"
+					})
+					.menuItem("SideNav.updates", {
+						text: "[Updates]",
+						iconClass: "glyphicon-th-list",
+						target: "_blank",
+						href: "#"
+					})
+					.menuItem("SideNav.checkNotification", {
+						text: "[Check notification]",
+						iconClass: "glyphicon-th-list",
+						target: "_blank",
+						href: "#"
 					});
 			}]);
 

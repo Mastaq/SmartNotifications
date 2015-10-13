@@ -43,10 +43,39 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="AppWebComponents\ContentTypes\AppSettings\Elements.xml" />
+    <Content Include="AppWebComponents\ContentTypes\Notifications\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\AppSettings\AppSettingsInstance\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\AppSettings\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\AppSettings\Schema.xml" />
+    <Content Include="AppWebComponents\Lists\Notifications\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\Notifications\NotificationsInstance\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\Notifications\Schema.xml" />
     <Content Include="App\build\app.js" />
     <Content Include="App\sp\chrome.loader.js" />
     <Content Include="App\templates\chrome.control.html" />
+    <Content Include="Features\SmartNotifications\SmartNotifications.Template.xml">
+      <DependentUpon>SmartNotifications.feature</DependentUpon>
+    </Content>
     <Content Include="settings.js" />
+    <None Include="AppWebComponents\ContentTypes\AppSettings\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d2099c83-b2bf-49cb-83f6-3e763389b503}</SharePointProjectItemId>
+    </None>
+    <None Include="AppWebComponents\ContentTypes\Notifications\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{530978f2-841b-4b4d-af0c-00e5a9cd92c2}</SharePointProjectItemId>
+    </None>
+    <None Include="AppWebComponents\Lists\AppSettings\AppSettingsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9b3b03b7-24fc-4eea-b889-cf6503d3c6d5}</SharePointProjectItemId>
+    </None>
+    <None Include="AppWebComponents\Lists\AppSettings\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{bae67251-efde-4edc-bf90-21d616fddebb}</SharePointProjectItemId>
+    </None>
+    <None Include="AppWebComponents\Lists\Notifications\NotificationsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5d40f991-fe9e-4199-9098-dda914a6dae0}</SharePointProjectItemId>
+    </None>
+    <None Include="AppWebComponents\Lists\Notifications\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{4fe1d21e-8ef6-4177-b5ff-422986e805d0}</SharePointProjectItemId>
+    </None>
     <None Include="App\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
     <None Include="App\lib\bootstrap\dist\css\bootstrap.css.map" />
     <None Include="App\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
@@ -69,12 +98,13 @@
     <None Include="App\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="App\fonts\glyphicons-halflings-regular.woff" />
     <None Include="App\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Content\css\_partials\_app.scss" />
     <None Include="Content\css\_partials\_chrome.control.scss" />
     <None Include="Content\css\_partials\_fixes.scss" />
-    <None Include="package.json" />
-    <None Include="Pages\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}</SharePointProjectItemId>
+    <None Include="Features\SmartNotifications\SmartNotifications.feature">
+      <FeatureId>{d10442b8-c412-42d1-b5d9-c77ffdd2fdcc}</FeatureId>
     </None>
+    <None Include="package.json" />
     <Content Include="App\build\sn.app.css" />
     <Content Include="App\build\sn.app.external.css" />
     <Content Include="App\build\sn.app.external.js" />
@@ -110,14 +140,9 @@
     <Content Include="App\templates\home.html" />
     <Content Include="App\fonts\fontawesome-webfont.svg" />
     <Content Include="App\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Elements.xml" />
     <Content Include="gulpfile.js" />
-    <None Include="Pages\index.tmpl" />
-    <Content Include="Pages\Elements.xml" />
-    <Content Include="Pages\index.html" />
-    <None Include="SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{0e7e8154-3c53-438f-9f54-d86691e0cb99}</SharePointProjectItemId>
-    </None>
+    <None Include="App\index.tmpl" />
+    <Content Include="App\index.html" />
     <None Include="tsd.json" />
   </ItemGroup>
   <ItemGroup>
@@ -150,26 +175,21 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
-    <None Include="Features\SmartNotificationsWeb\SmartNotificationsWeb.feature">
-      <FeatureId>{0e3cfd5c-8b45-4b66-b6b6-0fed9db8f511}</FeatureId>
-    </None>
-    <None Include="Features\SmartNotificationsWeb\SmartNotificationsWeb.Template.xml">
-      <DependentUpon>SmartNotificationsWeb.feature</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <AppManifestFile Include="AppManifest.xml">
       <SubType>Designer</SubType>
     </AppManifestFile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AppWebComponents\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="App\ng\app.ts" />
     <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\SideNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
+    <TypeScriptCompile Include="App\ng\model\Context.ts" />
+    <TypeScriptCompile Include="App\ng\services\ContextService.ts" />
     <TypeScriptCompile Include="App\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
