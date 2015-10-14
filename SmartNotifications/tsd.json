@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
     },
     "angularjs/angular.d.ts": {
       "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
@@ -25,6 +25,21 @@
     },
     "angular-translate/angular-translate.d.ts": {
       "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "knockout/knockout.d.ts": {
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+    },
+    "spectrum/spectrum.d.ts": {
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+    },
+    "tinycolor/tinycolor.d.ts": {
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+    },
+    "sharepoint/SharePoint.d.ts": {
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+    },
+    "microsoft-ajax/microsoft.ajax.d.ts": {
+      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
     }
   }
 }

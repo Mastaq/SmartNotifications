@@ -12,7 +12,7 @@
 			<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Format="DateTime" Name="SN_To" Required="FALSE" StaticName="SN_To" DisplayName="To" />
 			<Field ID="{37D4FC53-CB04-4847-AF3D-9B9F27B24767}" Type="UserMulti" Mult="TRUE" UserSelectionMode="1" UserSelectionScope="0" Name="SN_AssignedTo" Required="TRUE" StaticName="SN_AssignedTo" DisplayName="Assigned To" />
 			<Field ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Type="Boolean" Name="SN_Dismissable" Required="FALSE" StaticName="SN_Dismissable" DisplayName="Can be dismissed" />
-			<Field ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Type="Text" Name="SN_Color" Required="TRUE" StaticName="SN_Color" DisplayName="Color" />
+			<Field ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Type="Text" Name="SN_Color" JSLink="~site/App/jslink/color-field/build/color.field.external.js|~site/App/jslink/color-field/build/color.field.js" Required="TRUE" StaticName="SN_Color" DisplayName="Color" />
 		</Fields>
 		<Views>
 			<View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">

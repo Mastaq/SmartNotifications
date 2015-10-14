@@ -6,7 +6,9 @@
 	runSequence = require("run-sequence"),
 	fs = require("fs"),
 	xml2js = require("xml2js"),
-	settings = require("./settings.js");
+	settings = require("./settings.js"),
+	merge = require("merge-stream");
+
 
 var $ = require("gulp-load-plugins")({
 	rename: {
@@ -23,6 +25,16 @@ var externaljs = [
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js"
 ];
 
+var colorFieldExternaljs = [
+		baseExternalPath + "jquery/dist/jquery.js",
+		baseExternalPath + "knockout/dist/knockout.js",
+		baseExternalPath + "spectrum/spectrum.js"
+];
+
+var colorFieldExternalcss = [
+	baseExternalPath + "spectrum/spectrum.css"
+];
+
 var externalcss = [
 	baseExternalPath + "angular-ui-select/dist/select.css",
 	baseExternalPath + "animate.css/animate.css",
@@ -30,6 +42,11 @@ var externalcss = [
 	baseExternalPath + "font-awesome/css/font-awesome.css",
 	baseExternalPath + "eeh-navigation/dist/eeh-navigation.css"
 ];
+
+var onError = function (err) {
+	console.log(err);
+	this.emit("end");
+};
 
 gulp.task("bower-install", function () {
 	return $.bower();
@@ -42,28 +59,31 @@ gulp.task("main-bower-files", ["bower-install"], function () {
 });
 
 gulp.task("build-external-js", function () {
-	return gulp.src(externaljs)
+	var appExternal = gulp.src(externaljs)
 		.pipe($.concat("sn.app.external.js"))
 		.pipe(gulp.dest("App/build/"));
+
+	var colorFieldExternal = gulp.src(colorFieldExternaljs)
+		.pipe($.concat("color.field.external.js"))
+		.pipe(gulp.dest("App/jslink/color-field/build"));
+
+	return merge(appExternal, colorFieldExternal);
 });
 
 gulp.task("build-external-css", function () {
-	return gulp.src(externalcss)
+	var appExternal = gulp.src(externalcss)
 		.pipe($.concat("sn.app.external.css"))
 		.pipe(gulp.dest("App/build/"));
-});
 
-gulp.task("build-app-starter", function () {
-	return gulp.src("App/ng/app.ts")
-		.pipe($.ts({
-			target: "ES5"
-		}))
-		.js
-		.pipe(gulp.dest("App/build/"));
+	var colorFieldExternal = gulp.src(colorFieldExternalcss)
+		.pipe($.concat("color.field.external.css"))
+		.pipe(gulp.dest("App/jslink/color-field/build"));
+
+	return merge(appExternal, colorFieldExternal);
 });
 
 gulp.task("build-app", function () {
-	return gulp.src(["./App/ng/**/*.ts", "!App/ng/app.ts"])
+	var external = gulp.src(["./App/ng/_references.ts"])
 		.pipe($.sourcemaps.init())
 		.pipe($.ts({
 			target: "ES5",
@@ -72,8 +92,22 @@ gulp.task("build-app", function () {
 			removeComments: true
 		}))
 		.js
-		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../" }))
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../ng" }))
 		.pipe(gulp.dest("App/build/"));
+
+	var colorField = gulp.src(["./App/jslink/color-field/_references.ts"])
+		.pipe($.sourcemaps.init())
+		.pipe($.ts({
+			target: "ES5",
+			outFile: "color.field.js",
+			declaration: false,
+			removeComments: true
+		}))
+		.js
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../" }))
+		.pipe(gulp.dest("App/jslink/color-field/build/"));
+
+	return merge(external, colorField);
 });
 
 gulp.task("sass", function () {
@@ -123,21 +157,22 @@ gulp.task("spsave", ["ts", "build-app-only"], function () {
 		}));
 });
 
-gulp.task("build-app-only", function (callback) {
-	runSequence("build-app-starter", ["build-app", "sass"], callback);
-});
+gulp.task("build-app-only", ["build-app", "sass"]);
 
 gulp.task("debug", function (callback) {
-	runSequence(["build-external-js", "build-external-css", "template"], "build-app-starter", ["build-app", "sass"], callback);
+	runSequence(["build-external-js", "build-external-css", "template"], ["build-app", "sass"], callback);
 });
 
 gulp.task("watch", function () {
-	gulp.watch("App/ng/**/*.ts", ["ts", "build-app-only"]);
+	gulp.watch(["App/ng/**/*.ts", "App/jslink/**/*.ts"], ["ts", "build-app-only"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
 	gulp.watch("App/index.tmpl", ["template"]);
 
 	gulp.watch(["App/index.html"], function (event) {
-		return gulp.src(event.path, {base: "App"})
+		return gulp.src(event.path, { base: "App" })
+			.pipe($.plumber({
+				errorHandler: onError
+			}))
 			.pipe($.spsave({
 				siteUrl: settings.siteUrl,
 				username: settings.username,
@@ -149,8 +184,11 @@ gulp.task("watch", function () {
 			}));
 	});
 
-	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html", "App/sp/*.js"], function (event) {
+	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html", "App/sp/*.js", "App/jslink/**/*.*"], function (event) {
 		gulp.src(event.path, { base: "App" })
+			.pipe($.plumber({
+				errorHandler: onError
+			}))
 			.pipe($.spsave({
 				siteUrl: settings.siteUrl,
 				username: settings.username,

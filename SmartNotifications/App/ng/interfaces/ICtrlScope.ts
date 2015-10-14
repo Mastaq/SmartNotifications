@@ -1,4 +1,4 @@
-﻿/// <reference path="../../_references.ts" />
+﻿/// <reference path="../_references.ts" />
 
 namespace SN {
 	export interface ICtrlScope<T> extends angular.IScope {

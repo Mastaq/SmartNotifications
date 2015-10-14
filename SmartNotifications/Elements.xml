@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="RootModule">
+    <File Path="typings\knockout\knockout.d.ts" Url="typings/knockout/knockout.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\microsoft-ajax\microsoft.ajax.d.ts" Url="typings/microsoft-ajax/microsoft.ajax.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\sharepoint\SharePoint.d.ts" Url="typings/sharepoint/SharePoint.d.ts" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

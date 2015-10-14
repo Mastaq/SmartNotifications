@@ -40,7 +40,7 @@
     <File Path="App\lib\font-awesome\fonts\FontAwesome.otf" Url="App/lib/font-awesome/fonts/FontAwesome.otf" ReplaceContent="TRUE" />
     <File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
     <File Path="App\ng\app.ts" Url="App/ng/app.ts" ReplaceContent="TRUE" />
-    <File Path="App\_references.ts" Url="App/_references.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\_references.ts" Url="App/ng/_references.ts" ReplaceContent="TRUE" />
     <File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
     <File Path="App\ng\controllers\HomeCtrl.ts" Url="App/ng/controllers/HomeCtrl.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\interfaces\ICtrlScope.ts" Url="App/ng/interfaces/ICtrlScope.ts" ReplaceContent="TRUE" />
@@ -62,7 +62,6 @@
     <File Path="App\fonts\fontawesome-webfont.svg" Url="App/fonts/fontawesome-webfont.svg" ReplaceContent="TRUE" />
     <File Path="App\fonts\fontawesome-webfont.eot" Url="App/fonts/fontawesome-webfont.eot" ReplaceContent="TRUE" />
     <File Path="App\build\sn.app.css" Url="App/build/sn.app.css" ReplaceContent="TRUE" />
-    <File Path="App\build\app.js" Url="App/build/app.js" ReplaceContent="TRUE" />
     <File Path="App\sp\chrome.loader.js" Url="App/sp/chrome.loader.js" ReplaceContent="TRUE" />
     <File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
     <File Path="App\ng\controllers\ChromeNavCtrl.ts" Url="App/ng/controllers/ChromeNavCtrl.ts" ReplaceContent="TRUE" />
@@ -71,5 +70,17 @@
     <File Path="App\ng\controllers\SideNavCtrl.ts" Url="App/ng/controllers/SideNavCtrl.ts" ReplaceContent="TRUE" />
     <File Path="App\index.tmpl" Url="App/index.tmpl" ReplaceContent="TRUE" />
     <File Path="App\index.html" Url="App/index.html" ReplaceContent="TRUE" />
+    <File Path="App\lib\knockout\dist\knockout.js" Url="App/lib/knockout/dist/knockout.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\spectrum\spectrum.css" Url="App/lib/spectrum/spectrum.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\spectrum\spectrum.js" Url="App/lib/spectrum/spectrum.js" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\ColorField.ts" Url="App/jslink/color-field/ColorField.ts" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\build\color.field.js" Url="App/jslink/color-field/build/color.field.js" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\build\color.field.external.js" Url="App/jslink/color-field/build/color.field.external.js" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\build\color.field.external.css" Url="App/jslink/color-field/build/color.field.external.css" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\_references.ts" Url="App/jslink/color-field/_references.ts" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\templates.html" Url="App/jslink/color-field/templates.html" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\ColorFieldViewModel.ts" Url="App/jslink/color-field/ColorFieldViewModel.ts" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\SpectrumBinding.ts" Url="App/jslink/color-field/SpectrumBinding.ts" ReplaceContent="TRUE" />
+    <File Path="App\jslink\color-field\Validator.ts" Url="App/jslink/color-field/Validator.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>
