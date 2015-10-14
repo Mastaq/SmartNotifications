@@ -6,8 +6,8 @@ namespace SN {
 		spectrumOptions: KnockoutObservable<Spectrum.Options> = ko.observable({});
 		colorValue: KnockoutObservable<string> = ko.observable("");
 
-		constructor(private dataDeffered: JQueryPromise<{ colorField: SPClientTemplates.FieldSchema, isEditMode: boolean, fieldValue: string }>) {
-			this.spectrumOptions({
+		constructor(private dataDeffered: JQueryPromise<{ colorField: SPClientTemplates.FieldSchema, controlMode: SPClientTemplates.ClientControlMode, fieldValue: string }>) {
+			var intialOptions: Spectrum.Options = {
 				showPaletteOnly: true,
 				togglePaletteOnly: true,
 				togglePaletteMoreText: "more",
@@ -24,13 +24,29 @@ namespace SN {
 					["#900", "#b45f06", "#bf9000", "#38761d", "#134f5c", "#0b5394", "#351c75", "#741b47"],
 					["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]
 				]
-			});
+			};
+			this.spectrumOptions();
 			dataDeffered.done(data => {
-				if (data.isEditMode) {
-					this.colorValue(data.fieldValue);
-				} else {
-					this.colorValue(tinycolor(this.spectrumOptions().color).toHexString());
+				switch (data.controlMode) {
+					case SPClientTemplates.ClientControlMode.EditForm:
+						{
+							this.colorValue(data.fieldValue);
+							intialOptions.color = data.fieldValue;
+							break;
+						}
+					case SPClientTemplates.ClientControlMode.NewForm:
+						{
+							this.colorValue(tinycolor(intialOptions.color).toHexString());
+						}
+					case SPClientTemplates.ClientControlMode.DisplayForm:
+						{
+							intialOptions.disabled = true;
+							intialOptions.color = data.fieldValue;
+							this.colorValue(data.fieldValue);
+						}
 				}
+				
+				this.spectrumOptions(intialOptions);
 			});
 		}
 

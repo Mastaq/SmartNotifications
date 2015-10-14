@@ -13,7 +13,9 @@ namespace SN {
 		overrideCtx.Templates = {};
 		overrideCtx.Templates.Fields = {};
 		overrideCtx.Templates.Fields[colorFieldName] = {
-			NewForm: myf
+			NewForm: myf,
+			EditForm: myf,
+			DisplayForm: myf
 		};
 
 		var investorsFieldRender = $.Deferred();
@@ -33,7 +35,7 @@ namespace SN {
 						
 						investorsFieldRender.resolve({
 							colorField: currentField,
-							isEditMode: ctx.ControlMode === SPClientTemplates.ClientControlMode.EditForm,
+							controlMode: ctx.ControlMode,
 							fieldValue: fieldValue
 						});
 
@@ -42,6 +44,10 @@ namespace SN {
 
 				}, "sp.js");
 			}
+		}
+
+		function myview(ctx: SPClientTemplates.RenderContext_FieldInView) {
+
 		}
 
 		function myf(ctx: SPClientTemplates.RenderContext_FieldInForm): string
@@ -59,7 +65,7 @@ namespace SN {
 				return colorFieldViewModel.getColorCode();
 			});
 
-			var html = "<div id='colorFieldContainer' data-bind=\"template: { name: 'investors-to-send-template' }\"><div>";
+			var html = "<div id='colorFieldContainer' data-bind=\"template: { name: 'color-template' }\"><div>";
 			return html;
 		}
 
