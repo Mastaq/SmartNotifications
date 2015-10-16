@@ -2,7 +2,7 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
 	<ListInstance Title="AppSettings"
                 OnQuickLaunch="TRUE"
-                TemplateType="100"
+                TemplateType="11002"
                 Url="AppSettings"
 								 Hidden="TRUE"
                 Description="">

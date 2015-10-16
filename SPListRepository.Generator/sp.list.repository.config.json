@@ -1,0 +1,15 @@
+﻿{
+	"siteUrl": "http://app-ff155d312cfbe3.apps.dev.mastek.com/sites/dev/SmartNotifications",
+	"namespace": "SN",
+	"creds": {
+		"username": "sp\\administrator",
+		"password": "QazWsx123"
+	},
+	"lists": {
+		"include": ["AppSettings", "Notifications"]
+	},
+	"fields": {
+		"all": true,
+		"excludeHidden": true
+	}
+}

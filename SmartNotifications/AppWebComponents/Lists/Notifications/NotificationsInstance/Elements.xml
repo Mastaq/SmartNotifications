@@ -2,7 +2,7 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <ListInstance Title="Notifications"
                 OnQuickLaunch="TRUE"
-                TemplateType="100"
+                TemplateType="11001"
                 Url="Notifications"
                 Description="">
   </ListInstance>

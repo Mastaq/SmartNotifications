@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<List xmlns:ows="Microsoft SharePoint" Title="Notifications" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Notifications" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+<List xmlns:ows="Microsoft SharePoint" Title="Notifications" FolderCreation="FALSE" Url="Lists/Notifications" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
 	<MetaData>
 		<ContentTypes>
 			<ContentTypeRef ID="0x0100316EBA2815CB4BE28599CFE7124DF7AD" />
 			<ContentTypeRef ID="0x0120" />
 		</ContentTypes>
 		<Fields>
-			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
+			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
 			<Field ID="{24EAD03D-FF71-4835-AFC8-2C52AA4B3884}" Type="Note" Mult="TRUE" RichText="TRUE" RichTextMode="FullHtml" Name="SN_Message" Required="TRUE" StaticName="SN_Message" DisplayName="Message" />
 			<Field ID="{DE160796-483A-472B-8820-786E43D8580F}" Type="DateTime" Format="DateTime" Name="SN_From" Required="FALSE" StaticName="SN_From" DisplayName="From" />
 			<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Format="DateTime" Name="SN_To" Required="FALSE" StaticName="SN_To" DisplayName="To" />

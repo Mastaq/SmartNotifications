@@ -45,12 +45,16 @@
   <ItemGroup>
     <Content Include="AppWebComponents\ContentTypes\AppSettings\Elements.xml" />
     <Content Include="AppWebComponents\ContentTypes\Notifications\Elements.xml" />
-    <Content Include="AppWebComponents\Lists\AppSettings\AppSettingsInstance\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\AppSettings\AppSettingsInstance\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AppWebComponents\Lists\AppSettings\Elements.xml" />
     <Content Include="AppWebComponents\Lists\AppSettings\Schema.xml" />
     <Content Include="AppWebComponents\Lists\Documents\Elements.xml" />
     <Content Include="AppWebComponents\Lists\MediaContent\Elements.xml" />
-    <Content Include="AppWebComponents\Lists\Notifications\Elements.xml" />
+    <Content Include="AppWebComponents\Lists\Notifications\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="AppWebComponents\Lists\Notifications\NotificationsInstance\Elements.xml" />
     <Content Include="AppWebComponents\Lists\Notifications\Schema.xml" />
     <Content Include="App\jslink\color-field\build\color.field.external.css" />
@@ -215,6 +219,9 @@
     <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\SideNavCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\factories\VendorsFactory.ts" />
+    <TypeScriptCompile Include="App\ng\services\SPColorService.ts" />
+    <TypeScriptCompile Include="App\ng\services\PleaseWaitService.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
     <TypeScriptCompile Include="App\ng\model\Context.ts" />
     <TypeScriptCompile Include="App\ng\services\ContextService.ts" />

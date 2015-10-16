@@ -2,11 +2,11 @@
 <List xmlns:ows="Microsoft SharePoint" Title="AppSettings" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/AppSettings" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
 	<MetaData>
 		<ContentTypes>
-			<ContentTypeRef ID="0x0100316EBA2815CB4BE28599CFE7124DF7AD" />
+			<ContentTypeRef ID="0x01002614BDD3DCFB49F3837C7D7572FD0569" />
 			<ContentTypeRef ID="0x0120" />
 		</ContentTypes>
 		<Fields>
-			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
+			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
 			<Field ID="{B2DAED3C-E2A8-48AB-91B2-DBDF3A1F15A6}" Type="Note" Mult="TRUE" RichText="FALSE" Name="SN_Value" Required="TRUE" StaticName="SN_Value" DisplayName="Value" />
 			<Field ID="{56A82487-F0B7-4738-B4C3-A99567C1E0E6}" Type="Text"  Name="SN_Key" Required="TRUE" StaticName="SN_Key" DisplayName="Key" />
 		</Fields>

@@ -23,7 +23,7 @@ namespace SN {
 
 		var colorFieldViewModel = new ColorFieldViewModel(investorsFieldRender);
 
-		overrideCtx.OnPostRender = (ctx) => {
+		overrideCtx.OnPostRender = (ctx: ContextInfo) => {
 			var currentField = ctx.ListSchema.Field[0];
 
 			if (currentField.Name === colorFieldName) {
