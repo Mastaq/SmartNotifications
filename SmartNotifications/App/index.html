@@ -3,17 +3,17 @@
 <head>
 	<title>Smart Notifications App</title>
 
-	<link rel="stylesheet" type="text/css" href="build/sn.app.external.css?v=1.0.0.0" />
-	<link rel="stylesheet" type="text/css" href="build/sn.app.css?v=1.0.0.0" />
+	<link rel="stylesheet" type="text/css" href="build/sn.app.external.css?v=1000" />
+	<link rel="stylesheet" type="text/css" href="build/sn.app.css?v=1000" />
 
 </head>
-<body>
+<body class="ms-backgroundImage ms-backgroundImage">
 	<div ng-include src="'templates/chrome.control.html'"></div>
 
 	<div id="sn-app">
 		<div ng-controller="SideNavCtrl">
-			<eeh-navigation-sidebar menu-name="'SideNav'">
-				<ui-view></ui-view>
+			<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
+					<ui-view></ui-view>
 			</eeh-navigation-sidebar>
 		</div>
 	</div>
@@ -21,13 +21,13 @@
 	<script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
 	<script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
 	<script type="text/javascript" src="/_layouts/15/sp.js"></script>
-	<script type="text/javascript" src="build/sn.app.external.js?v=1.0.0.0"></script>
+	<script type="text/javascript" src="build/sn.app.external.js?v=1000"></script>
 	<script type="text/javascript">
 		var SN = SN || {};
-		SN.version = "1.0.0.0";
+		SN.version = "1000";
 		SN.appUrl = "SmartNotifications";
 	</script>
-	<script type="text/javascript" src="sp/chrome.loader.js?v=1.0.0.0"></script>
-	<script type="text/javascript" src="build/sn.app.js?v=1.0.0.0"></script>
+	<script type="text/javascript" src="sp/chrome.loader.js?v=1000"></script>
+	<script type="text/javascript" src="build/sn.app.js?v=1000"></script>
 </body>
 </html>

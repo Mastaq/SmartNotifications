@@ -52315,6 +52315,306 @@ return 'pascalprecht.translate';
 
 }));
 
+angular.module('cgBusy',[]);
+
+//loosely modeled after angular-promise-tracker
+angular.module('cgBusy').factory('_cgBusyTrackerFactory',['$timeout','$q',function($timeout,$q){
+
+    return function(){
+
+        var tracker = {};
+        tracker.promises = [];
+        tracker.delayPromise = null;
+        tracker.durationPromise = null;
+        tracker.delayJustFinished = false;
+
+        tracker.reset = function(options){
+            tracker.minDuration = options.minDuration;
+
+            tracker.promises = [];
+            angular.forEach(options.promises,function(p){
+                if (!p || p.$cgBusyFulfilled) {
+                    return;
+                }
+                addPromiseLikeThing(p);
+            });
+
+            if (tracker.promises.length === 0) {
+                //if we have no promises then dont do the delay or duration stuff
+                return;
+            }
+
+            tracker.delayJustFinished = false;
+            if (options.delay) {
+                tracker.delayPromise = $timeout(function(){
+                    tracker.delayPromise = null;
+                    tracker.delayJustFinished = true;
+                },parseInt(options.delay,10));
+            }
+            if (options.minDuration) {
+                tracker.durationPromise = $timeout(function(){
+                    tracker.durationPromise = null;
+                },parseInt(options.minDuration,10) + (options.delay ? parseInt(options.delay,10) : 0));
+            }            
+        };
+
+        tracker.isPromise = function(promiseThing){
+            var then = promiseThing && (promiseThing.then || promiseThing.$then ||
+                (promiseThing.$promise && promiseThing.$promise.then));
+
+            return typeof then !== 'undefined';            
+        };
+
+        tracker.callThen = function(promiseThing,success,error){
+            var promise;
+            if (promiseThing.then || promiseThing.$then){
+                promise = promiseThing;
+            } else if (promiseThing.$promise){
+                promise = promiseThing.$promise;
+            } else if (promiseThing.denodeify){
+                promise = $q.when(promiseThing);
+            }
+                       
+            var then = (promise.then || promise.$then);
+
+            then.call(promise,success,error);
+        };
+
+        var addPromiseLikeThing = function(promise){
+
+            if (!tracker.isPromise(promise)) {
+                throw new Error('cgBusy expects a promise (or something that has a .promise or .$promise');
+            }
+
+            if (tracker.promises.indexOf(promise) !== -1){
+                return;
+            }
+            tracker.promises.push(promise);
+
+            tracker.callThen(promise, function(){
+                promise.$cgBusyFulfilled = true;
+                if (tracker.promises.indexOf(promise) === -1) {
+                    return;
+                }
+                tracker.promises.splice(tracker.promises.indexOf(promise),1);
+            },function(){
+                promise.$cgBusyFulfilled = true;
+                if (tracker.promises.indexOf(promise) === -1) {
+                    return;
+                }
+                tracker.promises.splice(tracker.promises.indexOf(promise),1);
+            });
+        };
+
+        tracker.active = function(){
+            if (tracker.delayPromise){
+                return false;
+            }
+
+            if (!tracker.delayJustFinished){
+                if (tracker.durationPromise){
+                    return true;
+                }
+                return tracker.promises.length > 0;
+            } else {
+                //if both delay and min duration are set, 
+                //we don't want to initiate the min duration if the 
+                //promise finished before the delay was complete
+                tracker.delayJustFinished = false;
+                if (tracker.promises.length === 0) {
+                    tracker.durationPromise = null;
+                }
+                return tracker.promises.length > 0;
+            }
+        };
+
+        return tracker;
+
+    };
+}]);
+
+angular.module('cgBusy').value('cgBusyDefaults',{});
+
+angular.module('cgBusy').directive('cgBusy',['$compile','$templateCache','cgBusyDefaults','$http','_cgBusyTrackerFactory',
+    function($compile,$templateCache,cgBusyDefaults,$http,_cgBusyTrackerFactory){
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs, fn) {
+
+                //Apply position:relative to parent element if necessary
+                var position = element.css('position');
+                if (position === 'static' || position === '' || typeof position === 'undefined'){
+                    element.css('position','relative');
+                }
+
+                var templateElement;
+                var backdropElement;
+                var currentTemplate;
+                var templateScope;
+                var backdrop;
+                var tracker = _cgBusyTrackerFactory();
+
+                var defaults = {
+                    templateUrl: 'angular-busy.html',
+                    delay:0,
+                    minDuration:0,
+                    backdrop: true,
+                    message:'Please Wait...',
+                    wrapperClass: 'cg-busy cg-busy-animation'
+                };
+
+                angular.extend(defaults,cgBusyDefaults);
+
+                scope.$watchCollection(attrs.cgBusy,function(options){
+
+                    if (!options) {
+                        options = {promise:null};
+                    }
+
+                    if (angular.isString(options)) {
+                        throw new Error('Invalid value for cg-busy. cgBusy no longer accepts string ids to represent promises/trackers.');
+                    }
+
+                    //is it an array (of promises) or one promise
+                    if (angular.isArray(options) || tracker.isPromise(options)) {
+                        options = {promise:options};
+                    }
+
+                    options = angular.extend(angular.copy(defaults),options);
+
+                    if (!options.templateUrl){
+                        options.templateUrl = defaults.templateUrl;
+                    }
+
+                    if (!angular.isArray(options.promise)){
+                        options.promise = [options.promise];
+                    }
+
+                    // options.promise = angular.isArray(options.promise) ? options.promise : [options.promise];
+                    // options.message = options.message ? options.message : 'Please Wait...';
+                    // options.template = options.template ? options.template : cgBusyTemplateName;
+                    // options.minDuration = options.minDuration ? options.minDuration : 0;
+                    // options.delay = options.delay ? options.delay : 0;
+
+                    if (!templateScope) {
+                        templateScope = scope.$new();
+                    }
+
+                    templateScope.$message = options.message;
+
+                    if (!angular.equals(tracker.promises,options.promise)) {
+                        tracker.reset({
+                            promises:options.promise,
+                            delay:options.delay,
+                            minDuration: options.minDuration
+                        });
+                    }
+
+                    templateScope.$cgBusyIsActive = function() {
+                        return tracker.active();
+                    };
+
+
+                    if (!templateElement || currentTemplate !== options.templateUrl || backdrop !== options.backdrop) {
+
+                        if (templateElement) {
+                            templateElement.remove();
+                        }
+                        if (backdropElement){
+                            backdropElement.remove();
+                        }
+
+                        currentTemplate = options.templateUrl;
+                        backdrop = options.backdrop;
+
+                        $http.get(currentTemplate,{cache: $templateCache}).then(function(res){
+
+                            options.backdrop = typeof options.backdrop === 'undefined' ? true : options.backdrop;
+
+                            if (options.backdrop){
+                                var backdrop = '<div class="cg-busy cg-busy-backdrop cg-busy-backdrop-animation ng-hide" ng-show="$cgBusyIsActive()"></div>';
+                                backdropElement = $compile(backdrop)(templateScope);
+                                element.append(backdropElement);
+                            }
+
+                            var template = '<div class="'+options.wrapperClass+' ng-hide" ng-show="$cgBusyIsActive()">' + res.data + '</div>';
+                            templateElement = $compile(template)(templateScope);
+
+                            angular.element(templateElement.children()[0])
+                                .css('position','absolute')
+                                .css('top',0)
+                                .css('left',0)
+                                .css('right',0)
+                                .css('bottom',0);
+                            element.append(templateElement);
+
+                        }).catch(function(data){
+                            throw new Error('Template specified for cgBusy ('+options.templateUrl+') could not be loaded. ' + data);
+                        });
+                    }
+
+                },true);
+            }
+        };
+    }
+]);
+
+
+angular.module('cgBusy').run(['$templateCache', function($templateCache) {
+  'use strict';
+
+  $templateCache.put('angular-busy.html',
+    "<div class=\"cg-busy-default-wrapper\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "   <div class=\"cg-busy-default-sign\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "      <div class=\"cg-busy-default-spinner\">\r" +
+    "\n" +
+    "         <div class=\"bar1\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar2\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar3\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar4\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar5\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar6\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar7\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar8\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar9\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar10\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar11\"></div>\r" +
+    "\n" +
+    "         <div class=\"bar12\"></div>\r" +
+    "\n" +
+    "      </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "      <div class=\"cg-busy-default-text\">{{$message}}</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "   </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+}]);
+
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -59153,3 +59453,296 @@ angular.module('eehNavigation').run(['$templateCache', function($templateCache) 
   );
 
 }]);
+
+/**
+* please-wait
+* Display a nice loading screen while your app loads
+
+* @author Pathgather <tech@pathgather.com>
+* @copyright Pathgather 2015
+* @license MIT <http://opensource.org/licenses/mit-license.php>
+* @link https://github.com/Pathgather/please-wait
+* @module please-wait
+* @version 0.0.5
+*/
+(function(root, factory) {
+  if (typeof exports === "object") {
+    factory(exports);
+  } else if (typeof define === "function" && define.amd) {
+    define(["exports"], factory);
+  } else {
+    factory(root);
+  }
+})(this, function(exports) {
+  var PleaseWait, addClass, animationEvent, animationSupport, domPrefixes, elm, key, pfx, pleaseWait, removeClass, transEndEventNames, transitionEvent, transitionSupport, val, _i, _len;
+  elm = document.createElement('fakeelement');
+  animationSupport = false;
+  transitionSupport = false;
+  animationEvent = 'animationend';
+  transitionEvent = null;
+  domPrefixes = 'Webkit Moz O ms'.split(' ');
+  transEndEventNames = {
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'oTransitionEnd',
+    'msTransition': 'MSTransitionEnd',
+    'transition': 'transitionend'
+  };
+  for (key in transEndEventNames) {
+    val = transEndEventNames[key];
+    if (elm.style[key] != null) {
+      transitionEvent = val;
+      transitionSupport = true;
+      break;
+    }
+  }
+  if (elm.style.animationName != null) {
+    animationSupport = true;
+  }
+  if (!animationSupport) {
+    for (_i = 0, _len = domPrefixes.length; _i < _len; _i++) {
+      pfx = domPrefixes[_i];
+      if (elm.style["" + pfx + "AnimationName"] != null) {
+        switch (pfx) {
+          case 'Webkit':
+            animationEvent = 'webkitAnimationEnd';
+            break;
+          case 'Moz':
+            animationEvent = 'animationend';
+            break;
+          case 'O':
+            animationEvent = 'oanimationend';
+            break;
+          case 'ms':
+            animationEvent = 'MSAnimationEnd';
+        }
+        animationSupport = true;
+        break;
+      }
+    }
+  }
+  addClass = function(classname, elem) {
+    if (elem.classList) {
+      return elem.classList.add(classname);
+    } else {
+      return elem.className += " " + classname;
+    }
+  };
+  removeClass = function(classname, elem) {
+    if (elem.classList) {
+      return elem.classList.remove(classname);
+    } else {
+      return elem.className = elem.className.replace(classname, "").trim();
+    }
+  };
+  PleaseWait = (function() {
+    PleaseWait._defaultOptions = {
+      backgroundColor: null,
+      logo: null,
+      loadingHtml: null,
+      template: "<div class='pg-loading-inner'>\n  <div class='pg-loading-center-outer'>\n    <div class='pg-loading-center-middle'>\n      <h1 class='pg-loading-logo-header'>\n        <img class='pg-loading-logo'></img>\n      </h1>\n      <div class='pg-loading-html'>\n      </div>\n    </div>\n  </div>\n</div>",
+      onLoadedCallback: null
+    };
+
+    function PleaseWait(options) {
+      var defaultOptions, k, listener, v;
+      defaultOptions = this.constructor._defaultOptions;
+      this.options = {};
+      this.loaded = false;
+      this.finishing = false;
+      for (k in defaultOptions) {
+        v = defaultOptions[k];
+        this.options[k] = options[k] != null ? options[k] : v;
+      }
+      this._loadingElem = document.createElement("div");
+      this._loadingHtmlToDisplay = [];
+      this._loadingElem.className = "pg-loading-screen";
+      if (this.options.backgroundColor != null) {
+        this._loadingElem.style.backgroundColor = this.options.backgroundColor;
+      }
+      this._loadingElem.innerHTML = this.options.template;
+      this._loadingHtmlElem = this._loadingElem.getElementsByClassName("pg-loading-html")[0];
+      if (this._loadingHtmlElem != null) {
+        this._loadingHtmlElem.innerHTML = this.options.loadingHtml;
+      }
+      this._readyToShowLoadingHtml = false;
+      this._logoElem = this._loadingElem.getElementsByClassName("pg-loading-logo")[0];
+      if (this._logoElem != null) {
+        this._logoElem.src = this.options.logo;
+      }
+      removeClass("pg-loaded", document.body);
+      addClass("pg-loading", document.body);
+      document.body.appendChild(this._loadingElem);
+      addClass("pg-loading", this._loadingElem);
+      this._onLoadedCallback = this.options.onLoadedCallback;
+      listener = (function(_this) {
+        return function(evt) {
+          _this.loaded = true;
+          _this._readyToShowLoadingHtml = true;
+          addClass("pg-loaded", _this._loadingHtmlElem);
+          if (animationSupport) {
+            _this._loadingHtmlElem.removeEventListener(animationEvent, listener);
+          }
+          if (_this._loadingHtmlToDisplay.length > 0) {
+            _this._changeLoadingHtml();
+          }
+          if (_this.finishing) {
+            if (evt != null) {
+              evt.stopPropagation();
+            }
+            return _this._finish();
+          }
+        };
+      })(this);
+      if (this._loadingHtmlElem != null) {
+        if (animationSupport) {
+          this._loadingHtmlElem.addEventListener(animationEvent, listener);
+        } else {
+          listener();
+        }
+        this._loadingHtmlListener = (function(_this) {
+          return function() {
+            _this._readyToShowLoadingHtml = true;
+            removeClass("pg-loading", _this._loadingHtmlElem);
+            if (transitionSupport) {
+              _this._loadingHtmlElem.removeEventListener(transitionEvent, _this._loadingHtmlListener);
+            }
+            if (_this._loadingHtmlToDisplay.length > 0) {
+              return _this._changeLoadingHtml();
+            }
+          };
+        })(this);
+        this._removingHtmlListener = (function(_this) {
+          return function() {
+            _this._loadingHtmlElem.innerHTML = _this._loadingHtmlToDisplay.shift();
+            removeClass("pg-removing", _this._loadingHtmlElem);
+            addClass("pg-loading", _this._loadingHtmlElem);
+            if (transitionSupport) {
+              _this._loadingHtmlElem.removeEventListener(transitionEvent, _this._removingHtmlListener);
+              return _this._loadingHtmlElem.addEventListener(transitionEvent, _this._loadingHtmlListener);
+            } else {
+              return _this._loadingHtmlListener();
+            }
+          };
+        })(this);
+      }
+    }
+
+    PleaseWait.prototype.finish = function(immediately, onLoadedCallback) {
+      if (immediately == null) {
+        immediately = false;
+      }
+      if (window.document.hidden) {
+        immediately = true;
+      }
+      this.finishing = true;
+      if (onLoadedCallback != null) {
+        this.updateOption('onLoadedCallback', onLoadedCallback);
+      }
+      if (this.loaded || immediately) {
+        return this._finish(immediately);
+      }
+    };
+
+    PleaseWait.prototype.updateOption = function(option, value) {
+      switch (option) {
+        case 'backgroundColor':
+          return this._loadingElem.style.backgroundColor = value;
+        case 'logo':
+          return this._logoElem.src = value;
+        case 'loadingHtml':
+          return this.updateLoadingHtml(value);
+        case 'onLoadedCallback':
+          return this._onLoadedCallback = value;
+        default:
+          throw new Error("Unknown option '" + option + "'");
+      }
+    };
+
+    PleaseWait.prototype.updateOptions = function(options) {
+      var k, v, _results;
+      if (options == null) {
+        options = {};
+      }
+      _results = [];
+      for (k in options) {
+        v = options[k];
+        _results.push(this.updateOption(k, v));
+      }
+      return _results;
+    };
+
+    PleaseWait.prototype.updateLoadingHtml = function(loadingHtml, immediately) {
+      if (immediately == null) {
+        immediately = false;
+      }
+      if (this._loadingHtmlElem == null) {
+        throw new Error("The loading template does not have an element of class 'pg-loading-html'");
+      }
+      if (immediately) {
+        this._loadingHtmlToDisplay = [loadingHtml];
+        this._readyToShowLoadingHtml = true;
+      } else {
+        this._loadingHtmlToDisplay.push(loadingHtml);
+      }
+      if (this._readyToShowLoadingHtml) {
+        return this._changeLoadingHtml();
+      }
+    };
+
+    PleaseWait.prototype._changeLoadingHtml = function() {
+      this._readyToShowLoadingHtml = false;
+      this._loadingHtmlElem.removeEventListener(transitionEvent, this._loadingHtmlListener);
+      this._loadingHtmlElem.removeEventListener(transitionEvent, this._removingHtmlListener);
+      removeClass("pg-loading", this._loadingHtmlElem);
+      removeClass("pg-removing", this._loadingHtmlElem);
+      if (transitionSupport) {
+        addClass("pg-removing", this._loadingHtmlElem);
+        return this._loadingHtmlElem.addEventListener(transitionEvent, this._removingHtmlListener);
+      } else {
+        return this._removingHtmlListener();
+      }
+    };
+
+    PleaseWait.prototype._finish = function(immediately) {
+      var listener;
+      if (immediately == null) {
+        immediately = false;
+      }
+      if (this._loadingElem == null) {
+        return;
+      }
+      addClass("pg-loaded", document.body);
+      if (typeof this._onLoadedCallback === "function") {
+        this._onLoadedCallback.apply(this);
+      }
+      listener = (function(_this) {
+        return function() {
+          document.body.removeChild(_this._loadingElem);
+          removeClass("pg-loading", document.body);
+          if (animationSupport) {
+            _this._loadingElem.removeEventListener(animationEvent, listener);
+          }
+          return _this._loadingElem = null;
+        };
+      })(this);
+      if (!immediately && animationSupport) {
+        addClass("pg-loaded", this._loadingElem);
+        return this._loadingElem.addEventListener(animationEvent, listener);
+      } else {
+        return listener();
+      }
+    };
+
+    return PleaseWait;
+
+  })();
+  pleaseWait = function(options) {
+    if (options == null) {
+      options = {};
+    }
+    return new PleaseWait(options);
+  };
+  exports.pleaseWait = pleaseWait;
+  return pleaseWait;
+});

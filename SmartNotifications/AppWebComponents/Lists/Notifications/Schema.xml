@@ -39,7 +39,12 @@
 				<JSLink>clienttemplates.js</JSLink>
 				<RowLimit Paged="TRUE">30</RowLimit>
 				<ViewFields>
-					<FieldRef Name="LinkTitle"></FieldRef>
+					<FieldRef Name="SN_Message" />
+					<FieldRef Name="SN_From" />
+					<FieldRef Name="SN_To" />
+					<FieldRef Name="SN_AssignedTo" />
+					<FieldRef Name="SN_Dismissable" />
+					<FieldRef Name="SN_Color" />
 				</ViewFields>
 				<Query>
 					<OrderBy>

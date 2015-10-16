@@ -82,5 +82,12 @@
     <File Path="App\jslink\color-field\ColorFieldViewModel.ts" Url="App/jslink/color-field/ColorFieldViewModel.ts" ReplaceContent="TRUE" />
     <File Path="App\jslink\color-field\SpectrumBinding.ts" Url="App/jslink/color-field/SpectrumBinding.ts" ReplaceContent="TRUE" />
     <File Path="App\jslink\color-field\Validator.ts" Url="App/jslink/color-field/Validator.ts" ReplaceContent="TRUE" />
+    <File Path="App\lib\please-wait\build\please-wait.css" Url="App/lib/please-wait/build/please-wait.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\please-wait\build\please-wait.js" Url="App/lib/please-wait/build/please-wait.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-busy\dist\angular-busy.css" Url="App/lib/angular-busy/dist/angular-busy.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-busy\dist\angular-busy.js" Url="App/lib/angular-busy/dist/angular-busy.js" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\PleaseWaitService.ts" Url="App/ng/services/PleaseWaitService.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\SPColorService.ts" Url="App/ng/services/SPColorService.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\factories\VendorsFactory.ts" Url="App/ng/factories/VendorsFactory.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

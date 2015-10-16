@@ -5,18 +5,19 @@ namespace SN {
         static $inject = [
 			"$scope",
             "$http",
-            "$window"
+            "$window",
+			"$timeout"
         ];
 
-		info: string;
-
-        constructor(private $scope: ICtrlScope<HomeCtrl>, private $http: ng.IHttpService, private $window: ng.IWindowService) {
+		constructor(
+			private $scope: ICtrlScope<HomeCtrl>,
+			private $http: ng.IHttpService,
+			private $window: ng.IWindowService,
+			private $timeout: ng.ITimeoutService) {
 
             $scope.vm = this;
 
-	        this.info = "123";
-
-        }
+		}
     }
 
     angular.module("SN.app.controllers").controller("HomeCtrl", HomeCtrl);

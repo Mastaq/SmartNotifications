@@ -7,13 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="build/sn.app.css?v=<%= version %>" />
 
 </head>
-<body>
+<body class="ms-backgroundImage ms-backgroundImage">
 	<div ng-include src="'templates/chrome.control.html'"></div>
 
 	<div id="sn-app">
 		<div ng-controller="SideNavCtrl">
-			<eeh-navigation-sidebar menu-name="'SideNav'">
-				<ui-view></ui-view>
+			<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
+					<ui-view></ui-view>
 			</eeh-navigation-sidebar>
 		</div>
 	</div>

@@ -15,14 +15,15 @@ namespace SN {
 		overrideCtx.Templates.Fields[colorFieldName] = {
 			NewForm: myf,
 			EditForm: myf,
-			DisplayForm: myf
+			DisplayForm: myf,
+			View: myview
 		};
 
 		var investorsFieldRender = $.Deferred();
 
 		var colorFieldViewModel = new ColorFieldViewModel(investorsFieldRender);
 
-		overrideCtx.OnPostRender = (ctx: ContextInfo) => {
+		overrideCtx.OnPostRender = (ctx) => {
 			var currentField = ctx.ListSchema.Field[0];
 
 			if (currentField.Name === colorFieldName) {
@@ -46,8 +47,10 @@ namespace SN {
 			}
 		}
 
-		function myview(ctx: SPClientTemplates.RenderContext_FieldInView) {
-
+		function myview(ctx: SPClientTemplates.RenderContext_FieldInView): string {
+			var colorValue = ctx.CurrentItem[ctx.CurrentFieldSchema.Name];
+			return String.format("<span style='background-color: {0};display:inline-block;width:40px;height: 15px;'></span>" +
+				"&nbsp;&nbsp;<span style='vertical-align:top'>{0}</span>", colorValue);
 		}
 
 		function myf(ctx: SPClientTemplates.RenderContext_FieldInForm): string

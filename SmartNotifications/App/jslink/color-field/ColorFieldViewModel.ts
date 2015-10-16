@@ -8,8 +8,10 @@ namespace SN {
 
 		constructor(private dataDeffered: JQueryPromise<{ colorField: SPClientTemplates.FieldSchema, controlMode: SPClientTemplates.ClientControlMode, fieldValue: string }>) {
 			var intialOptions: Spectrum.Options = {
-				showPaletteOnly: true,
-				togglePaletteOnly: true,
+				showPalette: true,
+				showInput: true,
+				showInitial: true,
+				hideAfterPaletteSelect: true,
 				togglePaletteMoreText: "more",
 				togglePaletteLessText: "less",
 				color: "blanchedalmond",
@@ -25,7 +27,7 @@ namespace SN {
 					["#600", "#783f04", "#7f6000", "#274e13", "#0c343d", "#073763", "#20124d", "#4c1130"]
 				]
 			};
-			this.spectrumOptions();
+
 			dataDeffered.done(data => {
 				switch (data.controlMode) {
 					case SPClientTemplates.ClientControlMode.EditForm:
@@ -37,12 +39,14 @@ namespace SN {
 					case SPClientTemplates.ClientControlMode.NewForm:
 						{
 							this.colorValue(tinycolor(intialOptions.color).toHexString());
+							break;
 						}
 					case SPClientTemplates.ClientControlMode.DisplayForm:
 						{
 							intialOptions.disabled = true;
 							intialOptions.color = data.fieldValue;
 							this.colorValue(data.fieldValue);
+							break;
 						}
 				}
 				

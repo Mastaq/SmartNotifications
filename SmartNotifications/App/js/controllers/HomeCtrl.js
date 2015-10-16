@@ -2,17 +2,18 @@
 var SN;
 (function (SN) {
     var HomeCtrl = (function () {
-        function HomeCtrl($scope, $http, $window) {
+        function HomeCtrl($scope, $http, $window, $timeout) {
             this.$scope = $scope;
             this.$http = $http;
             this.$window = $window;
+            this.$timeout = $timeout;
             $scope.vm = this;
-            this.info = "123";
         }
         HomeCtrl.$inject = [
             "$scope",
             "$http",
-            "$window"
+            "$window",
+            "$timeout"
         ];
         return HomeCtrl;
     })();

@@ -22,7 +22,8 @@ var externaljs = [
 		baseExternalPath + "angular/angular.js",
 		baseExternalPath + "angular-*/**/*.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.js",
-		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js"
+		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js",
+		baseExternalPath + "please-wait/build/please-wait.js"
 ];
 
 var colorFieldExternaljs = [
@@ -40,7 +41,8 @@ var externalcss = [
 	baseExternalPath + "animate.css/animate.css",
 	baseExternalPath + "bootstrap/dist/css/bootstrap.css",
 	baseExternalPath + "font-awesome/css/font-awesome.css",
-	baseExternalPath + "eeh-navigation/dist/eeh-navigation.css"
+	baseExternalPath + "eeh-navigation/dist/eeh-navigation.css",
+	baseExternalPath + "please-wait/build/please-wait.css"
 ];
 
 var onError = function (err) {
@@ -135,7 +137,7 @@ gulp.task("template", function (callback) {
 			if (err) return callback(err);
 
 			gulp.src("App/index.tmpl")
-			.pipe($.template({ version: result.App.$.Version, appUrl: result.App.$.Name }))
+			.pipe($.template({ version: result.App.$.Version.replace(/\./g, ""), appUrl: result.App.$.Name }))
 			.pipe($.rename("index.html"))
 			.pipe(gulp.dest("App"))
 			.on("end", function () { callback(); });

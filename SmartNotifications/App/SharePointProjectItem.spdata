@@ -83,5 +83,12 @@
     <ProjectItemFile Source="jslink\color-field\ColorFieldViewModel.ts" Target="App\jslink\color-field\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\SpectrumBinding.ts" Target="App\jslink\color-field\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\Validator.ts" Target="App\jslink\color-field\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\please-wait\build\please-wait.css" Target="App\lib\please-wait\build\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\please-wait\build\please-wait.js" Target="App\lib\please-wait\build\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\angular-busy\dist\angular-busy.css" Target="App\lib\angular-busy\dist\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\angular-busy\dist\angular-busy.js" Target="App\lib\angular-busy\dist\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\PleaseWaitService.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\SPColorService.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\factories\VendorsFactory.ts" Target="App\ng\factories\" Type="ElementFile" />
   </Files>
 </ProjectItem>

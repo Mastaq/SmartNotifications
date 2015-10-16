@@ -6,5 +6,6 @@
     <ProjectItemFile Source="css\_partials\_fixes.scss" Target="Content\css\_partials\" Type="ElementFile" />
     <ProjectItemFile Source="css\_partials\_chrome.control.scss" Target="Content\css\_partials\" Type="ElementFile" />
     <ProjectItemFile Source="css\_partials\_app.scss" Target="Content\css\_partials\" Type="ElementFile" />
+    <ProjectItemFile Source="css\_partials\_spinner.scss" Target="Content\css\_partials\" Type="ElementFile" />
   </Files>
 </ProjectItem>

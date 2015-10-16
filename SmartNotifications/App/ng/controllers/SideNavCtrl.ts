@@ -8,6 +8,8 @@ namespace SN {
 			"ContextService"
         ];
 
+		snnav: string;
+
         constructor(private $scope: ICtrlScope<SideNavCtrl>, private eehNavigation: any, private context: ContextService) {
 
             $scope.vm = this;
@@ -15,7 +17,6 @@ namespace SN {
 			this.eehNavigation.menuItem("SideNav.addNotification").href = context.appUrl + "Notifications/NewForm.aspx";
 			this.eehNavigation.menuItem("SideNav.host").href = context.hostUrl;
 			this.eehNavigation.menuItem("SideNav.host").text = context.hostTitle;
-
         }
     }
 
