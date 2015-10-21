@@ -8,14 +8,26 @@
 
 </head>
 <body class="ms-backgroundImage ms-backgroundImage">
-	<div ng-include src="'templates/chrome.control.html'"></div>
+	<div id="sn-app" ng-controller="AppLoadCtrl">
 
-	<div id="sn-app">
-		<div ng-controller="SideNavCtrl">
-			<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
+		<div ng-include src="'templates/chrome.control.html'"></div>
+
+		<div>
+			<div ng-controller="SideNavCtrl">
+				<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
 					<ui-view></ui-view>
-			</eeh-navigation-sidebar>
+				</eeh-navigation-sidebar>
+			</div>
 		</div>
+	</div>
+
+	<div class="ng-hide">
+		<div id="suiteBarLeft">
+		</div>
+		<div class="ms-pub-background"></div>
+		<table class="ms-rteTable-1">
+			<tr class="ms-rteTableHeaderRow-1"></tr>
+		</table>
 	</div>
 
 	<script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>

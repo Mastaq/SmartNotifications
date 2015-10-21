@@ -93,7 +93,7 @@ var SN;
 (function (SN) {
     "user strict";
     (function ($, ko, window) {
-        var colorFieldName = "SN_Color", cssUrl = "/App/jslink/color-field/build/color.field.external.css", templatesUrl = "/App/jslink/color-field/templates.html";
+        var colorFieldName = "Color_SN", cssUrl = "/App/jslink/color-field/build/color.field.external.css", templatesUrl = "/App/jslink/color-field/templates.html";
         var overrideCtx = {};
         overrideCtx.Templates = {};
         overrideCtx.Templates.Fields = {};

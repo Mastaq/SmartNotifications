@@ -5,7 +5,7 @@ namespace SN {
 	"user strict";
 
 	(($: JQueryStatic, ko: KnockoutStatic, window: any) => {
-		var colorFieldName = "SN_Color",
+		var colorFieldName = "Color_SN",
 			cssUrl = "/App/jslink/color-field/build/color.field.external.css",
 			templatesUrl = "/App/jslink/color-field/templates.html";
 

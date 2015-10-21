@@ -1,36 +1,38 @@
 {
-  "name": "SmartNotifications",
-  "private": true,
-  "dependencies": {
-    "jquery": "2.1.4",
-    "angular": "1.4.6",
-    "angular-route": "1.4.6",
-    "angular-ui-router": "0.2.15",
-    "angular-animate": "1.4.6",
-    "angular-sanitize": "1.4.6",
-    "angular-ui-select": "0.12.1",
-    "animate.css": "3.4.0",
-    "eeh-navigation": "4.1.2",
-    "bootstrap": "3.3.5",
-    "font-awesome": "4.4.0",
-    "knockout": "3.3.0",
-    "spectrum": "1.7.1",
-    "please-wait": "0.0.5",
-    "angular-busy": "https://github.com/s-KaiNet/angular-busy.git"
-  },
-  "overrides": {
-    "bootstrap": {
-      "main": "./dist/**/*.*"
-    },
-    "font-awesome": {
-      "main": [
-        "./css/*.css",
-        "./fonts/**/*"
-      ]
-    }
-  },
-  "resolutions": {
-    "angular": ">=1.2.26 <=1.5",
-    "angular-animate": "1.4.6"
-  }
+	"name": "SmartNotifications",
+	"private": true,
+	"dependencies": {
+		"jquery": "2.1.4",
+		"angular": "1.4.6",
+		"angular-route": "1.4.6",
+		"angular-ui-router": "0.2.15",
+		"angular-animate": "1.4.6",
+		"angular-sanitize": "1.4.6",
+		"angular-ui-select": "0.12.1",
+		"animate.css": "3.4.0",
+		"eeh-navigation": "4.1.2",
+		"bootstrap": "3.3.5",
+		"font-awesome": "4.4.0",
+		"knockout": "3.3.0",
+		"spectrum": "1.7.1",
+		"please-wait": "0.0.5",
+		"angular-busy": "https://github.com/s-KaiNet/angular-busy.git",
+		"sp-list-repository": "^2.0.7",
+		"camljs": "./External/camljs.js"
+	},
+	"overrides": {
+		"bootstrap": {
+			"main": "./dist/**/*.*"
+		},
+		"font-awesome": {
+			"main": [
+				"./css/*.css",
+				"./fonts/**/*"
+			]
+		}
+	},
+	"resolutions": {
+		"angular": ">=1.2.26 <=1.5",
+		"angular-animate": "1.4.6"
+	}
 }

@@ -1,8 +1,8 @@
 ﻿/// <reference path="../_references.ts" />
 /// <reference path="../../lib/sp-list-repository/build/sp.list.repository.d.ts" />
 
-namespace SN{
-	export class AppSettingsBaseItem extends SPListRepo.BaseListItem{
+namespace SN {
+	export class AppSettingsBaseItem extends SPListRepo.BaseListItem {
 		value_SN: SP.FieldMultiLineText;
 		key_SN: string;
 		contentType: string;
@@ -15,14 +15,14 @@ namespace SN{
 		folderChildCount: SP.FieldLookupValue;
 		appAuthor: SP.FieldLookupValue;
 		appEditor: SP.FieldLookupValue;
-		constructor(item?: SP.ListItem){
+		constructor(item?: SP.ListItem) {
 			super(item);
-			if(item){
+			if (item) {
 				this.mapFromListItem(item);
 			}
 		}
 
-		mapFromListItem(item: SP.ListItem): void{
+		mapFromListItem(item: SP.ListItem): void {
 			super.mapFromListItem(item);
 
 			this.value_SN = this.getFieldValue("Value_SN");
@@ -39,7 +39,7 @@ namespace SN{
 			this.appEditor = this.getFieldValue("AppEditor");
 		}
 
-		mapToListItem(item: SP.ListItem): void{
+		mapToListItem(item: SP.ListItem): void {
 			super.mapToListItem(item);
 
 			this.setFieldValue(item, "Value_SN", this.value_SN);

@@ -7,12 +7,14 @@
      SharePointMinVersion="15.0.0.0"
 >
   <Properties>
-    <Title>SmartNotifications</Title>
+    <Title>Smart Notifications</Title>
     <StartPage>~appWebUrl/App/index.html?SPHostUrl={HostUrl}&amp;HostTitle={HostTitle}</StartPage>
   </Properties>
 
   <AppPrincipal>
     <Internal />
   </AppPrincipal>
-
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="Write" />
+  </AppPermissionRequests>
 </App>

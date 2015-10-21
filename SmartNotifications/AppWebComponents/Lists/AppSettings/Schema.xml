@@ -7,8 +7,8 @@
 		</ContentTypes>
 		<Fields>
 			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
-			<Field ID="{B2DAED3C-E2A8-48AB-91B2-DBDF3A1F15A6}" Type="Note" Mult="TRUE" RichText="FALSE" Name="SN_Value" Required="TRUE" StaticName="SN_Value" DisplayName="Value" />
-			<Field ID="{56A82487-F0B7-4738-B4C3-A99567C1E0E6}" Type="Text"  Name="SN_Key" Required="TRUE" StaticName="SN_Key" DisplayName="Key" />
+			<Field ID="{B2DAED3C-E2A8-48AB-91B2-DBDF3A1F15A6}" Type="Note" Mult="TRUE" RichText="FALSE" Name="Value_SN" Required="TRUE" StaticName="Value_SN" DisplayName="Value" />
+			<Field ID="{56A82487-F0B7-4738-B4C3-A99567C1E0E6}" Type="Text"  Name="Key_SN" Required="TRUE" StaticName="Key_SN" DisplayName="Key" />
 		</Fields>
 		<Views>
 			<View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">

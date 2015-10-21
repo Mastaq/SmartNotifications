@@ -23,7 +23,9 @@ var externaljs = [
 		baseExternalPath + "angular-*/**/*.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js",
-		baseExternalPath + "please-wait/build/please-wait.js"
+		baseExternalPath + "please-wait/build/please-wait.js",
+		baseExternalPath + "camljs/index.js",
+		baseExternalPath + "sp-list-repository/build/sp.list.repository.min.js"
 ];
 
 var colorFieldExternaljs = [
@@ -119,15 +121,6 @@ gulp.task("sass", function () {
 		.pipe(gulp.dest("App/build"));
 });
 
-gulp.task("ts", function () {
-	return gulp.src("App/ng/**/*.ts")
-		.pipe($.ts({
-			target: "ES5",
-			declaration: false
-		}))
-		.pipe(gulp.dest("App/js"));
-});
-
 gulp.task("template", function (callback) {
 	fs.readFile(__dirname + "\\AppManifest.xml", function (err, data) {
 		var parser = new xml2js.Parser();
@@ -159,6 +152,34 @@ gulp.task("spsave", ["ts", "build-app-only"], function () {
 		}));
 });
 
+gulp.task("build-app-ts", function () {
+	return gulp.src(["./App/ng/_references.ts"])
+		.pipe($.sourcemaps.init())
+		.pipe($.ts({
+			target: "ES5",
+			outFile: "sn.app.js",
+			declaration: false,
+			removeComments: true
+		}))
+		.js
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../ng" }))
+		.pipe(gulp.dest("App/build/"));
+});
+
+gulp.task("build-app-jslink", function () {
+	return gulp.src(["./App/jslink/color-field/_references.ts"])
+		.pipe($.sourcemaps.init())
+		.pipe($.ts({
+			target: "ES5",
+			outFile: "color.field.js",
+			declaration: false,
+			removeComments: true
+		}))
+		.js
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../" }))
+		.pipe(gulp.dest("App/jslink/color-field/build/"));
+});
+
 gulp.task("build-app-only", ["build-app", "sass"]);
 
 gulp.task("debug", function (callback) {
@@ -166,7 +187,8 @@ gulp.task("debug", function (callback) {
 });
 
 gulp.task("watch", function () {
-	gulp.watch(["App/ng/**/*.ts", "App/jslink/**/*.ts"], ["ts", "build-app-only"]);
+	gulp.watch("App/jslink/**/*.ts", ["build-app-jslink"]);
+	gulp.watch("App/ng/**/*.ts", ["ts", "build-app-ts"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
 	gulp.watch("App/index.tmpl", ["template"]);
 

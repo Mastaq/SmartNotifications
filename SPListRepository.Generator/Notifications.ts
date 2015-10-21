@@ -1,14 +1,14 @@
-﻿/// <reference path="../typings/tsd.d.ts" />
-/// <reference path="../build/sp.list.repository.d.ts" />
+﻿/// <reference path="../_references.ts" />
+/// <reference path="../../lib/sp-list-repository/build/sp.list.repository.d.ts" />
 
 namespace SN{
 	export class NotificationsBaseItem extends SPListRepo.BaseListItem{
-		sN_Message: SP.FieldMultiLineText;
-		sN_From: Date;
-		sN_To: Date;
-		sN_AssignedTo: SP.FieldUserValue[];
-		sN_Dismissable: boolean;
-		sN_Color: string;
+		message_SN: SP.FieldMultiLineText;
+		from_SN: Date;
+		to_SN: Date;
+		assignedTo_SN: SP.FieldUserValue[];
+		dismissable_SN: boolean;
+		color_SN: string;
 		contentType: string;
 		_UIVersionString: string;
 		edit: string;
@@ -29,12 +29,12 @@ namespace SN{
 		mapFromListItem(item: SP.ListItem): void{
 			super.mapFromListItem(item);
 
-			this.sN_Message = this.getFieldValue("SN_Message");
-			this.sN_From = this.getFieldValue("SN_From");
-			this.sN_To = this.getFieldValue("SN_To");
-			this.sN_AssignedTo = this.getFieldValue("SN_AssignedTo");
-			this.sN_Dismissable = this.getFieldValue("SN_Dismissable");
-			this.sN_Color = this.getFieldValue("SN_Color");
+			this.message_SN = this.getFieldValue("Message_SN");
+			this.from_SN = this.getFieldValue("From_SN");
+			this.to_SN = this.getFieldValue("To_SN");
+			this.assignedTo_SN = this.getFieldValue("AssignedTo_SN");
+			this.dismissable_SN = this.getFieldValue("Dismissable_SN");
+			this.color_SN = this.getFieldValue("Color_SN");
 			this.contentType = this.getFieldValue("ContentType");
 			this._UIVersionString = this.getFieldValue("_UIVersionString");
 			this.edit = this.getFieldValue("Edit");
@@ -50,12 +50,12 @@ namespace SN{
 		mapToListItem(item: SP.ListItem): void{
 			super.mapToListItem(item);
 
-			this.setFieldValue(item, "SN_Message", this.sN_Message);
-			this.setFieldValue(item, "SN_From", this.sN_From);
-			this.setFieldValue(item, "SN_To", this.sN_To);
-			this.setFieldValue(item, "SN_AssignedTo", this.sN_AssignedTo);
-			this.setFieldValue(item, "SN_Dismissable", this.sN_Dismissable);
-			this.setFieldValue(item, "SN_Color", this.sN_Color);
+			this.setFieldValue(item, "Message_SN", this.message_SN);
+			this.setFieldValue(item, "From_SN", this.from_SN);
+			this.setFieldValue(item, "To_SN", this.to_SN);
+			this.setFieldValue(item, "AssignedTo_SN", this.assignedTo_SN);
+			this.setFieldValue(item, "Dismissable_SN", this.dismissable_SN);
+			this.setFieldValue(item, "Color_SN", this.color_SN);
 		}
 	}
 }

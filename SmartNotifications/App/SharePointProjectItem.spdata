@@ -48,9 +48,6 @@
     <ProjectItemFile Source="build\sn.app.external.css" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.external.js" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.js" Target="App\build\" Type="ElementFile" />
-    <ProjectItemFile Source="js\app.js" Target="App\js\" Type="ElementFile" />
-    <ProjectItemFile Source="js\controllers\HomeCtrl.js" Target="App\js\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="js\interfaces\ICtrlScope.js" Target="App\js\interfaces\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\glyphicons-halflings-regular.woff2" Target="App\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\glyphicons-halflings-regular.woff" Target="App\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="fonts\glyphicons-halflings-regular.ttf" Target="App\fonts\" Type="ElementFile" />
@@ -90,5 +87,14 @@
     <ProjectItemFile Source="ng\services\PleaseWaitService.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="ng\services\SPColorService.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="ng\factories\VendorsFactory.ts" Target="App\ng\factories\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\AppLoadCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\model\AppSettings.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\model\Notifications.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\SPService.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\repositories\AppSettingsRepository.ts" Target="App\ng\repositories\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\common\Fields.ts" Target="App\ng\common\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\sp-list-repository\build\sp.list.repository.d.ts" Target="App\lib\sp-list-repository\build\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\sp-list-repository\build\sp.list.repository.min.js" Target="App\lib\sp-list-repository\build\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\camljs\index.js" Target="App\lib\camljs\" Type="ElementFile" />
   </Files>
 </ProjectItem>

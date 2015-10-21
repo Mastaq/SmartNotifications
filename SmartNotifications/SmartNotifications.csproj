@@ -63,14 +63,17 @@
     <Content Include="App\jslink\color-field\templates.html" />
     <Content Include="App\lib\angular-busy\dist\angular-busy.css" />
     <Content Include="App\lib\angular-busy\dist\angular-busy.js" />
+    <Content Include="App\lib\camljs\index.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
     <Content Include="App\lib\please-wait\build\please-wait.css" />
     <Content Include="App\lib\please-wait\build\please-wait.js" />
+    <Content Include="App\lib\sp-list-repository\build\sp.list.repository.min.js" />
     <Content Include="App\lib\spectrum\spectrum.css" />
     <Content Include="App\lib\spectrum\spectrum.js" />
     <Content Include="App\sp\chrome.loader.js" />
     <Content Include="App\templates\chrome.control.html" />
     <Content Include="Elements.xml" />
+    <Content Include="External\camljs.js" />
     <Content Include="Features\SmartNotifications\SmartNotifications.Template.xml">
       <DependentUpon>SmartNotifications.feature</DependentUpon>
     </Content>
@@ -208,23 +211,32 @@
       <SubType>Designer</SubType>
     </AppManifestFile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\core\" />
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App\jslink\color-field\ColorField.ts" />
     <TypeScriptCompile Include="App\jslink\color-field\ColorFieldViewModel.ts" />
     <TypeScriptCompile Include="App\jslink\color-field\SpectrumBinding.ts" />
     <TypeScriptCompile Include="App\jslink\color-field\Validator.ts" />
     <TypeScriptCompile Include="App\jslink\color-field\_references.ts" />
+    <TypeScriptCompile Include="App\lib\sp-list-repository\build\sp.list.repository.d.ts" />
     <TypeScriptCompile Include="App\ng\app.ts" />
+    <TypeScriptCompile Include="App\ng\common\Fields.ts" />
     <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\AppLoadCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\SideNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\factories\VendorsFactory.ts" />
+    <TypeScriptCompile Include="App\ng\model\AppSettings.ts" />
+    <TypeScriptCompile Include="App\ng\model\Notifications.ts" />
+    <TypeScriptCompile Include="App\ng\repositories\AppSettingsRepository.ts" />
     <TypeScriptCompile Include="App\ng\services\SPColorService.ts" />
     <TypeScriptCompile Include="App\ng\services\PleaseWaitService.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
     <TypeScriptCompile Include="App\ng\model\Context.ts" />
     <TypeScriptCompile Include="App\ng\services\ContextService.ts" />
+    <TypeScriptCompile Include="App\ng\services\SPService.ts" />
     <TypeScriptCompile Include="App\ng\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
@@ -232,6 +244,7 @@
     <TypeScriptCompile Include="typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="typings\camljs\camljs.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="typings\microsoft-ajax\microsoft.ajax.d.ts" />

@@ -4,5 +4,7 @@
     <File Path="typings\knockout\knockout.d.ts" Url="typings/knockout/knockout.d.ts" ReplaceContent="TRUE" />
     <File Path="typings\microsoft-ajax\microsoft.ajax.d.ts" Url="typings/microsoft-ajax/microsoft.ajax.d.ts" ReplaceContent="TRUE" />
     <File Path="typings\sharepoint\SharePoint.d.ts" Url="typings/sharepoint/SharePoint.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\camljs\camljs.d.ts" Url="typings/camljs/camljs.d.ts" ReplaceContent="TRUE" />
+    <File Path="External\camljs.js" Url="External/camljs.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

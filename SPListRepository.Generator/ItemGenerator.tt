@@ -44,8 +44,8 @@
 				ctx.Load(fields);
 				ctx.ExecuteQuery();
 #>
-/// <reference path="../typings/tsd.d.ts" />
-/// <reference path="../build/sp.list.repository.d.ts" />
+/// <reference path="../_references.ts" />
+/// <reference path="../../lib/sp-list-repository/build/sp.list.repository.d.ts" />
 
 namespace <#=config.Namespace#>{
 	export class <#=listTitleFixed#>BaseItem extends SPListRepo.BaseListItem{

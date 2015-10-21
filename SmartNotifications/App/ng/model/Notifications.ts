@@ -1,10 +1,14 @@
 ﻿/// <reference path="../_references.ts" />
 /// <reference path="../../lib/sp-list-repository/build/sp.list.repository.d.ts" />
 
-namespace SN{
-	export class AppSettingsBaseItem extends SPListRepo.BaseListItem{
-		value_SN: SP.FieldMultiLineText;
-		key_SN: string;
+namespace SN {
+	export class NotificationsBaseItem extends SPListRepo.BaseListItem {
+		message_SN: SP.FieldMultiLineText;
+		from_SN: Date;
+		to_SN: Date;
+		assignedTo_SN: SP.FieldUserValue[];
+		dismissable_SN: boolean;
+		color_SN: string;
 		contentType: string;
 		_UIVersionString: string;
 		edit: string;
@@ -15,18 +19,22 @@ namespace SN{
 		folderChildCount: SP.FieldLookupValue;
 		appAuthor: SP.FieldLookupValue;
 		appEditor: SP.FieldLookupValue;
-		constructor(item?: SP.ListItem){
+		constructor(item?: SP.ListItem) {
 			super(item);
-			if(item){
+			if (item) {
 				this.mapFromListItem(item);
 			}
 		}
 
-		mapFromListItem(item: SP.ListItem): void{
+		mapFromListItem(item: SP.ListItem): void {
 			super.mapFromListItem(item);
 
-			this.value_SN = this.getFieldValue("Value_SN");
-			this.key_SN = this.getFieldValue("Key_SN");
+			this.message_SN = this.getFieldValue("Message_SN");
+			this.from_SN = this.getFieldValue("From_SN");
+			this.to_SN = this.getFieldValue("To_SN");
+			this.assignedTo_SN = this.getFieldValue("AssignedTo_SN");
+			this.dismissable_SN = this.getFieldValue("Dismissable_SN");
+			this.color_SN = this.getFieldValue("Color_SN");
 			this.contentType = this.getFieldValue("ContentType");
 			this._UIVersionString = this.getFieldValue("_UIVersionString");
 			this.edit = this.getFieldValue("Edit");
@@ -39,11 +47,15 @@ namespace SN{
 			this.appEditor = this.getFieldValue("AppEditor");
 		}
 
-		mapToListItem(item: SP.ListItem): void{
+		mapToListItem(item: SP.ListItem): void {
 			super.mapToListItem(item);
 
-			this.setFieldValue(item, "Value_SN", this.value_SN);
-			this.setFieldValue(item, "Key_SN", this.key_SN);
+			this.setFieldValue(item, "Message_SN", this.message_SN);
+			this.setFieldValue(item, "From_SN", this.from_SN);
+			this.setFieldValue(item, "To_SN", this.to_SN);
+			this.setFieldValue(item, "AssignedTo_SN", this.assignedTo_SN);
+			this.setFieldValue(item, "Dismissable_SN", this.dismissable_SN);
+			this.setFieldValue(item, "Color_SN", this.color_SN);
 		}
 	}
 }

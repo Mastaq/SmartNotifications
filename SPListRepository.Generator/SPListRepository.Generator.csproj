@@ -126,6 +126,9 @@
     <TypeScriptCompile Include="AppSettings.ts">
       <DependentUpon>ItemGenerator.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Notifications.ts">
+      <DependentUpon>ItemGenerator.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

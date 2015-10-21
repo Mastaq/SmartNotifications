@@ -47,9 +47,6 @@
     <File Path="App\build\sn.app.external.css" Url="App/build/sn.app.external.css" ReplaceContent="TRUE" />
     <File Path="App\build\sn.app.external.js" Url="App/build/sn.app.external.js" ReplaceContent="TRUE" />
     <File Path="App\build\sn.app.js" Url="App/build/sn.app.js" ReplaceContent="TRUE" />
-    <File Path="App\js\app.js" Url="App/js/app.js" ReplaceContent="TRUE" />
-    <File Path="App\js\controllers\HomeCtrl.js" Url="App/js/controllers/HomeCtrl.js" ReplaceContent="TRUE" />
-    <File Path="App\js\interfaces\ICtrlScope.js" Url="App/js/interfaces/ICtrlScope.js" ReplaceContent="TRUE" />
     <File Path="App\fonts\glyphicons-halflings-regular.woff2" Url="App/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
     <File Path="App\fonts\glyphicons-halflings-regular.woff" Url="App/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
     <File Path="App\fonts\glyphicons-halflings-regular.ttf" Url="App/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
@@ -89,5 +86,14 @@
     <File Path="App\ng\services\PleaseWaitService.ts" Url="App/ng/services/PleaseWaitService.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\services\SPColorService.ts" Url="App/ng/services/SPColorService.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\factories\VendorsFactory.ts" Url="App/ng/factories/VendorsFactory.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\controllers\AppLoadCtrl.ts" Url="App/ng/controllers/AppLoadCtrl.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\model\AppSettings.ts" Url="App/ng/model/AppSettings.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\model\Notifications.ts" Url="App/ng/model/Notifications.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\SPService.ts" Url="App/ng/services/SPService.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\repositories\AppSettingsRepository.ts" Url="App/ng/repositories/AppSettingsRepository.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\common\Fields.ts" Url="App/ng/common/Fields.ts" ReplaceContent="TRUE" />
+    <File Path="App\lib\sp-list-repository\build\sp.list.repository.d.ts" Url="App/lib/sp-list-repository/build/sp.list.repository.d.ts" ReplaceContent="TRUE" />
+    <File Path="App\lib\sp-list-repository\build\sp.list.repository.min.js" Url="App/lib/sp-list-repository/build/sp.list.repository.min.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\camljs\index.js" Url="App/lib/camljs/index.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

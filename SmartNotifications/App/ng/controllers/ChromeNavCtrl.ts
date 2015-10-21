@@ -5,8 +5,6 @@ namespace SN {
         static $inject = [
 			"$scope",
 			"ContextService",
-			"PleaseWaitService",
-			"SPColorService",
 			"$timeout"
         ];
 
@@ -17,21 +15,12 @@ namespace SN {
         constructor(
 			private $scope: ICtrlScope<ChromeNavCtrl>,
 			private context: ContextService,
-			private pleaseWait: PleaseWaitService,
-			private colorService: SPColorService,
 			private $timeout: ng.ITimeoutService) {
 
             $scope.vm = this;
 			this.hostUrl = this.context.hostUrl;
 			this.hostTitle = this.context.hostTitle;
 	        this.appUrl = this.context.appUrl;
-
-			this.pleaseWait.start(colorService.getSuiteBarBackground());
-	        this.colorService.applyBackgrounds();
-
-			$timeout(() => {
-				this.pleaseWait.close();
-			}, 3000);
         }
     }
 
