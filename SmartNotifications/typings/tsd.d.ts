@@ -11,3 +11,4 @@
 /// <reference path="microsoft-ajax/microsoft.ajax.d.ts" />
 /// <reference path="sharepoint/SharePoint.d.ts" />
 /// <reference path="camljs/camljs.d.ts" />
+/// <reference path="toastr/toastr.d.ts" />

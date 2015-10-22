@@ -7,9 +7,12 @@ namespace SN {
 	angular.module("SN.app.directives", []);
 	angular.module("SN.app.services", []);
 
-	angular.module("SN.app", ["SN.app.controllers", "eehNavigation", "ui.bootstrap", "ui.router", "ui.select", "ngSanitize"])
+	angular.module("SN.app", ["SN.app.controllers", "SN.app.directives", "SN.app.services", "eehNavigation", "ui.bootstrap", "ui.router", "ui.select", "ngSanitize", "toastr", "ngAnimate"])
 		.config(["$urlRouterProvider", "$stateProvider", "$translateProvider", "eehNavigationProvider",
-			($urlRouterProvider: angular.ui.IUrlRouterProvider, $stateProvider: angular.ui.IStateProvider, $translateProvider: angular.translate.ITranslateProvider, eehNavigationProvider: any) => {
+			($urlRouterProvider: angular.ui.IUrlRouterProvider,
+				$stateProvider: angular.ui.IStateProvider,
+				$translateProvider: angular.translate.ITranslateProvider,
+				eehNavigationProvider: any) => {
 
 				$translateProvider.useSanitizeValueStrategy("sanitize");
 
@@ -71,8 +74,8 @@ namespace SN {
 						target: "_blank",
 						href: "#"
 					});
+			}])
+		.config(["$logProvider", ($logProvider: ng.ILogProvider) => {
+				$logProvider.debugEnabled((<any>window).SN.debug);
 			}]);
-
-
-
 }

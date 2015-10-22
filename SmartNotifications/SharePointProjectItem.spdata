@@ -7,5 +7,6 @@
     <ProjectItemFile Source="typings\sharepoint\SharePoint.d.ts" Target="typings\sharepoint\" Type="ElementFile" />
     <ProjectItemFile Source="typings\camljs\camljs.d.ts" Target="typings\camljs\" Type="ElementFile" />
     <ProjectItemFile Source="External\camljs.js" Target="External\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\toastr\toastr.d.ts" Target="typings\toastr\" Type="ElementFile" />
   </Files>
 </ProjectItem>

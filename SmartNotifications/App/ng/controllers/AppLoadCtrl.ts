@@ -4,41 +4,50 @@ namespace SN {
     export class AppLoadCtrl {
         static $inject = [
 			"$scope",
-            "$http",
-            "$window",
-			"$timeout",
 			"SPColorService",
 			"PleaseWaitService",
-			"SPService"
+			"SPService",
+			"$log",
+			"toastr",
+			"Consts"
         ];
 
 		constructor(
 			private $scope: ICtrlScope<AppLoadCtrl>,
-			private $http: ng.IHttpService,
-			private $window: ng.IWindowService,
-			private $timeout: ng.ITimeoutService,
 			private colorService: SPColorService,
 			private pleaseWait: PleaseWaitService,
-			private spservice: SPService) {
+			private spservice: SPService,
+			private $log: ng.ILogService,
+			private toastr: Toastr,
+			private consts: Constants) {
 
             $scope.vm = this;
 
 			this.pleaseWait.start(colorService.getSuiteBarBackground());
 			this.colorService.applyBackgrounds();
 
-			spservice.getSettings().done((appSettings) => {
+			spservice.getSettings().then((appSettings) => {
 				//first run, the app is not inited yet
 				if (appSettings == null) {
-					
+					this.spservice.createLibrary().then((library) => {
+						
+					}, (err: SPListRepo.RequestError) => {
+						$log.error(err.message);
+						$log.error(err.stackTrace);
+						this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000});
+					})
+					.finally(() => {
+						this.pleaseWait.close();
+					});
+				} else {
+					this.pleaseWait.close();
 				}
+			}, (err: SPListRepo.RequestError) => {
+				$log.error(err.message);
+				$log.error(err.stackTrace);
+
+				this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
 			});
-
-
-			$timeout(() => {
-				this.pleaseWait.close();
-			}, 3000);
-
-
 		}
     }
 

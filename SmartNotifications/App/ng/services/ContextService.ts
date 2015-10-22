@@ -15,6 +15,7 @@ namespace SN {
 			this.appUrl = this.$location.absUrl().substr(0, this.$location.absUrl().indexOf(this.appLeafUrl) + this.appLeafUrl.length + 1);
 			this.hostTitle = this.getParameterByName("HostTitle");
 			this.hostUrl = this.getParameterByName("SPHostUrl");
+			this.debug = (<any>this.$window).SN.debug;
 		}
 
 		private getParameterByName(name: string): string {

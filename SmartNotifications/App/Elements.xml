@@ -88,12 +88,16 @@
     <File Path="App\ng\factories\VendorsFactory.ts" Url="App/ng/factories/VendorsFactory.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\controllers\AppLoadCtrl.ts" Url="App/ng/controllers/AppLoadCtrl.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\model\AppSettings.ts" Url="App/ng/model/AppSettings.ts" ReplaceContent="TRUE" />
-    <File Path="App\ng\model\Notifications.ts" Url="App/ng/model/Notifications.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\services\SPService.ts" Url="App/ng/services/SPService.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\repositories\AppSettingsRepository.ts" Url="App/ng/repositories/AppSettingsRepository.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\common\Fields.ts" Url="App/ng/common/Fields.ts" ReplaceContent="TRUE" />
     <File Path="App\lib\sp-list-repository\build\sp.list.repository.d.ts" Url="App/lib/sp-list-repository/build/sp.list.repository.d.ts" ReplaceContent="TRUE" />
     <File Path="App\lib\sp-list-repository\build\sp.list.repository.min.js" Url="App/lib/sp-list-repository/build/sp.list.repository.min.js" ReplaceContent="TRUE" />
     <File Path="App\lib\camljs\index.js" Url="App/lib/camljs/index.js" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\Constants.ts" Url="App/ng/services/Constants.ts" ReplaceContent="TRUE" />
+    <File Path="App\ng\services\Notification.ts" Url="App/ng/services/Notification.ts" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-toastr\dist\angular-toastr.css" Url="App/lib/angular-toastr/dist/angular-toastr.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\angular-toastr\dist\angular-toastr.tpls.js" Url="App/lib/angular-toastr/dist/angular-toastr.tpls.js" ReplaceContent="TRUE" />
+    <File Path="App\ng\model\Notifications.ts" Url="App/ng/model/Notifications.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -52615,6 +52615,491 @@ angular.module('cgBusy').run(['$templateCache', function($templateCache) {
 
 }]);
 
+(function() {
+  'use strict';
+
+  angular.module('toastr', [])
+    .factory('toastr', toastr);
+
+  toastr.$inject = ['$animate', '$injector', '$document', '$rootScope', '$sce', 'toastrConfig', '$q'];
+
+  function toastr($animate, $injector, $document, $rootScope, $sce, toastrConfig, $q) {
+    var container;
+    var index = 0;
+    var toasts = [];
+
+    var previousToastMessage = '';
+    var openToasts = {};
+
+    var containerDefer = $q.defer();
+
+    var toast = {
+      clear: clear,
+      error: error,
+      info: info,
+      remove: remove,
+      success: success,
+      warning: warning
+    };
+
+    return toast;
+
+    /* Public API */
+    function clear(toast) {
+      // Bit of a hack, I will remove this soon with a BC
+      if (arguments.length === 1 && !toast) { return; }
+
+      if (toast) {
+        remove(toast.toastId);
+      } else {
+        for (var i = 0; i < toasts.length; i++) {
+          remove(toasts[i].toastId);
+        }
+      }
+    }
+
+    function error(message, title, optionsOverride) {
+      var type = _getOptions().iconClasses.error;
+      return _buildNotification(type, message, title, optionsOverride);
+    }
+
+    function info(message, title, optionsOverride) {
+      var type = _getOptions().iconClasses.info;
+      return _buildNotification(type, message, title, optionsOverride);
+    }
+
+    function success(message, title, optionsOverride) {
+      var type = _getOptions().iconClasses.success;
+      return _buildNotification(type, message, title, optionsOverride);
+    }
+
+    function warning(message, title, optionsOverride) {
+      var type = _getOptions().iconClasses.warning;
+      return _buildNotification(type, message, title, optionsOverride);
+    }
+
+    function remove(toastId, wasClicked) {
+      var toast = findToast(toastId);
+
+      if (toast && ! toast.deleting) { // Avoid clicking when fading out
+        toast.deleting = true;
+        toast.isOpened = false;
+        $animate.leave(toast.el).then(function() {
+          if (toast.scope.options.onHidden) {
+            toast.scope.options.onHidden(wasClicked);
+          }
+          toast.scope.$destroy();
+          var index = toasts.indexOf(toast);
+          delete openToasts[toast.scope.message];
+          toasts.splice(index, 1);
+          var maxOpened = toastrConfig.maxOpened;
+          if (maxOpened && toasts.length >= maxOpened) {
+            toasts[maxOpened - 1].open.resolve();
+          }
+          if (lastToast()) {
+            container.remove();
+            container = null;
+            containerDefer = $q.defer();
+          }
+        });
+      }
+
+      function findToast(toastId) {
+        for (var i = 0; i < toasts.length; i++) {
+          if (toasts[i].toastId === toastId) {
+            return toasts[i];
+          }
+        }
+      }
+
+      function lastToast() {
+        return !toasts.length;
+      }
+    }
+
+    /* Internal functions */
+    function _buildNotification(type, message, title, optionsOverride)
+    {
+      if (angular.isObject(title)) {
+        optionsOverride = title;
+        title = null;
+      }
+
+      return _notify({
+        iconClass: type,
+        message: message,
+        optionsOverride: optionsOverride,
+        title: title
+      });
+    }
+
+    function _getOptions() {
+      return angular.extend({}, toastrConfig);
+    }
+
+    function _createOrGetContainer(options) {
+      if(container) { return containerDefer.promise; }
+
+      container = angular.element('<div></div>');
+      container.attr('id', options.containerId);
+      container.addClass(options.positionClass);
+      container.css({'pointer-events': 'auto'});
+
+      var target = angular.element(document.querySelector(options.target));
+
+      if ( ! target || ! target.length) {
+        throw 'Target for toasts doesn\'t exist';
+      }
+
+      $animate.enter(container, target).then(function() {
+        containerDefer.resolve();
+      });
+
+      return containerDefer.promise;
+    }
+
+    function _notify(map) {
+      var options = _getOptions();
+
+      if (shouldExit()) { return; }
+
+      var newToast = createToast();
+
+      toasts.push(newToast);
+
+      if (ifMaxOpenedAndAutoDismiss()) {
+        var oldToasts = toasts.slice(0, (toasts.length - options.maxOpened));
+        for (var i = 0, len = oldToasts.length; i < len; i++) {
+          remove(oldToasts[i].toastId);
+        }
+      }
+
+      if (maxOpenedNotReached()) {
+        newToast.open.resolve();
+      }
+
+      newToast.open.promise.then(function() {
+        _createOrGetContainer(options).then(function() {
+          newToast.isOpened = true;
+          if (options.newestOnTop) {
+            $animate.enter(newToast.el, container).then(function() {
+              newToast.scope.init();
+            });
+          } else {
+            var sibling = container[0].lastChild ? angular.element(container[0].lastChild) : null;
+            $animate.enter(newToast.el, container, sibling).then(function() {
+              newToast.scope.init();
+            });
+          }
+        });
+      });
+
+      return newToast;
+
+      function ifMaxOpenedAndAutoDismiss() {
+        return options.autoDismiss && options.maxOpened && toasts.length > options.maxOpened;
+      }
+
+      function createScope(toast, map, options) {
+        if (options.allowHtml) {
+          toast.scope.allowHtml = true;
+          toast.scope.title = $sce.trustAsHtml(map.title);
+          toast.scope.message = $sce.trustAsHtml(map.message);
+        } else {
+          toast.scope.title = map.title;
+          toast.scope.message = map.message;
+        }
+
+        toast.scope.toastType = toast.iconClass;
+        toast.scope.toastId = toast.toastId;
+        toast.scope.extraData = options.extraData;
+
+        toast.scope.options = {
+          extendedTimeOut: options.extendedTimeOut,
+          messageClass: options.messageClass,
+          onHidden: options.onHidden,
+          onShown: options.onShown,
+          onTap: options.onTap,
+          progressBar: options.progressBar,
+          tapToDismiss: options.tapToDismiss,
+          timeOut: options.timeOut,
+          titleClass: options.titleClass,
+          toastClass: options.toastClass
+        };
+
+        if (options.closeButton) {
+          toast.scope.options.closeHtml = options.closeHtml;
+        }
+      }
+
+      function createToast() {
+        var newToast = {
+          toastId: index++,
+          isOpened: false,
+          scope: $rootScope.$new(),
+          open: $q.defer()
+        };
+        newToast.iconClass = map.iconClass;
+        if (map.optionsOverride) {
+          angular.extend(options, cleanOptionsOverride(map.optionsOverride));
+          newToast.iconClass = map.optionsOverride.iconClass || newToast.iconClass;
+        }
+
+        createScope(newToast, map, options);
+
+        newToast.el = createToastEl(newToast.scope);
+
+        return newToast;
+
+        function cleanOptionsOverride(options) {
+          var badOptions = ['containerId', 'iconClasses', 'maxOpened', 'newestOnTop',
+                            'positionClass', 'preventDuplicates', 'preventOpenDuplicates', 'templates'];
+          for (var i = 0, l = badOptions.length; i < l; i++) {
+            delete options[badOptions[i]];
+          }
+
+          return options;
+        }
+      }
+
+      function createToastEl(scope) {
+        var angularDomEl = angular.element('<div toast></div>'),
+          $compile = $injector.get('$compile');
+        return $compile(angularDomEl)(scope);
+      }
+
+      function maxOpenedNotReached() {
+        return options.maxOpened && toasts.length <= options.maxOpened || !options.maxOpened;
+      }
+
+      function shouldExit() {
+        var isDuplicateOfLast = options.preventDuplicates && map.message === previousToastMessage;
+        var isDuplicateOpen = options.preventOpenDuplicates && openToasts[map.message];
+
+        if (isDuplicateOfLast || isDuplicateOpen) {
+          return true;
+        }
+
+        previousToastMessage = map.message;
+        openToasts[map.message] = true;
+
+        return false;
+      }
+    }
+  }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module('toastr')
+    .constant('toastrConfig', {
+      allowHtml: false,
+      autoDismiss: false,
+      closeButton: false,
+      closeHtml: '<button>&times;</button>',
+      containerId: 'toast-container',
+      extendedTimeOut: 1000,
+      iconClasses: {
+        error: 'toast-error',
+        info: 'toast-info',
+        success: 'toast-success',
+        warning: 'toast-warning'
+      },
+      maxOpened: 0,
+      messageClass: 'toast-message',
+      newestOnTop: true,
+      onHidden: null,
+      onShown: null,
+      onTap: null,
+      positionClass: 'toast-top-right',
+      preventDuplicates: false,
+      preventOpenDuplicates: false,
+      progressBar: false,
+      tapToDismiss: true,
+      target: 'body',
+      templates: {
+        toast: 'directives/toast/toast.html',
+        progressbar: 'directives/progressbar/progressbar.html'
+      },
+      timeOut: 5000,
+      titleClass: 'toast-title',
+      toastClass: 'toast'
+    });
+}());
+
+(function() {
+  'use strict';
+
+  angular.module('toastr')
+    .directive('progressBar', progressBar);
+
+  progressBar.$inject = ['toastrConfig'];
+
+  function progressBar(toastrConfig) {
+    return {
+      replace: true,
+      require: '^toast',
+      templateUrl: function() {
+        return toastrConfig.templates.progressbar;
+      },
+      link: linkFunction
+    };
+
+    function linkFunction(scope, element, attrs, toastCtrl) {
+      var intervalId, currentTimeOut, hideTime;
+
+      toastCtrl.progressBar = scope;
+
+      scope.start = function(duration) {
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+
+        currentTimeOut = parseFloat(duration);
+        hideTime = new Date().getTime() + currentTimeOut;
+        intervalId = setInterval(updateProgress, 10);
+      };
+
+      scope.stop = function() {
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+      };
+
+      function updateProgress() {
+        var percentage = ((hideTime - (new Date().getTime())) / currentTimeOut) * 100;
+        element.css('width', percentage + '%');
+      }
+
+      scope.$on('$destroy', function() {
+        // Failsafe stop
+        clearInterval(intervalId);
+      });
+    }
+  }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module('toastr')
+    .controller('ToastController', ToastController);
+
+  function ToastController() {
+    this.progressBar = null;
+
+    this.startProgressBar = function(duration) {
+      if (this.progressBar) {
+        this.progressBar.start(duration);
+      }
+    };
+
+    this.stopProgressBar = function() {
+      if (this.progressBar) {
+        this.progressBar.stop();
+      }
+    };
+  }
+}());
+
+(function() {
+  'use strict';
+
+  angular.module('toastr')
+    .directive('toast', toast);
+
+  toast.$inject = ['$injector', '$interval', 'toastrConfig', 'toastr'];
+
+  function toast($injector, $interval, toastrConfig, toastr) {
+    return {
+      replace: true,
+      templateUrl: function() {
+        return toastrConfig.templates.toast;
+      },
+      controller: 'ToastController',
+      link: toastLinkFunction
+    };
+
+    function toastLinkFunction(scope, element, attrs, toastCtrl) {
+      var timeout;
+
+      scope.toastClass = scope.options.toastClass;
+      scope.titleClass = scope.options.titleClass;
+      scope.messageClass = scope.options.messageClass;
+      scope.progressBar = scope.options.progressBar;
+
+      if (wantsCloseButton()) {
+        var button = angular.element(scope.options.closeHtml),
+          $compile = $injector.get('$compile');
+        button.addClass('toast-close-button');
+        button.attr('ng-click', 'close(true, $event)');
+        $compile(button)(scope);
+        element.prepend(button);
+      }
+
+      scope.init = function() {
+        if (scope.options.timeOut) {
+          timeout = createTimeout(scope.options.timeOut);
+        }
+        if (scope.options.onShown) {
+          scope.options.onShown();
+        }
+      };
+
+      element.on('mouseenter', function() {
+        hideAndStopProgressBar();
+        if (timeout) {
+          $interval.cancel(timeout);
+        }
+      });
+
+      scope.tapToast = function () {
+        if (angular.isFunction(scope.options.onTap)) {
+          scope.options.onTap();
+        }
+        if (scope.options.tapToDismiss) {
+          scope.close(true);
+        }
+      };
+
+      scope.close = function (wasClicked, $event) {
+        if ($event && angular.isFunction($event.stopPropagation)) {
+          $event.stopPropagation();
+        }
+        toastr.remove(scope.toastId, wasClicked);
+      };
+
+      element.on('mouseleave', function() {
+        if (scope.options.timeOut === 0 && scope.options.extendedTimeOut === 0) { return; }
+        scope.$apply(function() {
+          scope.progressBar = scope.options.progressBar;
+        });
+        timeout = createTimeout(scope.options.extendedTimeOut);
+      });
+
+      function createTimeout(time) {
+        toastCtrl.startProgressBar(time);
+        return $interval(function() {
+          toastCtrl.stopProgressBar();
+          toastr.remove(scope.toastId);
+        }, time, 1);
+      }
+
+      function hideAndStopProgressBar() {
+        scope.progressBar = false;
+        toastCtrl.stopProgressBar();
+      }
+
+      function wantsCloseButton() {
+        return scope.options.closeHtml;
+      }
+    }
+  }
+}());
+
+angular.module("toastr").run(["$templateCache", function($templateCache) {$templateCache.put("directives/progressbar/progressbar.html","<div class=\"toast-progress\"></div>\n");
+$templateCache.put("directives/toast/toast.html","<div class=\"{{toastClass}} {{toastType}}\" ng-click=\"tapToast()\">\n  <div ng-switch on=\"allowHtml\">\n    <div ng-switch-default ng-if=\"title\" class=\"{{titleClass}}\" aria-label=\"{{title}}\">{{title}}</div>\n    <div ng-switch-default class=\"{{messageClass}}\" aria-label=\"{{message}}\">{{message}}</div>\n    <div ng-switch-when=\"true\" ng-if=\"title\" class=\"{{titleClass}}\" ng-bind-html=\"title\"></div>\n    <div ng-switch-when=\"true\" class=\"{{messageClass}}\" ng-bind-html=\"message\"></div>\n  </div>\n  <progress-bar ng-if=\"progressBar\"></progress-bar>\n</div>\n");}]);
 /**
  * State-based routing for AngularJS
  * @version v0.2.15
@@ -60933,4 +61418,4 @@ if (typeof window["SP"] == 'undefined') {
 }
 //# sourceMappingURL=camljs.js.map
 
-Type.registerNamespace("SPListRepo");var SPListRepo;!function(e){var t=function(){function e(){}return e.ensureTrailingSlash=function(e){return e.endsWith("/")?e:e+"/"},e.ensureLeadingSlash=function(e){return"/"!==e.substr(0,1)?"/"+e:e},e}();e.Helper=t}(SPListRepo||(SPListRepo={})),Type.registerNamespace("SPListRepo.Fields"),Type.registerNamespace("SPListRepo.ErrorCodes");var SPListRepo;!function(e){var t;!function(e){e.Modified="Modified",e.Created="Created",e.ModifiedBy="Editor",e.CreatedBy="Author",e.ID="ID",e.FSObjType="FSObjType",e.Title="Title",e.FileLeafRef="FileLeafRef",e.FileDirRef="FileDirRef",e.ContentTypeId="ContentTypeId"}(t=e.Fields||(e.Fields={}))}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t;!function(e){e.FolderAlreadyExists=-2130245363,e.IllegalName=-2130575245}(t=e.ErrorCodes||(e.ErrorCodes={}))}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function e(e){e instanceof SP.ClientRequestFailedEventArgs?(this.stackTrace=e.get_stackTrace(),this.message=e.get_message(),this.correlation=e.get_errorTraceCorrelationId(),this.errorCode=e.get_errorCode(),this.details=e.get_errorDetails(),this.errorType=e.get_errorTypeName()):"string"==typeof e&&(this.message=e)}return e}();e.RequestError=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function e(e,t,i){this.viewScope=e,this.viewFields=t,this.rowLimit=i}return e}();e.QuerySettings=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function t(){this.$=jQuery}return t.getListByUrl=function(i){var r=$.Deferred(),o=function(e){r.resolve(e)},s=function(e){r.reject(e)},n=SP.ClientContext.get_current(),l=n.get_web();return n.load(l,"Url","ServerRelativeUrl"),n.executeQueryAsync(function(){var r=e.Helper.ensureTrailingSlash(l.get_url()),u=e.Helper.ensureTrailingSlash(l.get_serverRelativeUrl()),a=String.format("{0}_api/web/lists/?$expand=RootFolder&$filter=RootFolder/ServerRelativeUrl eq '{1}{2}'&$select=ID",r,u,i);if(n.get_web().getList){var c=n.get_web().getList(String.format("{0}{1}",u,i));n.load(c,"Title","RootFolder","Id"),n.executeQueryAsync(function(){o(c)},function(t,i){s(new e.RequestError(i))})}else t.getListUsingRest(a,o,s)},function(t,i){s(new e.RequestError(i))}),r.promise()},t.getListById=function(t){var i=$.Deferred(),r=SP.ClientContext.get_current(),o=r.get_web().get_lists().getById(t);return r.load(o,"Title","RootFolder","Id"),r.executeQueryAsync(function(){i.resolve(o)},function(t,r){i.reject(new e.RequestError(r))}),i.promise()},t.getListUsingRest=function(t,i,r){$.ajax({url:t,type:"GET",contentType:"application/json;odata=verbose",headers:{Accept:"application/json;odata=verbose"},success:function(t){var o=SP.ClientContext.get_current(),s=o.get_web().get_lists().getById(t.d.results[0].Id);o.load(s,"Title","RootFolder","Id"),o.executeQueryAsync(function(){i(s)},function(t,i){r(new e.RequestError(i))})},error:function(t,i){r(new e.RequestError(i))}})},t}();e.ListService=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){!function(e){e[e.FilesOnly=0]="FilesOnly",e[e.FoldersOnly=1]="FoldersOnly",e[e.FilesFolders=2]="FilesFolders",e[e.FilesOnlyRecursive=3]="FilesOnlyRecursive",e[e.FoldersOnlyRecursive=4]="FoldersOnlyRecursive",e[e.FilesFoldersRecursive=5]="FilesFoldersRecursive"}(e.ViewScope||(e.ViewScope={}));e.ViewScope}(SPListRepo||(SPListRepo={})),Type.registerNamespace("SPListRepo.ViewScope");var SPListRepo;!function(e){var t=function(){function t(e){this.fileLeafRef=void 0,e&&this.mapFromListItem(e)}return t.prototype.mapFromListItem=function(t){this.spListItem=t,this.file=this.spListItem.get_file(),this.id=t.get_id(),this.created=this.getFieldValue(e.Fields.Created),this.createdBy=this.getFieldValue(e.Fields.CreatedBy),this.modified=this.getFieldValue(e.Fields.Modified),this.modifiedBy=this.getFieldValue(e.Fields.ModifiedBy),this.title=this.getFieldValue(e.Fields.Title),this.fileDirRef=this.getFieldValue(e.Fields.FileDirRef),this.fileSystemObjectType=this.spListItem.get_fileSystemObjectType()},t.prototype.mapToListItem=function(t){this.setFieldValue(t,e.Fields.Title,this.title),this.setFieldValue(t,e.Fields.FileLeafRef,this.fileLeafRef)},t.prototype.getFieldValue=function(e){var t=this.spListItem.get_fieldValues()[e];return"undefined"!=typeof t?this.spListItem.get_item(e):void 0},t.prototype.setFieldValue=function(e,t,i){void 0!==i&&e.set_item(t,i)},t}();e.BaseListItem=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function t(t,i){var r=this;this._listItemConstructor=i,this._context=SP.ClientContext.get_current(),t instanceof SP.Guid?this._loadListDeferred=e.ListService.getListById(t):"string"==typeof t&&(this._loadListDeferred=e.ListService.getListByUrl(t)),this._loadListDeferred.done(function(e){r._list=e}).fail(function(e){alert(e.message)})}return t.prototype.getItems=function(e){return this._getItemsByExpression(null,e)},t.prototype.getItemById=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t);i._context.load(o),i._context.executeQueryAsync(function(){var e=new i._listItemConstructor(o);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.getItemsByTitle=function(t,i){var r=CamlBuilder.Expression().TextField(e.Fields.Title).EqualTo(t);return this._getItemsByExpression(r,i)},t.prototype.getItemsByIds=function(t,i){var r=CamlBuilder.Expression().CounterField(e.Fields.ID).In(t);return this._getItemsByExpression(r,i)},t.prototype.getItemsInsideFolders=function(t,i){var r=this,o=CamlBuilder.Expression().TextField(e.Fields.FileDirRef).In(t.map(function(e){var t=r._getFolderRelativeUrl(e);return 0===t.indexOf("/")&&(t=t.substring(1)),t}));return this._getItemsByExpression(o,i)},t.prototype.getLastAddedItem=function(t,i){void 0===i&&(i=!1);var r,o=CamlBuilder.Expression().CounterField(e.Fields.ID).NotEqualTo(0);r=i?new e.QuerySettings(e.ViewScope.FilesOnlyRecursive,t,1):new e.QuerySettings(e.ViewScope.FilesOnly,t,1);var s=this._getSPCamlQuery(this._getViewQuery(o,r).OrderByDesc(e.Fields.ID));return this._getItemBySPCamlQuery(s)},t.prototype.getLastModifiedItem=function(t,i){void 0===i&&(i=!1);var r,o=CamlBuilder.Expression().CounterField(e.Fields.ID).NotEqualTo(0);r=i?new e.QuerySettings(e.ViewScope.FilesOnlyRecursive,t,1):new e.QuerySettings(e.ViewScope.FilesOnly,t,1);var s=this._getSPCamlQuery(this._getViewQuery(o,r).OrderByDesc(e.Fields.Modified));return this._getItemBySPCamlQuery(s)},t.prototype.saveItem=function(e){return!e.id||e.id<1?this._addItem(e):this._updateItem(e)},t.prototype.deleteItem=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t.id);i._context.load(o),o.deleteObject(),i._context.executeQueryAsync(function(){r.resolve()},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.createFolder=function(t){var i=this;return this._withPromise(function(r){var o=new SP.ListItemCreationInformation;o.set_underlyingObjectType(SP.FileSystemObjectType.folder),o.set_leafName(t);var s=i._list.addItem(o);s.set_item(e.Fields.Title,t),s.update();var n=i;i._context.load(s),i._context.executeQueryAsync(function(){var e=new n._listItemConstructor(s);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.createFile=function(t,i,r){var o=this;return this._withPromise(function(s){var n=new SP.FileCreationInformation;n.set_url(t),n.set_overwrite(r),n.set_content(new SP.Base64EncodedByteArray);for(var l=0;l<i.length;l++)n.get_content().append(i.charCodeAt(l));var u=o._context.get_web().getFolderByServerRelativeUrl(o._getFolderRelativeUrl()).get_files().add(n);o._context.load(u),o._context.executeQueryAsync(function(){s.resolve(u)},function(t,i){s.reject(new e.RequestError(i))})})},t.prototype._getItemBySPCamlQuery=function(e){var t=this._createDeferred();return this._getItemsBySPCamlQuery(e).done(function(e){if(e.length>1)throw"Result contains more than one element";t.resolve(1===e.length?e[0]:null)}).fail(function(e){t.reject(e)}),t.promise()},t.prototype._addItem=function(t){var i=this;return this._withPromise(function(r){var o=new SP.ListItemCreationInformation;i.folder&&o.set_folderUrl(i._getFolderRelativeUrl());var s=i._list.addItem(o);t.mapToListItem(s);var n=i;s.update(),i._context.load(s),i._context.executeQueryAsync(function(){var e=new n._listItemConstructor(s);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._updateItem=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t.id);i._context.load(o),t.mapToListItem(o);var s=i;o.update(),i._context.executeQueryAsync(function(){var e=new s._listItemConstructor(o);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._getItemsByExpression=function(t,i){i=i||new e.QuerySettings(e.ViewScope.FilesFolders);var r=this._getSPCamlQuery(this._getViewQuery(t,i));return this._getItemsBySPCamlQuery(r)},t.prototype._getItemByExpression=function(t,i){i=i||new e.QuerySettings(e.ViewScope.FilesFolders);var r=this._getSPCamlQuery(this._getViewQuery(t,i));return this._getItemBySPCamlQuery(r)},t.prototype._getViewQuery=function(t,i){var r,o=(new CamlBuilder).View(i.viewFields);i.rowLimit&&(o=o.RowLimit(i.rowLimit));var s=CamlBuilder.Expression().IntegerField(e.Fields.FSObjType).EqualTo(1);switch(i.viewScope){case e.ViewScope.FilesOnly:o=o.Scope(CamlBuilder.ViewScope.FilesOnly);break;case e.ViewScope.FoldersOnly:case e.ViewScope.FilesFolders:break;case e.ViewScope.FilesOnlyRecursive:o=o.Scope(CamlBuilder.ViewScope.Recursive);break;case e.ViewScope.FoldersOnlyRecursive:case e.ViewScope.FilesFoldersRecursive:o=o.Scope(CamlBuilder.ViewScope.RecursiveAll);break;default:o=o.Scope(CamlBuilder.ViewScope.RecursiveAll)}return r=i.viewScope===e.ViewScope.FoldersOnly||i.viewScope===e.ViewScope.FoldersOnlyRecursive?t?o.Query().Where().All(t,s):o.Query().Where().All(s):t?o.Query().Where().All(t):o.Query().Where().All()},t.prototype._getSPCamlQuery=function(e){var t=e.ToString();console.log("Running query:"),console.log(t);var i=new SP.CamlQuery;return i.set_viewXml(t),i},t.prototype._getItemsBySPCamlQuery=function(t){var i=this;return this._withPromise(function(r){i.folder&&t.set_folderServerRelativeUrl(i._getFolderRelativeUrl());var o=i._list.getItems(t);i._context.load(o);var s=i;i._context.executeQueryAsync(function(){for(var e=o.getEnumerator(),t=[];e.moveNext();)t.push(new s._listItemConstructor(e.get_current()));r.resolve(t)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._getFolderRelativeUrl=function(t){var i=t||this.folder,r=this._list.get_rootFolder().get_serverRelativeUrl();return r=e.Helper.ensureTrailingSlash(r),String.format("{0}{1}",r,i)},t.prototype._createDeferred=function(){return jQuery.Deferred()},t.prototype._withPromise=function(e){var t=this._createDeferred();return this._loadListDeferred.done(function(){e(t)}),t.promise()},t}();e.ListRepository=t}(SPListRepo||(SPListRepo={}));
+Type.registerNamespace("SPListRepo");var SPListRepo;!function(e){var t=function(){function e(){}return e.ensureTrailingSlash=function(e){return e.endsWith("/")?e:e+"/"},e.ensureLeadingSlash=function(e){return"/"!==e.substr(0,1)?"/"+e:e},e}();e.Helper=t}(SPListRepo||(SPListRepo={})),Type.registerNamespace("SPListRepo.Fields"),Type.registerNamespace("SPListRepo.ErrorCodes");var SPListRepo;!function(e){var t;!function(e){e.Modified="Modified",e.Created="Created",e.ModifiedBy="Editor",e.CreatedBy="Author",e.ID="ID",e.FSObjType="FSObjType",e.Title="Title",e.FileLeafRef="FileLeafRef",e.FileDirRef="FileDirRef",e.ContentTypeId="ContentTypeId"}(t=e.Fields||(e.Fields={}))}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t;!function(e){e.FolderAlreadyExists=-2130245363,e.IllegalName=-2130575245}(t=e.ErrorCodes||(e.ErrorCodes={}))}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function e(e){e instanceof SP.ClientRequestFailedEventArgs?(this.stackTrace=e.get_stackTrace(),this.message=e.get_message(),this.correlation=e.get_errorTraceCorrelationId(),this.errorCode=e.get_errorCode(),this.details=e.get_errorDetails(),this.errorType=e.get_errorTypeName()):"string"==typeof e&&(this.message=e)}return e}();e.RequestError=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function e(e,t,i){this.viewScope=e,this.viewFields=t,this.rowLimit=i}return e}();e.QuerySettings=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function t(){this.$=jQuery}return t.getListByUrl=function(i){var r=$.Deferred(),o=function(e){r.resolve(e)},s=function(e){r.reject(e)},n=SP.ClientContext.get_current(),l=n.get_web();return n.load(l,"Url","ServerRelativeUrl"),n.executeQueryAsync(function(){var r=e.Helper.ensureTrailingSlash(l.get_url()),u=e.Helper.ensureTrailingSlash(l.get_serverRelativeUrl()),a=String.format("{0}_api/web/lists/?$expand=RootFolder&$filter=RootFolder/ServerRelativeUrl eq '{1}{2}'&$select=ID",r,u,i);if(n.get_web().getList){var c=n.get_web().getList(String.format("{0}{1}",u,i));n.load(c,"Title","RootFolder","Id"),n.executeQueryAsync(function(){o(c)},function(t,i){s(new e.RequestError(i))})}else t.getListUsingRest(a,o,s)},function(t,i){s(new e.RequestError(i))}),r.promise()},t.getListById=function(t){var i=$.Deferred(),r=SP.ClientContext.get_current(),o=r.get_web().get_lists().getById(t);return r.load(o,"Title","RootFolder","Id"),r.executeQueryAsync(function(){i.resolve(o)},function(t,r){i.reject(new e.RequestError(r))}),i.promise()},t.getListUsingRest=function(t,i,r){$.ajax({url:t,type:"GET",contentType:"application/json;odata=verbose",headers:{Accept:"application/json;odata=verbose"},success:function(t){var o=SP.ClientContext.get_current(),s=o.get_web().get_lists().getById(t.d.results[0].Id);o.load(s,"Title","RootFolder","Id"),o.executeQueryAsync(function(){i(s)},function(t,i){r(new e.RequestError(i))})},error:function(t,i){r(new e.RequestError(i))}})},t}();e.ListService=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){!function(e){e[e.FilesOnly=0]="FilesOnly",e[e.FoldersOnly=1]="FoldersOnly",e[e.FilesFolders=2]="FilesFolders",e[e.FilesOnlyRecursive=3]="FilesOnlyRecursive",e[e.FoldersOnlyRecursive=4]="FoldersOnlyRecursive",e[e.FilesFoldersRecursive=5]="FilesFoldersRecursive"}(e.ViewScope||(e.ViewScope={}));e.ViewScope}(SPListRepo||(SPListRepo={})),Type.registerNamespace("SPListRepo.ViewScope");var SPListRepo;!function(e){var t=function(){function t(e){this.fileLeafRef=void 0,e&&this.mapFromListItem(e)}return t.prototype.mapFromListItem=function(t){this.spListItem=t,this.file=this.spListItem.get_file(),this.id=t.get_id(),this.created=this.getFieldValue(e.Fields.Created),this.createdBy=this.getFieldValue(e.Fields.CreatedBy),this.modified=this.getFieldValue(e.Fields.Modified),this.modifiedBy=this.getFieldValue(e.Fields.ModifiedBy),this.title=this.getFieldValue(e.Fields.Title),this.fileDirRef=this.getFieldValue(e.Fields.FileDirRef),this.fileSystemObjectType=this.spListItem.get_fileSystemObjectType()},t.prototype.mapToListItem=function(t){this.setFieldValue(t,e.Fields.Title,this.title),this.setFieldValue(t,e.Fields.FileLeafRef,this.fileLeafRef)},t.prototype.getFieldValue=function(e){var t=this.spListItem.get_fieldValues()[e];return"undefined"!=typeof t?this.spListItem.get_item(e):void 0},t.prototype.setFieldValue=function(e,t,i){void 0!==i&&e.set_item(t,i)},t}();e.BaseListItem=t}(SPListRepo||(SPListRepo={}));var SPListRepo;!function(e){var t=function(){function t(t,i){var r=this;this._listItemConstructor=i,this._context=SP.ClientContext.get_current(),t instanceof SP.Guid?this._loadListDeferred=e.ListService.getListById(t):"string"==typeof t&&(this._loadListDeferred=e.ListService.getListByUrl(t)),this._loadListDeferred.done(function(e){r._list=e}).fail(function(e){alert(e.message)})}return t.prototype.getItems=function(e){return this._getItemsByExpression(null,e)},t.prototype.getItemById=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t);i._context.load(o),i._context.executeQueryAsync(function(){var e=new i._listItemConstructor(o);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.getItemsByTitle=function(t,i){var r=CamlBuilder.Expression().TextField(e.Fields.Title).EqualTo(t);return this._getItemsByExpression(r,i)},t.prototype.getItemsByIds=function(t,i){var r=CamlBuilder.Expression().CounterField(e.Fields.ID).In(t);return this._getItemsByExpression(r,i)},t.prototype.getItemsInsideFolders=function(t,i){var r=this,o=CamlBuilder.Expression().TextField(e.Fields.FileDirRef).In(t.map(function(e){var t=r._getFolderRelativeUrl(e);return 0===t.indexOf("/")&&(t=t.substring(1)),t}));return this._getItemsByExpression(o,i)},t.prototype.getLastAddedItem=function(t,i){void 0===i&&(i=!1);var r,o=CamlBuilder.Expression().CounterField(e.Fields.ID).NotEqualTo(0);r=i?new e.QuerySettings(e.ViewScope.FilesOnlyRecursive,t,1):new e.QuerySettings(e.ViewScope.FilesOnly,t,1);var s=this._getSPCamlQuery(this._getViewQuery(o,r).OrderByDesc(e.Fields.ID));return this._getItemBySPCamlQuery(s)},t.prototype.getLastModifiedItem=function(t,i){void 0===i&&(i=!1);var r,o=CamlBuilder.Expression().CounterField(e.Fields.ID).NotEqualTo(0);r=i?new e.QuerySettings(e.ViewScope.FilesOnlyRecursive,t,1):new e.QuerySettings(e.ViewScope.FilesOnly,t,1);var s=this._getSPCamlQuery(this._getViewQuery(o,r).OrderByDesc(e.Fields.Modified));return this._getItemBySPCamlQuery(s)},t.prototype.saveItem=function(e){return!e.id||e.id<1?this._addItem(e):this._updateItem(e)},t.prototype.deleteItem=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t.id);i._context.load(o),o.deleteObject(),i._context.executeQueryAsync(function(){r.resolve()},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.createFolder=function(t){var i=this;return this._withPromise(function(r){var o=new SP.ListItemCreationInformation;o.set_underlyingObjectType(SP.FileSystemObjectType.folder),o.set_leafName(t);var s=i._list.addItem(o);s.set_item(e.Fields.Title,t),s.update();var n=i;i._context.load(s),i._context.executeQueryAsync(function(){var e=new n._listItemConstructor(s);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype.createFile=function(t,i,r){var o=this;return this._withPromise(function(s){var n=new SP.FileCreationInformation;n.set_url(t),n.set_overwrite(r),n.set_content(new SP.Base64EncodedByteArray);for(var l=0;l<i.length;l++)n.get_content().append(i.charCodeAt(l));var u=o._context.get_web().getFolderByServerRelativeUrl(o._getFolderRelativeUrl()).get_files().add(n);o._context.load(u),o._context.executeQueryAsync(function(){s.resolve(u)},function(t,i){s.reject(new e.RequestError(i))})})},t.prototype._getItemBySPCamlQuery=function(e){var t=this._createDeferred();return this._getItemsBySPCamlQuery(e).done(function(e){if(e.length>1)throw"Result contains more than one element";t.resolve(1===e.length?e[0]:null)}).fail(function(e){t.reject(e)}),t.promise()},t.prototype._addItem=function(t){var i=this;return this._withPromise(function(r){var o=new SP.ListItemCreationInformation;i.folder&&o.set_folderUrl(i._getFolderRelativeUrl());var s=i._list.addItem(o);t.mapToListItem(s);var n=i;s.update(),i._context.load(s),i._context.executeQueryAsync(function(){var e=new n._listItemConstructor(s);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._updateItem=function(t){var i=this;return this._withPromise(function(r){var o=i._list.getItemById(t.id);i._context.load(o),t.mapToListItem(o);var s=i;o.update(),i._context.executeQueryAsync(function(){var e=new s._listItemConstructor(o);r.resolve(e)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._getItemsByExpression=function(t,i){i=i||new e.QuerySettings(e.ViewScope.FilesFolders);var r=this._getSPCamlQuery(this._getViewQuery(t,i));return this._getItemsBySPCamlQuery(r)},t.prototype._getItemByExpression=function(t,i){i=i||new e.QuerySettings(e.ViewScope.FilesFolders);var r=this._getSPCamlQuery(this._getViewQuery(t,i));return this._getItemBySPCamlQuery(r)},t.prototype._getViewQuery=function(t,i){var r,o=(new CamlBuilder).View(i.viewFields);i.rowLimit&&(o=o.RowLimit(i.rowLimit));var s=CamlBuilder.Expression().IntegerField(e.Fields.FSObjType).EqualTo(1);switch(i.viewScope){case e.ViewScope.FilesOnly:o=o.Scope(CamlBuilder.ViewScope.FilesOnly);break;case e.ViewScope.FoldersOnly:case e.ViewScope.FilesFolders:break;case e.ViewScope.FilesOnlyRecursive:o=o.Scope(CamlBuilder.ViewScope.Recursive);break;case e.ViewScope.FoldersOnlyRecursive:case e.ViewScope.FilesFoldersRecursive:o=o.Scope(CamlBuilder.ViewScope.RecursiveAll);break;default:o=o.Scope(CamlBuilder.ViewScope.RecursiveAll)}return r=i.viewScope===e.ViewScope.FoldersOnly||i.viewScope===e.ViewScope.FoldersOnlyRecursive?t?o.Query().Where().All(t,s):o.Query().Where().All(s):t?o.Query().Where().All(t):o.Query().Where().All()},t.prototype._getSPCamlQuery=function(e){var t=e.ToString(),i=new SP.CamlQuery;return i.set_viewXml(t),i},t.prototype._getItemsBySPCamlQuery=function(t){var i=this;return this._withPromise(function(r){i.folder&&t.set_folderServerRelativeUrl(i._getFolderRelativeUrl());var o=i._list.getItems(t);i._context.load(o);var s=i;i._context.executeQueryAsync(function(){for(var e=o.getEnumerator(),t=[];e.moveNext();)t.push(new s._listItemConstructor(e.get_current()));r.resolve(t)},function(t,i){r.reject(new e.RequestError(i))})})},t.prototype._getFolderRelativeUrl=function(t){var i=t||this.folder,r=this._list.get_rootFolder().get_serverRelativeUrl();return r=e.Helper.ensureTrailingSlash(r),String.format("{0}{1}",r,i)},t.prototype._createDeferred=function(){return jQuery.Deferred()},t.prototype._withPromise=function(e){var t=this._createDeferred();return this._loadListDeferred.done(function(){e(t)}),t.promise()},t}();e.ListRepository=t}(SPListRepo||(SPListRepo={}));

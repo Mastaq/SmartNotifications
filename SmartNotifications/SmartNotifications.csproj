@@ -63,6 +63,8 @@
     <Content Include="App\jslink\color-field\templates.html" />
     <Content Include="App\lib\angular-busy\dist\angular-busy.css" />
     <Content Include="App\lib\angular-busy\dist\angular-busy.js" />
+    <Content Include="App\lib\angular-toastr\dist\angular-toastr.css" />
+    <Content Include="App\lib\angular-toastr\dist\angular-toastr.tpls.js" />
     <Content Include="App\lib\camljs\index.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
     <Content Include="App\lib\please-wait\build\please-wait.css" />
@@ -136,9 +138,6 @@
     <Content Include="App\build\sn.app.external.css" />
     <Content Include="App\build\sn.app.external.js" />
     <Content Include="App\build\sn.app.js" />
-    <Content Include="App\js\app.js" />
-    <Content Include="App\js\controllers\HomeCtrl.js" />
-    <Content Include="App\js\interfaces\ICtrlScope.js" />
     <Content Include="App\lib\angular-animate\angular-animate.js" />
     <Content Include="App\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="App\lib\angular-route\angular-route.js" />
@@ -231,6 +230,8 @@
     <TypeScriptCompile Include="App\ng\model\AppSettings.ts" />
     <TypeScriptCompile Include="App\ng\model\Notifications.ts" />
     <TypeScriptCompile Include="App\ng\repositories\AppSettingsRepository.ts" />
+    <TypeScriptCompile Include="App\ng\services\Constants.ts" />
+    <TypeScriptCompile Include="App\ng\services\Notification.ts" />
     <TypeScriptCompile Include="App\ng\services\SPColorService.ts" />
     <TypeScriptCompile Include="App\ng\services\PleaseWaitService.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
@@ -251,6 +252,7 @@
     <TypeScriptCompile Include="typings\sharepoint\SharePoint.d.ts" />
     <TypeScriptCompile Include="typings\spectrum\spectrum.d.ts" />
     <TypeScriptCompile Include="typings\tinycolor\tinycolor.d.ts" />
+    <TypeScriptCompile Include="typings\toastr\toastr.d.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

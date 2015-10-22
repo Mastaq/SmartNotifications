@@ -6,5 +6,6 @@
     <File Path="typings\sharepoint\SharePoint.d.ts" Url="typings/sharepoint/SharePoint.d.ts" ReplaceContent="TRUE" />
     <File Path="typings\camljs\camljs.d.ts" Url="typings/camljs/camljs.d.ts" ReplaceContent="TRUE" />
     <File Path="External\camljs.js" Url="External/camljs.js" ReplaceContent="TRUE" />
+    <File Path="typings\toastr\toastr.d.ts" Url="typings/toastr/toastr.d.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

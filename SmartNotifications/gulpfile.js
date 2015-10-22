@@ -44,7 +44,8 @@ var externalcss = [
 	baseExternalPath + "bootstrap/dist/css/bootstrap.css",
 	baseExternalPath + "font-awesome/css/font-awesome.css",
 	baseExternalPath + "eeh-navigation/dist/eeh-navigation.css",
-	baseExternalPath + "please-wait/build/please-wait.css"
+	baseExternalPath + "please-wait/build/please-wait.css",
+	baseExternalPath + "angular-toastr/dist/angular-toastr.css"
 ];
 
 var onError = function (err) {
@@ -188,7 +189,7 @@ gulp.task("debug", function (callback) {
 
 gulp.task("watch", function () {
 	gulp.watch("App/jslink/**/*.ts", ["build-app-jslink"]);
-	gulp.watch("App/ng/**/*.ts", ["ts", "build-app-ts"]);
+	gulp.watch("App/ng/**/*.ts", ["build-app-ts"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
 	gulp.watch("App/index.tmpl", ["template"]);
 

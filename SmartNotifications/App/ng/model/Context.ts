@@ -7,5 +7,6 @@ namespace SN {
 		hostTitle: string;
 		version: string;
 		appLeafUrl: string;
+		debug: boolean;
 	}
 }
