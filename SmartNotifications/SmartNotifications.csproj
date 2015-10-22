@@ -79,6 +79,8 @@
     <Content Include="Features\SmartNotifications\SmartNotifications.Template.xml">
       <DependentUpon>SmartNotifications.feature</DependentUpon>
     </Content>
+    <Content Include="HostWeb\Elements.xml" />
+    <Content Include="HostWeb\Sample.txt" />
     <Content Include="settings.js" />
     <None Include="AppWebComponents\ContentTypes\AppSettings\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d2099c83-b2bf-49cb-83f6-3e763389b503}</SharePointProjectItemId>
@@ -132,6 +134,9 @@
     <None Include="Content\css\_partials\_spinner.scss" />
     <None Include="Features\SmartNotifications\SmartNotifications.feature">
       <FeatureId>{d10442b8-c412-42d1-b5d9-c77ffdd2fdcc}</FeatureId>
+    </None>
+    <None Include="HostWeb\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{55a434c9-53cc-4691-af48-32f435d25ae8}</SharePointProjectItemId>
     </None>
     <None Include="package.json" />
     <Content Include="App\build\sn.app.css" />

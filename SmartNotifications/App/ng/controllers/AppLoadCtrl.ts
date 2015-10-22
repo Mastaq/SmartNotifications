@@ -9,7 +9,8 @@ namespace SN {
 			"SPService",
 			"$log",
 			"toastr",
-			"Consts"
+			"Consts",
+			"$http"
         ];
 
 		constructor(
@@ -19,7 +20,8 @@ namespace SN {
 			private spservice: SPService,
 			private $log: ng.ILogService,
 			private toastr: Toastr,
-			private consts: Constants) {
+			private consts: Constants,
+			private $http: ng.IHttpService) {
 
             $scope.vm = this;
 
@@ -29,13 +31,9 @@ namespace SN {
 			spservice.getSettings().then((appSettings) => {
 				//first run, the app is not inited yet
 				if (appSettings == null) {
-					this.spservice.createLibrary().then((library) => {
-						
-					}, (err: SPListRepo.RequestError) => {
-						$log.error(err.message);
-						$log.error(err.stackTrace);
-						this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000});
-					})
+					this.spservice.createHostLibrary().then((library) => {
+						this.uploadFiles(library);
+					}, this.onError)
 					.finally(() => {
 						this.pleaseWait.close();
 					});
@@ -43,11 +41,27 @@ namespace SN {
 					this.pleaseWait.close();
 				}
 			}, (err: SPListRepo.RequestError) => {
-				$log.error(err.message);
-				$log.error(err.stackTrace);
-
-				this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
+				this.onError(err);
+				this.pleaseWait.close();
 			});
+		}
+
+		private onError(err: SPListRepo.RequestError) {
+			this.$log.error(err.message);
+			this.$log.error(err.stackTrace);
+
+			this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
+		}
+
+		private uploadFiles(library: SP.List) {
+			this.$http.get("./../HostWeb/Sample.txt")
+				.success(data => {
+					this.spservice.uploadFileToHostLibrary("Sample.txt", <string>data, library.get_rootFolder())
+						.then(() => {
+							this.toastr.success("Uploaded!");
+						});
+				})
+				.catch(this.onError);
 		}
     }
 
