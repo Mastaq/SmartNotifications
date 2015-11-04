@@ -67,6 +67,7 @@
     <Content Include="App\lib\angular-toastr\dist\angular-toastr.tpls.js" />
     <Content Include="App\lib\camljs\index.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
+    <Content Include="App\lib\lz-string\libs\lz-string.min.js" />
     <Content Include="App\lib\please-wait\build\please-wait.css" />
     <Content Include="App\lib\please-wait\build\please-wait.js" />
     <Content Include="App\lib\sp-list-repository\build\sp.list.repository.min.js" />
@@ -74,13 +75,17 @@
     <Content Include="App\lib\spectrum\spectrum.js" />
     <Content Include="App\sp\chrome.loader.js" />
     <Content Include="App\templates\chrome.control.html" />
+    <Content Include="App\templates\onoff.html" />
     <Content Include="Elements.xml" />
     <Content Include="External\camljs.js" />
     <Content Include="Features\SmartNotifications\SmartNotifications.Template.xml">
       <DependentUpon>SmartNotifications.feature</DependentUpon>
     </Content>
+    <Content Include="HostWeb\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
-    <Content Include="HostWeb\Sample.txt" />
+    <Content Include="HostWeb\sn.scriptlink.js" />
+    <Content Include="Pages\Default.aspx" />
+    <Content Include="Pages\Elements.xml" />
     <Content Include="settings.js" />
     <None Include="AppWebComponents\ContentTypes\AppSettings\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d2099c83-b2bf-49cb-83f6-3e763389b503}</SharePointProjectItemId>
@@ -135,6 +140,7 @@
     <None Include="Features\SmartNotifications\SmartNotifications.feature">
       <FeatureId>{d10442b8-c412-42d1-b5d9-c77ffdd2fdcc}</FeatureId>
     </None>
+    <None Include="HostWeb\JSInject.tmpl" />
     <None Include="HostWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{55a434c9-53cc-4691-af48-32f435d25ae8}</SharePointProjectItemId>
     </None>
@@ -174,6 +180,9 @@
     <Content Include="gulpfile.js" />
     <None Include="App\index.tmpl" />
     <Content Include="App\index.html" />
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{054d37cc-66c5-4334-92fc-13bc5e8a1187}</SharePointProjectItemId>
+    </None>
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a8abcf38-1b1d-4d42-a207-e148a9427796}</SharePointProjectItemId>
     </None>
@@ -230,19 +239,22 @@
     <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\AppLoadCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\OnOffCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\SideNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\factories\VendorsFactory.ts" />
-    <TypeScriptCompile Include="App\ng\model\AppSettings.ts" />
+    <TypeScriptCompile Include="App\ng\model\AppSettingsBaseItem.ts" />
+    <TypeScriptCompile Include="App\ng\model\CommonAppSettings.ts" />
     <TypeScriptCompile Include="App\ng\model\Notifications.ts" />
     <TypeScriptCompile Include="App\ng\repositories\AppSettingsRepository.ts" />
     <TypeScriptCompile Include="App\ng\services\Constants.ts" />
-    <TypeScriptCompile Include="App\ng\services\Notification.ts" />
+    <TypeScriptCompile Include="App\ng\services\Extensions.ts" />
     <TypeScriptCompile Include="App\ng\services\SPColorService.ts" />
     <TypeScriptCompile Include="App\ng\services\PleaseWaitService.ts" />
     <TypeScriptCompile Include="App\ng\interfaces\ICtrlScope.ts" />
     <TypeScriptCompile Include="App\ng\model\Context.ts" />
     <TypeScriptCompile Include="App\ng\services\ContextService.ts" />
     <TypeScriptCompile Include="App\ng\services\SPService.ts" />
+    <TypeScriptCompile Include="App\ng\services\Storage.ts" />
     <TypeScriptCompile Include="App\ng\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
@@ -253,7 +265,9 @@
     <TypeScriptCompile Include="typings\camljs\camljs.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\knockout\knockout.d.ts" />
+    <TypeScriptCompile Include="typings\lz-string\lz-string.d.ts" />
     <TypeScriptCompile Include="typings\microsoft-ajax\microsoft.ajax.d.ts" />
+    <TypeScriptCompile Include="typings\q\Q.d.ts" />
     <TypeScriptCompile Include="typings\sharepoint\SharePoint.d.ts" />
     <TypeScriptCompile Include="typings\spectrum\spectrum.d.ts" />
     <TypeScriptCompile Include="typings\tinycolor\tinycolor.d.ts" />

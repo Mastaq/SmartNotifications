@@ -3,7 +3,7 @@
 
 namespace SN {
 	export class AppSettingsBaseItem extends SPListRepo.BaseListItem {
-		value_SN: SP.FieldMultiLineText;
+		value_SN: string;
 		key_SN: string;
 		contentType: string;
 		_UIVersionString: string;

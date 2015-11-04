@@ -11,10 +11,15 @@ namespace SN {
 			}
 		}
 
-		public getSettingsByKey(key: string): JQueryPromise<AppSettingsBaseItem> {
+		protected _createDeferred<T>(): SPListRepo.IDeferred<T> {
+			
+			return new SPListRepo.ngDeferred<T>();
+		}
+
+		public getSettingsByKey(key: string): ng.IPromise<AppSettingsBaseItem> {
 			var camlExpression = CamlBuilder.Expression().TextField(Fields.Key).EqualTo(key);
 
-			return this._getItemByExpression(camlExpression);
+			return <ng.IPromise<AppSettingsBaseItem>>this._getItemByExpression(camlExpression).getUnderlyingPromise();
 		}
 	}
 }

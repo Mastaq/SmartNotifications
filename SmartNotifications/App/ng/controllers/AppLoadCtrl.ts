@@ -1,6 +1,14 @@
 ﻿/// <reference path="../_references.ts" />
 
 namespace SN {
+
+	enum ErrorTypes {
+		NoPermissions,
+		AppAlreadyInited
+	}
+
+	interface IError { customError: boolean, type: ErrorTypes }
+
     export class AppLoadCtrl {
         static $inject = [
 			"$scope",
@@ -10,8 +18,13 @@ namespace SN {
 			"$log",
 			"toastr",
 			"Consts",
-			"$http"
+			"$http",
+			"$q",
+			"ContextService"
         ];
+
+		hasPermissions = false;
+		permissionChecked = false;
 
 		constructor(
 			private $scope: ICtrlScope<AppLoadCtrl>,
@@ -21,47 +34,69 @@ namespace SN {
 			private $log: ng.ILogService,
 			private toastr: Toastr,
 			private consts: Constants,
-			private $http: ng.IHttpService) {
+			private $http: ng.IHttpService,
+			private $q: ng.IQService,
+			private context: ContextService) {
 
             $scope.vm = this;
 
 			this.pleaseWait.start(colorService.getSuiteBarBackground());
 			this.colorService.applyBackgrounds();
 
-			spservice.getSettings().then((appSettings) => {
-				//first run, the app is not inited yet
-				if (appSettings == null) {
-					this.spservice.createHostLibrary().then((library) => {
-						this.uploadFiles(library);
-					}, this.onError)
-					.finally(() => {
-						this.pleaseWait.close();
-					});
-				} else {
-					this.pleaseWait.close();
-				}
-			}, (err: SPListRepo.RequestError) => {
-				this.onError(err);
-				this.pleaseWait.close();
-			});
-		}
+			spservice.doesUserHaveFullControl()
+				//.then(hasFullControl => {
+				//	this.hasPermissions = hasFullControl;
+				//	if (!hasFullControl) {
+				//		var dfd = this.$q.defer();
+				//		dfd.reject(<IError>{ customError: true, type: ErrorTypes.NoPermissions });
+				//		return dfd.promise;
+				//	}
+				//	return spservice.settingsRepo.getSettingsByKey(this.consts.SettingsKey);
+				//})
+				.then((appSettings) => {
+					//first run, the app is not inited yet
+					//if (appSettings == null) {
+					this.hasPermissions = true;
+						return this.spservice.createHostLibrary();
 
-		private onError(err: SPListRepo.RequestError) {
-			this.$log.error(err.message);
-			this.$log.error(err.stackTrace);
-
-			this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
-		}
-
-		private uploadFiles(library: SP.List) {
-			this.$http.get("./../HostWeb/Sample.txt")
-				.success(data => {
-					this.spservice.uploadFileToHostLibrary("Sample.txt", <string>data, library.get_rootFolder())
-						.then(() => {
-							this.toastr.success("Uploaded!");
-						});
+					//} else {
+					//	var dfd = this.$q.defer();
+					//	dfd.reject(<IError>{ customError: true, type: ErrorTypes.AppAlreadyInited });
+					//	return dfd.promise;
+					//}
 				})
-				.catch(this.onError);
+				//.then(library => {
+				//	return this.spservice.uploadFiles(library.get_rootFolder());
+				//})
+				.then(() => {
+					var settings = new CommonAppSettings();
+					settings.version = this.context.version;
+					var appSettingsModel = new AppSettingsBaseItem();
+					appSettingsModel.key_SN = this.consts.AppSettingsKey;
+					appSettingsModel.value_SN = LZString.compressToBase64(JSON.stringify(settings));
+					return this.spservice.settingsRepo.saveItem(appSettingsModel).getUnderlyingPromise();
+				})
+				.catch(err => {
+					if (err instanceof SPListRepo.RequestError) {
+						this.onError(err);
+					} else if (!err.customError) {
+						this.onError(err);
+					}
+				})
+				.finally(() => {
+					this.pleaseWait.close();
+					this.permissionChecked = true;
+				});
+		}
+
+		private onError(err: SPListRepo.RequestError | any) {
+			if (err instanceof SPListRepo.RequestError) {
+				this.$log.error(err.message);
+				this.$log.error(err.stackTrace);
+			} else {
+				this.$log.error(err);
+			}
+			this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
 		}
     }
 

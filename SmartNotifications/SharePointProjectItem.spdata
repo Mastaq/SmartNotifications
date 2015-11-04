@@ -8,5 +8,7 @@
     <ProjectItemFile Source="typings\camljs\camljs.d.ts" Target="typings\camljs\" Type="ElementFile" />
     <ProjectItemFile Source="External\camljs.js" Target="External\" Type="ElementFile" />
     <ProjectItemFile Source="typings\toastr\toastr.d.ts" Target="typings\toastr\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\q\Q.d.ts" Target="typings\q\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\lz-string\lz-string.d.ts" Target="typings\lz-string\" Type="ElementFile" />
   </Files>
 </ProjectItem>

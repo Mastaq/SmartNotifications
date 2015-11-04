@@ -88,7 +88,7 @@
     <ProjectItemFile Source="ng\services\SPColorService.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="ng\factories\VendorsFactory.ts" Target="App\ng\factories\" Type="ElementFile" />
     <ProjectItemFile Source="ng\controllers\AppLoadCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\model\AppSettings.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\model\AppSettingsBaseItem.ts" Target="App\ng\model\" Type="ElementFile" />
     <ProjectItemFile Source="ng\services\SPService.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="ng\repositories\AppSettingsRepository.ts" Target="App\ng\repositories\" Type="ElementFile" />
     <ProjectItemFile Source="ng\common\Fields.ts" Target="App\ng\common\" Type="ElementFile" />
@@ -96,9 +96,14 @@
     <ProjectItemFile Source="lib\sp-list-repository\build\sp.list.repository.min.js" Target="App\lib\sp-list-repository\build\" Type="ElementFile" />
     <ProjectItemFile Source="lib\camljs\index.js" Target="App\lib\camljs\" Type="ElementFile" />
     <ProjectItemFile Source="ng\services\Constants.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\Notification.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="lib\angular-toastr\dist\angular-toastr.css" Target="App\lib\angular-toastr\dist\" Type="ElementFile" />
     <ProjectItemFile Source="lib\angular-toastr\dist\angular-toastr.tpls.js" Target="App\lib\angular-toastr\dist\" Type="ElementFile" />
     <ProjectItemFile Source="ng\model\Notifications.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\onoff.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\OnOffCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\Storage.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\model\CommonAppSettings.ts" Target="App\ng\model\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\lz-string\libs\lz-string.min.js" Target="App\lib\lz-string\libs\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\services\Extensions.ts" Target="App\ng\services\" Type="ElementFile" />
   </Files>
 </ProjectItem>

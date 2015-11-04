@@ -36,16 +36,22 @@
       "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
     },
     "sharepoint/SharePoint.d.ts": {
-      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+      "commit": "0dd29bf8253536ae24e61c109524e924ea510046"
     },
     "microsoft-ajax/microsoft.ajax.d.ts": {
-      "commit": "3a6e1b8988eba0ba74fe4db20c950242552857e2"
+      "commit": "0dd29bf8253536ae24e61c109524e924ea510046"
     },
     "camljs/camljs.d.ts": {
       "commit": "af5b8275d1f2b92738b93fddabc461fc20c553a1"
     },
     "toastr/toastr.d.ts": {
       "commit": "44cbde48eecd1918ed54b3be49a9752688b6c65a"
+    },
+    "q/Q.d.ts": {
+      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
+    },
+    "lz-string/lz-string.d.ts": {
+      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
     }
   }
 }

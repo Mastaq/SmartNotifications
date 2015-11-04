@@ -12,3 +12,5 @@
 /// <reference path="sharepoint/SharePoint.d.ts" />
 /// <reference path="camljs/camljs.d.ts" />
 /// <reference path="toastr/toastr.d.ts" />
+/// <reference path="q/Q.d.ts" />
+/// <reference path="lz-string/lz-string.d.ts" />

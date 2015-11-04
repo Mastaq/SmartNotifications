@@ -2,6 +2,8 @@
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="HostWeb\" Type="ElementManifest" />
-    <ProjectItemFile Source="Sample.txt" Target="HostWeb\" Type="ElementFile" />
+    <ProjectItemFile Source="knockout.js" Target="HostWeb\" Type="ElementFile" />
+    <ProjectItemFile Source="JSInject.tmpl" Target="HostWeb\" Type="ElementFile" />
+    <ProjectItemFile Source="sn.scriptlink.js" Target="HostWeb\" Type="ElementFile" />
   </Files>
 </ProjectItem>

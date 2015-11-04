@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="HostWeb">
-    <File Path="HostWeb\Sample.txt" Url="HostWeb/Sample.txt" ReplaceContent="TRUE" />
+    <File Path="HostWeb\knockout.js" Url="HostWeb/knockout.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\JSInject.tmpl" Url="HostWeb/JSInject.tmpl" ReplaceContent="TRUE" />
+    <File Path="HostWeb\sn.scriptlink.js" Url="HostWeb/sn.scriptlink.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

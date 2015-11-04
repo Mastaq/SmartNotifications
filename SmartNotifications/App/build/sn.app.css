@@ -51,6 +51,16 @@
   overflow: visible;
   display: table-cell; }
 
+.hide {
+  display: none; }
+
+.denied {
+  margin: 20px; }
+
+[ui-view].ng-enter {
+  -webkit-animation: fadeIn 0.5s;
+          animation: fadeIn 0.5s; }
+
 .spinner {
   margin: 100px auto 0;
   width: 70px;

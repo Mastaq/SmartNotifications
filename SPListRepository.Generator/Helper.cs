@@ -32,7 +32,7 @@ namespace SPListRepository.Generator
 				{FieldType.URL, "SP.FieldUrlValue"},
 				{FieldType.User, "SP.FieldUserValue"},
 				{FieldType.MultiChoice, "SP.FieldMultiChoice"},
-				{FieldType.Note, "SP.FieldMultiLineText"},
+				{FieldType.Note, "string"},
 				{FieldType.Computed, "string"}
 			};
 

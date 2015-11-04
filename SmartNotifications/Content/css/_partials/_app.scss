@@ -1,1 +1,11 @@
-﻿
+﻿.hide{
+	display:none;
+}
+
+.denied{
+	margin: 20px;
+}
+
+[ui-view].ng-enter {
+	animation: fadeIn 0.5s;
+}

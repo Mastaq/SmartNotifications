@@ -23,8 +23,12 @@ namespace SN {
 						url: "/",
 						templateUrl: "../App/templates/home.html",
 						controller: "HomeCtrl"
+					})
+					.state("onoff", {
+						url: "/onoff",
+						templateUrl: "../App/templates/onoff.html",
+						controller: "OnOffCtrl"
 					});
-
 
 				eehNavigationProvider
 					.menuItem("SideNav.home", {
@@ -39,10 +43,9 @@ namespace SN {
 						href: "#"
 					})
 					.menuItem("SideNav.customizationStatus", {
-						text: "[Host customization status]",
-						iconClass: "glyphicon-th-list",
-						target: "_blank",
-						href: "#"
+						text: "Switch On\\Off",
+						iconClass: "fa fa-cog",
+						state: "onoff"
 					})
 					.menuItem("SideNav.allNotifications", {
 						text: "All Notifications",
@@ -63,7 +66,7 @@ namespace SN {
 						href: "#"
 					})
 					.menuItem("SideNav.updates", {
-						text: "[Updates]",
+						text: "[Check for Updates]",
 						iconClass: "glyphicon-th-list",
 						target: "_blank",
 						href: "#"

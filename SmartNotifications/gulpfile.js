@@ -24,6 +24,7 @@ var externaljs = [
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js",
 		baseExternalPath + "please-wait/build/please-wait.js",
+		baseExternalPath + "lz-string/libs/lz-string.min.js",
 		baseExternalPath + "camljs/index.js",
 		baseExternalPath + "sp-list-repository/build/sp.list.repository.min.js"
 ];

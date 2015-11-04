@@ -8,16 +8,25 @@
 
 </head>
 <body class="ms-backgroundImage ms-backgroundImage">
-	<div id="sn-app" ng-controller="AppLoadCtrl">
-
+	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak>
 		<div ng-include src="'templates/chrome.control.html'"></div>
-
-		<div>
-			<div ng-controller="SideNavCtrl">
-				<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
-					<ui-view></ui-view>
-				</eeh-navigation-sidebar>
+		<div ng-show="vm.hasPermissions">
+			<div>
+				<div ng-controller="SideNavCtrl">
+					<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
+						<div ui-view ng-cloak></div>
+					</eeh-navigation-sidebar>
+				</div>
 			</div>
+		</div>
+		<div ng-show="!vm.hasPermissions && vm.permissionChecked" ng-class="{hide: !vm.permissionChecked}" class="hide denied">
+			<h1>
+				<b>Access denied. You don't have enough permissions to manage the app.</b>
+			</h1>
+			<br />
+			<h1>
+				Permissions required: Full Control.
+			</h1>
 		</div>
 	</div>
 
