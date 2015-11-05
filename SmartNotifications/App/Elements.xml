@@ -104,5 +104,7 @@
     <File Path="App\lib\lz-string\libs\lz-string.min.js" Url="App/lib/lz-string/libs/lz-string.min.js" ReplaceContent="TRUE" />
     <File Path="App\ng\services\Extensions.ts" Url="App/ng/services/Extensions.ts" ReplaceContent="TRUE" />
     <File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap-toggle\css\bootstrap-toggle.min.css" Url="App/lib/bootstrap-toggle/css/bootstrap-toggle.min.css" ReplaceContent="TRUE" />
+    <File Path="App\lib\bootstrap-toggle\js\bootstrap-toggle.min.js" Url="App/lib/bootstrap-toggle/js/bootstrap-toggle.min.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

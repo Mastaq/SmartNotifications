@@ -105,5 +105,7 @@
     <ProjectItemFile Source="lib\lz-string\libs\lz-string.min.js" Target="App\lib\lz-string\libs\" Type="ElementFile" />
     <ProjectItemFile Source="ng\services\Extensions.ts" Target="App\ng\services\" Type="ElementFile" />
     <ProjectItemFile Source="lib\jquery\dist\jquery.js" Target="App\lib\jquery\dist\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap-toggle\css\bootstrap-toggle.min.css" Target="App\lib\bootstrap-toggle\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap-toggle\js\bootstrap-toggle.min.js" Target="App\lib\bootstrap-toggle\js\" Type="ElementFile" />
   </Files>
 </ProjectItem>

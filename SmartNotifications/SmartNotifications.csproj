@@ -65,6 +65,8 @@
     <Content Include="App\lib\angular-busy\dist\angular-busy.js" />
     <Content Include="App\lib\angular-toastr\dist\angular-toastr.css" />
     <Content Include="App\lib\angular-toastr\dist\angular-toastr.tpls.js" />
+    <Content Include="App\lib\bootstrap-toggle\css\bootstrap-toggle.min.css" />
+    <Content Include="App\lib\bootstrap-toggle\js\bootstrap-toggle.min.js" />
     <Content Include="App\lib\camljs\index.js" />
     <Content Include="App\lib\jquery\dist\jquery.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
@@ -84,6 +86,9 @@
     </Content>
     <Content Include="HostWeb\build\sn.manage.host.js" />
     <Content Include="HostWeb\build\styles.css" />
+    <Content Include="HostWeb\External\bootstrap-toggle.min.css" />
+    <Content Include="HostWeb\External\bootstrap-toggle.min.js" />
+    <Content Include="HostWeb\External\bootstrap.min.js" />
     <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />

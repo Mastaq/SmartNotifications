@@ -21,7 +21,8 @@
 		"angular-busy": "https://github.com/s-KaiNet/angular-busy.git",
 		"sp-list-repository": "^2.0.7",
 		"camljs": "./External/camljs.js",
-		"lz-string": "1.4.4"
+		"lz-string": "1.4.4",
+		"bootstrap-toggle": "2.2.1"
 	},
 	"overrides": {
 		"bootstrap": {

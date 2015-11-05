@@ -3,10 +3,26 @@
 		<h1>
 			<b>Access denied. You don't have enough permissions to manage the app.</b>
 		</h1>
-		<br />
+		<br/>
 		<h1>
 			Permissions required: Full Control.
 		</h1>
 	</div>
-	<div data-bind="if: loaded() && hasPermissions()">has permissions</div>
+	<div data-bind="if: loaded() && hasPermissions()">
+		<h3>Use button below to switch on or switch off Smart Notifications on this site:</h3>
+		<div class="col-md-2 col-md-offset-3">
+			<div class="btn-group">
+				<label class="btn" data-bind="css: { 'active': snEnabled, 'btn-primary': snEnabled, 'btn-default': !snEnabled() }">
+					<input type="radio" name="options" data-bind="checked: snEnabled, 
+																	checkedValue: true, 
+																	click: toggleState" id="option1">Enable
+				</label>
+				<label class="btn btn-default" data-bind="css: { 'active': !snEnabled()}">
+					<input type="radio" name="options" data-bind="checked: snEnabled, 
+																   checkedValue: false, 
+																   click: toggleState" id="option2">Disable
+				</label>
+			</div>
+		</div>
+	</div>
 </script>
