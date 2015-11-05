@@ -39,7 +39,6 @@
     <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff2" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\fonts\FontAwesome.otf" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\jquery\dist\jquery.js" Target="App\lib\jquery\dist\" Type="ElementFile" />
     <ProjectItemFile Source="ng\app.ts" Target="App\ng\" Type="ElementFile" />
     <ProjectItemFile Source="ng\_references.ts" Target="App\ng\" Type="ElementFile" />
     <ProjectItemFile Source="templates\home.html" Target="App\templates\" Type="ElementFile" />
@@ -105,5 +104,6 @@
     <ProjectItemFile Source="ng\model\CommonAppSettings.ts" Target="App\ng\model\" Type="ElementFile" />
     <ProjectItemFile Source="lib\lz-string\libs\lz-string.min.js" Target="App\lib\lz-string\libs\" Type="ElementFile" />
     <ProjectItemFile Source="ng\services\Extensions.ts" Target="App\ng\services\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\jquery\dist\jquery.js" Target="App\lib\jquery\dist\" Type="ElementFile" />
   </Files>
 </ProjectItem>

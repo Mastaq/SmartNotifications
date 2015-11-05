@@ -15,8 +15,13 @@ namespace SN {
 		settingsRepo: AppSettingsRepository;
 
 		private fileList = [
-			"./../HostWeb/knockout.js",
-			"./../HostWeb/sn.scriptlink.js"];
+			"./../HostWeb/template/templates.html",
+			"./../HostWeb/External/knockout.js",
+			"./../HostWeb/External/jquery.js",
+			"./../HostWeb/External/bootstrap.css",
+			"./../HostWeb/build/styles.css",
+			"./../HostWeb/build/sn.manage.host.js",
+			"./../HostWeb/build/sn.scriptlink.js"];
 
 		constructor(
 			vendorsFactory: { $: JQueryStatic },
@@ -112,13 +117,13 @@ namespace SN {
 
 		uploadFiles(folder: SP.Folder): ng.IPromise<any> {
 			var dfd = this.$q.defer();
-			
+
 			this.$q.all(this.fileList.map(file => {
 				return this.$http.get<string>(file);
 			}))
 				.then(data => {
 					return this.$q.all(this.fileList.map((file, indx) => {
-						return this.uploadFileToFolder(this.getFileName(file), <string>data[indx], folder);
+						return this.uploadFileToFolder(this.getFileName(file), (<any>data[indx]).data, folder);
 					}));
 				})
 				.then(() => {
@@ -192,11 +197,6 @@ namespace SN {
 		private createManageAppView(library: SP.List): ng.IPromise<any> {
 			var dfd = this.$q.defer<any>();
 
-			//var wpstr = "<webParts>  <webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\">    <metaData>      <type name=\"Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" />      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>    </metaData>    <data>      <properties>        <property name=\"ExportMode\" type=\"exportmode\">All</property>        <property name=\"HelpUrl\" type=\"string\" />        <property name=\"Hidden\" type=\"bool\">False</property>        <property name=\"Description\" type=\"string\">Allows authors to insert HTML snippets or scripts.</property>        <property name=\"Content\" type=\"string\">&lt;div&gt;hello!&lt;/div&gt;</property>        <property name=\"CatalogIconImageUrl\" type=\"string\" />        <property name=\"Title\" type=\"string\">Script Editor</property>        <property name=\"AllowHide\" type=\"bool\">True</property>        <property name=\"AllowMinimize\" type=\"bool\">True</property>        <property name=\"AllowZoneChange\" type=\"bool\">True</property>        <property name=\"TitleUrl\" type=\"string\" />        <property name=\"ChromeType\" type=\"chrometype\">None</property>        <property name=\"AllowConnect\" type=\"bool\">True</property>        <property name=\"Width\" type=\"unit\" />        <property name=\"Height\" type=\"unit\" />        <property name=\"HelpMode\" type=\"helpmode\">Navigate</property>        <property name=\"AllowEdit\" type=\"bool\">True</property>        <property name=\"TitleIconImageUrl\" type=\"string\" />        <property name=\"Direction\" type=\"direction\">NotSet</property>        <property name=\"AllowClose\" type=\"bool\">True</property>        <property name=\"ChromeState\" type=\"chromestate\">Normal</property>      </properties>    </data>  </webPart></webParts>";
-			//var wpstr = "<webParts>  <webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\">    <metaData>      <type name=\"Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" />      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>    </metaData>    <data>      <properties>        <property name=\"ExportMode\" type=\"exportmode\">All</property>        <property name=\"HelpUrl\" type=\"string\" />        <property name=\"Hidden\" type=\"bool\">False</property>        <property name=\"Description\" type=\"string\">Allows authors to insert HTML snippets or scripts.</property>        <property name=\"Content\" type=\"string\">&lt;div&gt;hellloooo!!!&lt;/div&gt;</property>        <property name=\"CatalogIconImageUrl\" type=\"string\" />        <property name=\"Title\" type=\"string\">Script Editor</property>        <property name=\"AllowHide\" type=\"bool\">True</property>        <property name=\"AllowMinimize\" type=\"bool\">True</property>        <property name=\"AllowZoneChange\" type=\"bool\">True</property>        <property name=\"TitleUrl\" type=\"string\" />        <property name=\"ChromeType\" type=\"chrometype\">None</property>        <property name=\"AllowConnect\" type=\"bool\">True</property>        <property name=\"Width\" type=\"unit\" />        <property name=\"Height\" type=\"unit\" />        <property name=\"HelpMode\" type=\"helpmode\">Navigate</property>        <property name=\"AllowEdit\" type=\"bool\">True</property>        <property name=\"TitleIconImageUrl\" type=\"string\" />        <property name=\"Direction\" type=\"direction\">NotSet</property>        <property name=\"AllowClose\" type=\"bool\">True</property>        <property name=\"ChromeState\" type=\"chromestate\">Normal</property>      </properties>    </data>  </webPart></webParts>";
-			var wpstr = "<?xml version=\"1.0\" encoding=\"utf-8\"?><WebPart xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/WebPart/v2\">	<Title>		<![CDATA[Rich Forms Editor - Customers]]>	</Title>	<FrameType>Default</FrameType>	<Description>Allows authors to enter rich text content.</Description>	<IsIncluded>true</IsIncluded>	<ZoneID>Main</ZoneID>	<PartOrder>0</PartOrder>	<FrameState>Normal</FrameState>	<Height />	<Width />	<AllowRemove>true</AllowRemove>	<ArdRichText>true</ArdRichText>	<AllowZoneChange>true</AllowZoneChange>	<AllowMinimize>true</AllowMinimize>	<AllowConnect>true</AllowConnect>	<AllowEdit>true</AllowEdit>	<AllowHide>true</AllowHide>	<IsVisible>true</IsVisible>	<DetailLink />	<HelpLink />	<HelpMode>Modeless</HelpMode>	<Dir>Default</Dir>	<PartImageSmall />	<MissingAssembly>Cannot import this Web Part.</MissingAssembly>	<PartImageLarge>/_layouts/15/images/mscontl.gif</PartImageLarge>	<IsIncludedFilter />	<Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>	<TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName>	<ContentLink xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" />	<Content xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" >		<![CDATA[<div>hello from cool web part</div>]]></Content>	<PartStorage xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" /></WebPart>";
-
-
 			var context = SP.ClientContext.get_current();
 			var viewInfo = new SP.ViewCreationInformation();
 			viewInfo.set_title(this.consts.ManageAppView);
@@ -208,26 +208,16 @@ namespace SN {
 			Ex.executeQueryPromise(context)
 				.then(() => {
 					var viewFile = library.get_parentWeb().getFileByServerRelativeUrl(view.get_serverRelativeUrl());
-					var hostWPManager = viewFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
-					var viewWebParts = hostWPManager.get_webParts();
-					context.load(viewWebParts);
+					var hostWpManager = viewFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
 
-					return Ex.executeQueryPromise(context, { viewWebParts: viewWebParts, hostWPManager: hostWPManager });
-				})
-				.then((data) => {
-					var wpEnumerator = data.viewWebParts.getEnumerator();
-					while (wpEnumerator.moveNext()) {
-						var currentWp = wpEnumerator.get_current();
-						currentWp.deleteWebPart();
-					}
 					var appWebRelativeUrl = SPListRepo.Helper.ensureTrailingSlash(context.get_web().get_serverRelativeUrl());
 					var appFileUrl = String.format("{0}Pages/Default.aspx", appWebRelativeUrl);
 					var appFile = library.get_parentWeb().getFileByServerRelativeUrl(appFileUrl);
 					var appManager = appFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
 
-					var webPartDefinition = appManager.importWebPart(wpstr);
+					var webPartDefinition = appManager.importWebPart(this.consts.WebPartTemplate);
 					var webPart = webPartDefinition.get_webPart();
-					data.hostWPManager.addWebPart(webPart, "", 1);
+					hostWpManager.addWebPart(webPart, "", 1);
 
 					return Ex.executeQueryPromise(context);
 				})

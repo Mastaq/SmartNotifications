@@ -38,7 +38,6 @@
     <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.woff" Url="App/lib/font-awesome/fonts/fontawesome-webfont.woff" ReplaceContent="TRUE" />
     <File Path="App\lib\font-awesome\fonts\fontawesome-webfont.woff2" Url="App/lib/font-awesome/fonts/fontawesome-webfont.woff2" ReplaceContent="TRUE" />
     <File Path="App\lib\font-awesome\fonts\FontAwesome.otf" Url="App/lib/font-awesome/fonts/FontAwesome.otf" ReplaceContent="TRUE" />
-    <File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
     <File Path="App\ng\app.ts" Url="App/ng/app.ts" ReplaceContent="TRUE" />
     <File Path="App\ng\_references.ts" Url="App/ng/_references.ts" ReplaceContent="TRUE" />
     <File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
@@ -104,5 +103,6 @@
     <File Path="App\ng\model\CommonAppSettings.ts" Url="App/ng/model/CommonAppSettings.ts" ReplaceContent="TRUE" />
     <File Path="App\lib\lz-string\libs\lz-string.min.js" Url="App/lib/lz-string/libs/lz-string.min.js" ReplaceContent="TRUE" />
     <File Path="App\ng\services\Extensions.ts" Url="App/ng/services/Extensions.ts" ReplaceContent="TRUE" />
+    <File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -9,7 +9,7 @@ namespace SN {
 				dfd.resolve(data);
 			}, (sender, args) => {
 				dfd.reject(args);
-				});
+			});
 
 			return dfd.promise;
 		}

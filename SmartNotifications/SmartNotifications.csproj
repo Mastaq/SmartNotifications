@@ -66,6 +66,7 @@
     <Content Include="App\lib\angular-toastr\dist\angular-toastr.css" />
     <Content Include="App\lib\angular-toastr\dist\angular-toastr.tpls.js" />
     <Content Include="App\lib\camljs\index.js" />
+    <Content Include="App\lib\jquery\dist\jquery.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
     <Content Include="App\lib\lz-string\libs\lz-string.min.js" />
     <Content Include="App\lib\please-wait\build\please-wait.css" />
@@ -81,9 +82,13 @@
     <Content Include="Features\SmartNotifications\SmartNotifications.Template.xml">
       <DependentUpon>SmartNotifications.feature</DependentUpon>
     </Content>
-    <Content Include="HostWeb\knockout.js" />
+    <Content Include="HostWeb\build\sn.manage.host.js" />
+    <Content Include="HostWeb\build\styles.css" />
+    <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
-    <Content Include="HostWeb\sn.scriptlink.js" />
+    <Content Include="HostWeb\build\sn.scriptlink.js" />
+    <Content Include="HostWeb\External\bootstrap.css" />
+    <Content Include="HostWeb\template\templates.html" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="settings.js" />
@@ -140,7 +145,7 @@
     <None Include="Features\SmartNotifications\SmartNotifications.feature">
       <FeatureId>{d10442b8-c412-42d1-b5d9-c77ffdd2fdcc}</FeatureId>
     </None>
-    <None Include="HostWeb\JSInject.tmpl" />
+    <None Include="HostWeb\css\styles.scss" />
     <None Include="HostWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{55a434c9-53cc-4691-af48-32f435d25ae8}</SharePointProjectItemId>
     </None>
@@ -173,7 +178,7 @@
     <Content Include="App\lib\font-awesome\css\font-awesome.css" />
     <Content Include="App\lib\font-awesome\css\font-awesome.min.css" />
     <Content Include="App\lib\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="App\lib\jquery\dist\jquery.js" />
+    <Content Include="HostWeb\External\jquery.js" />
     <Content Include="App\templates\home.html" />
     <Content Include="App\fonts\fontawesome-webfont.svg" />
     <Content Include="App\fonts\glyphicons-halflings-regular.svg" />
@@ -256,6 +261,11 @@
     <TypeScriptCompile Include="App\ng\services\SPService.ts" />
     <TypeScriptCompile Include="App\ng\services\Storage.ts" />
     <TypeScriptCompile Include="App\ng\_references.ts" />
+    <TypeScriptCompile Include="HostWeb\app\manage\Loader.ts" />
+    <TypeScriptCompile Include="HostWeb\app\manage\ManageAppViewModel.ts" />
+    <TypeScriptCompile Include="HostWeb\app\manage\SPAsyncScript.ts" />
+    <TypeScriptCompile Include="HostWeb\app\manage\_references.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-animate.d.ts" />

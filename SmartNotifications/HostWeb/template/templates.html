@@ -1,0 +1,12 @@
+﻿<script type="text/html" id="sn-manage-app-tmpl">
+	<div data-bind="if: loaded() && !hasPermissions()">
+		<h1>
+			<b>Access denied. You don't have enough permissions to manage the app.</b>
+		</h1>
+		<br />
+		<h1>
+			Permissions required: Full Control.
+		</h1>
+	</div>
+	<div data-bind="if: loaded() && hasPermissions()">has permissions</div>
+</script>

@@ -88,39 +88,18 @@ gulp.task("build-external-css", function () {
 	return merge(appExternal, colorFieldExternal);
 });
 
-gulp.task("build-app", function () {
-	var external = gulp.src(["./App/ng/_references.ts"])
-		.pipe($.sourcemaps.init())
-		.pipe($.ts({
-			target: "ES5",
-			outFile: "sn.app.js",
-			declaration: false,
-			removeComments: true
-		}))
-		.js
-		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../ng" }))
-		.pipe(gulp.dest("App/build/"));
-
-	var colorField = gulp.src(["./App/jslink/color-field/_references.ts"])
-		.pipe($.sourcemaps.init())
-		.pipe($.ts({
-			target: "ES5",
-			outFile: "color.field.js",
-			declaration: false,
-			removeComments: true
-		}))
-		.js
-		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "../" }))
-		.pipe(gulp.dest("App/jslink/color-field/build/"));
-
-	return merge(external, colorField);
-});
-
 gulp.task("sass", function () {
 	gulp.src("Content/css/**/*.scss")
 		.pipe($.sass().on("error", $.sass.logError))
 		.pipe($.postcss([autoprefixer({ browsers: ["last 2 versions", "ie >= 9"] })]))
 		.pipe(gulp.dest("App/build"));
+});
+
+gulp.task("host-sass", function () {
+	gulp.src("HostWeb/css/**/*.scss")
+		.pipe($.sass().on("error", $.sass.logError))
+		.pipe($.postcss([autoprefixer({ browsers: ["last 2 versions", "ie >= 9"] })]))
+		.pipe(gulp.dest("HostWeb/build"));
 });
 
 gulp.task("template", function (callback) {
@@ -168,6 +147,20 @@ gulp.task("build-app-ts", function () {
 		.pipe(gulp.dest("App/build/"));
 });
 
+gulp.task("build-host-manage-ts", function() {
+	return gulp.src(["./HostWeb/app/manage/_references.ts"])
+		.pipe($.sourcemaps.init())
+		.pipe($.ts({
+			target: "ES5",
+			outFile: "sn.manage.host.js",
+			declaration: false,
+			removeComments: true
+		}))
+		.js
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "./app/manage" }))
+		.pipe(gulp.dest("HostWeb/build/"));
+});
+
 gulp.task("build-app-jslink", function () {
 	return gulp.src(["./App/jslink/color-field/_references.ts"])
 		.pipe($.sourcemaps.init())
@@ -182,16 +175,18 @@ gulp.task("build-app-jslink", function () {
 		.pipe(gulp.dest("App/jslink/color-field/build/"));
 });
 
-gulp.task("build-app-only", ["build-app", "sass"]);
+gulp.task("build-app-only", ["build-host-manage-ts", "build-app-ts", "build-app-jslink", "sass", "host-sass"]);
 
 gulp.task("debug", function (callback) {
-	runSequence(["build-external-js", "build-external-css", "template"], ["build-app", "sass"], callback);
+	runSequence(["build-external-js", "build-external-css", "template"], ["build-host-manage-ts", "build-app-ts", "build-app-jslink"], callback);
 });
 
 gulp.task("watch", function () {
 	gulp.watch("App/jslink/**/*.ts", ["build-app-jslink"]);
 	gulp.watch("App/ng/**/*.ts", ["build-app-ts"]);
+	gulp.watch("HostWeb/app/manage/**/*.ts", ["build-host-manage-ts"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
+	gulp.watch("HostWeb/css/**/*.scss", ["host-sass"]);
 	gulp.watch("App/index.tmpl", ["template"]);
 
 	gulp.watch(["App/index.html"], function (event) {
@@ -205,9 +200,29 @@ gulp.task("watch", function () {
 				password: settings.password,
 				folder: "App",
 				appWebUrl: "SmartNotifications",
-				flatten: false,
-				log: false
+				flatten: false
 			}));
+	});
+
+	gulp.watch(["HostWeb/build/*.*", "HostWeb/template/*.html"], function(event) {
+		gulp.src(event.path, { base: "HostWeb" })
+		.pipe($.spsave({
+			siteUrl: settings.siteUrl,
+			username: settings.username,
+			password: settings.password,
+			folder: "SmartNotificationsAssets"
+		}));
+	});
+
+	gulp.watch(["HostWeb/app/manage/**/*.ts", "HostWeb/app/scriptlink/**/*.ts"], function (event) {
+		gulp.src(event.path, { base: "HostWeb" })
+		.pipe($.spsave({
+			siteUrl: settings.siteUrl,
+			username: settings.username,
+			password: settings.password,
+			folder: "SmartNotificationsAssets",
+			flatten: false
+		}));
 	});
 
 	gulp.watch(["App/ng/**/*.ts", "App/build/*.*", "App/templates/**/*.html", "App/sp/*.js", "App/jslink/**/*.*"], function (event) {
