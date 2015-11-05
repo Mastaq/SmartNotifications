@@ -44,30 +44,29 @@ namespace SN {
 			this.colorService.applyBackgrounds();
 
 			spservice.doesUserHaveFullControl()
-				//.then(hasFullControl => {
-				//	this.hasPermissions = hasFullControl;
-				//	if (!hasFullControl) {
-				//		var dfd = this.$q.defer();
-				//		dfd.reject(<IError>{ customError: true, type: ErrorTypes.NoPermissions });
-				//		return dfd.promise;
-				//	}
-				//	return spservice.settingsRepo.getSettingsByKey(this.consts.SettingsKey);
-				//})
+				.then(hasFullControl => {
+					this.hasPermissions = hasFullControl;
+					if (!hasFullControl) {
+						var dfd = this.$q.defer();
+						dfd.reject(<IError>{ customError: true, type: ErrorTypes.NoPermissions });
+						return dfd.promise;
+					}
+					return spservice.settingsRepo.getSettingsByKey(this.consts.SettingsKey);
+				})
 				.then((appSettings) => {
 					//first run, the app is not inited yet
-					//if (appSettings == null) {
-					this.hasPermissions = true;
+					if (appSettings == null) {
 						return this.spservice.createHostLibrary();
 
-					//} else {
-					//	var dfd = this.$q.defer();
-					//	dfd.reject(<IError>{ customError: true, type: ErrorTypes.AppAlreadyInited });
-					//	return dfd.promise;
-					//}
+					} else {
+						var dfd = this.$q.defer();
+						dfd.reject(<IError>{ customError: true, type: ErrorTypes.AppAlreadyInited });
+						return dfd.promise;
+					}
 				})
-				//.then(library => {
-				//	return this.spservice.uploadFiles(library.get_rootFolder());
-				//})
+				.then(library => {
+					return this.spservice.uploadFiles(library.get_rootFolder());
+				})
 				.then(() => {
 					var settings = new CommonAppSettings();
 					settings.version = this.context.version;
@@ -96,7 +95,7 @@ namespace SN {
 			} else {
 				this.$log.error(err);
 			}
-			this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 10000 });
+			this.toastr.error(this.consts.ContactDev, this.consts.WentWrong, { timeOut: 0 });
 		}
     }
 
