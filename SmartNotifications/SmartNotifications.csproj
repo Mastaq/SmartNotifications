@@ -86,9 +86,6 @@
     </Content>
     <Content Include="HostWeb\build\sn.manage.host.js" />
     <Content Include="HostWeb\build\styles.css" />
-    <Content Include="HostWeb\External\bootstrap-toggle.min.css" />
-    <Content Include="HostWeb\External\bootstrap-toggle.min.js" />
-    <Content Include="HostWeb\External\bootstrap.min.js" />
     <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />

@@ -1,45 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<List xmlns:ows="Microsoft SharePoint" Title="Basic List" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Basic List" BaseType="0">
+<List xmlns:ows="Microsoft SharePoint" Title="Notifications" FolderCreation="FALSE" Url="Lists/Notifications" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
 	<MetaData>
 		<ContentTypes>
-			<ContentTypeRef ID="0x01">
-				<Folder TargetName="Item" />
-			</ContentTypeRef>
+			<ContentTypeRef ID="0x0100316EBA2815CB4BE28599CFE7124DF7AD" />
 			<ContentTypeRef ID="0x0120" />
 		</ContentTypes>
 		<Fields>
+			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
+			<Field ID="{24EAD03D-FF71-4835-AFC8-2C52AA4B3884}" Type="Note" Mult="TRUE" RichText="TRUE" RichTextMode="FullHtml" Name="Message_SN" Required="TRUE" StaticName="Message_SN" DisplayName="Message" />
+			<Field ID="{DE160796-483A-472B-8820-786E43D8580F}" Type="DateTime" Format="DateTime" Name="From_SN" Required="FALSE" StaticName="From_SN" DisplayName="From" />
+			<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Format="DateTime" Name="To_SN" Required="FALSE" StaticName="To_SN" DisplayName="To" />
+			<Field ID="{37D4FC53-CB04-4847-AF3D-9B9F27B24767}" Type="UserMulti" Mult="TRUE" UserSelectionMode="1" UserSelectionScope="0" Name="AssignedTo_SN" Required="TRUE" StaticName="AssignedTo_SN" DisplayName="Assigned To" />
+			<Field ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Type="Boolean" Name="Dismissable_SN" Required="FALSE" StaticName="Dismissable_SN" DisplayName="Can be dismissed" />
+			<Field ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Type="Text" Name="Color_SN" JSLink="~site/App/jslink/color-field/build/color.field.external.js|~site/App/jslink/color-field/build/color.field.js" Required="TRUE" StaticName="Color_SN" DisplayName="Color" />
 		</Fields>
 		<Views>
 			<View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+				<Toolbar Type="Standard" />
 				<XslLink Default="TRUE">main.xsl</XslLink>
 				<RowLimit Paged="TRUE">30</RowLimit>
-				<Toolbar Position="After" Type="Freeform">
-					<IfHasRights>
-						<RightsChoices>
-							<RightsGroup PermAddListItems="required" />
-						</RightsChoices>
-						<Then>
-							<HTML><![CDATA[<div class="tb"><img src="/_layouts/15/images/caladd.gif?rev=23" alt="" />&#160;<a class="ms-addnew" id="idAddNewItem" href="]]></HTML>
-							<URL Cmd="New" />
-							<HTML><![CDATA[" onclick="javascript:NewItem(']]></HTML>
-							<ScriptQuote NotAddingQuote="TRUE">
-								<URL Cmd="New" />
-							</ScriptQuote>
-							<HTML><![CDATA[', true);javascript:return false;" target="_self">]]></HTML>
-							<HTML>$Resources:core,addnewitem;</HTML>
-							<HTML><![CDATA[</a></div>]]></HTML>
-						</Then>
-					</IfHasRights>
-				</Toolbar>
-				<RowLimit>20</RowLimit>
 				<ViewFields>
-					<FieldRef Name="LinkTitleNoMenu">
-					</FieldRef>
+					<FieldRef Name="LinkTitleNoMenu"></FieldRef>
 				</ViewFields>
 				<Query>
 					<OrderBy>
-						<FieldRef Name="Modified" Ascending="FALSE">
-						</FieldRef>
+						<FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
 					</OrderBy>
 				</Query>
 				<ParameterBindings>
@@ -49,18 +34,21 @@
 				</ParameterBindings>
 			</View>
 			<View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+				<Toolbar Type="Standard" />
 				<XslLink Default="TRUE">main.xsl</XslLink>
 				<JSLink>clienttemplates.js</JSLink>
 				<RowLimit Paged="TRUE">30</RowLimit>
-				<Toolbar Type="Standard" />
 				<ViewFields>
-					<FieldRef Name="LinkTitle">
-					</FieldRef>
+					<FieldRef Name="Message_SN" />
+					<FieldRef Name="From_SN" />
+					<FieldRef Name="To_SN" />
+					<FieldRef Name="AssignedTo_SN" />
+					<FieldRef Name="Dismissable_SN" />
+					<FieldRef Name="Color_SN" />
 				</ViewFields>
 				<Query>
 					<OrderBy>
-						<FieldRef Name="ID">
-						</FieldRef>
+						<FieldRef Name="ID"></FieldRef>
 					</OrderBy>
 				</Query>
 				<ParameterBindings>

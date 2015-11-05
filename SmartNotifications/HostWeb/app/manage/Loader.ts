@@ -12,20 +12,16 @@ namespace SN {
 			}
 
 			function onjQueryLoaded() {
-				var pluginLoader = new SPAsyncScript("bootsraptoggle", "../bootstrap-toggle.min.js", () => {
-					if (!window.ko) {
-						var koLoader = new SPAsyncScript("knockout", "../knockout.js", onkoLoaded);
-						koLoader.load();
-					} else {
-						onkoLoaded();
-					}
-				});
-				pluginLoader.load();
+				if (!window.ko) {
+					var koLoader = new SPAsyncScript("knockout", "../knockout.js", onkoLoaded);
+					koLoader.load();
+				} else {
+					onkoLoaded();
+				}
 			}
 
 			if (!window.jQuery) {
 				window.registerCssLink("../bootstrap.css");
-				window.registerCssLink("../bootstrap-toggle.min.css");
 				window.registerCssLink("../styles.css");
 				var jqLoader = new SPAsyncScript("jquery", "../jquery.js", onjQueryLoaded);
 				jqLoader.load();
