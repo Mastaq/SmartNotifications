@@ -14,3 +14,4 @@
 /// <reference path="toastr/toastr.d.ts" />
 /// <reference path="q/Q.d.ts" />
 /// <reference path="lz-string/lz-string.d.ts" />
+/// <reference path="fabricjs/fabricjs.d.ts" />

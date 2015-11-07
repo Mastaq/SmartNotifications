@@ -15,5 +15,11 @@
     <ProjectItemFile Source="build\styles.css" Target="HostWeb\build\" Type="ElementFile" />
     <ProjectItemFile Source="app\manage\ManageAppViewModel.ts" Target="HostWeb\app\manage\" Type="ElementFile" />
     <ProjectItemFile Source="template\templates.html" Target="HostWeb\template\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\Loader.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\ScriptLinkViewModel.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\SPAsyncScript.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\Notification.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\HoverBinding.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\NotificationItems.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
   </Files>
 </ProjectItem>

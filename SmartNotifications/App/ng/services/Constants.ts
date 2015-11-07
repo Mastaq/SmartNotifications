@@ -11,7 +11,6 @@ namespace SN {
 				ContactDev: "Try again and if the problem still exists contact app developer",
 				SettingsKey: "appsettings",
 				ScriptLinkId: "sn.app",
-				HostPageName: "sn.html",
 				HostPageFolderUrl: "SmartNotificationsHost",
 				ManageAppView: "ManageApp",
 				WebPartTemplate: "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
@@ -61,7 +60,6 @@ namespace SN {
 		ContactDev: string;
 		SettingsKey: string;
 		ScriptLinkId: string;
-		HostPageName: string;
 		HostPageFolderUrl: string;
 		ManageAppView: string;
 		WebPartTemplate: string;

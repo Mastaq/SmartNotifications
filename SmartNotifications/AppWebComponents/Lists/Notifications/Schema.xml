@@ -6,7 +6,7 @@
 			<ContentTypeRef ID="0x0120" />
 		</ContentTypes>
 		<Fields>
-			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" Hidden="TRUE" StaticName="Title" MaxLength="255" />
+			<Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="FALSE" StaticName="Title" MaxLength="255" />
 			<Field ID="{24EAD03D-FF71-4835-AFC8-2C52AA4B3884}" Type="Note" Mult="TRUE" RichText="TRUE" RichTextMode="FullHtml" Name="Message_SN" Required="TRUE" StaticName="Message_SN" DisplayName="Message" />
 			<Field ID="{DE160796-483A-472B-8820-786E43D8580F}" Type="DateTime" Format="DateTime" Name="From_SN" Required="FALSE" StaticName="From_SN" DisplayName="From" />
 			<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Format="DateTime" Name="To_SN" Required="FALSE" StaticName="To_SN" DisplayName="To" />
@@ -39,6 +39,7 @@
 				<JSLink>clienttemplates.js</JSLink>
 				<RowLimit Paged="TRUE">30</RowLimit>
 				<ViewFields>
+					<FieldRef Name="Title" />
 					<FieldRef Name="Message_SN" />
 					<FieldRef Name="From_SN" />
 					<FieldRef Name="To_SN" />

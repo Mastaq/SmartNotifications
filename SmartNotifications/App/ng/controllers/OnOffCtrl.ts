@@ -27,8 +27,7 @@ namespace SN {
 
 			$scope.vm = this;
 
-			//this.manageStatus = SPListRepo.Helper.ensureTrailingSlash(this.context.hostUrl) + this.consts.HostLibraryUrl + "/" + this.consts.HostPageName;
-			this.manageStatus = SPListRepo.Helper.ensureTrailingSlash(this.context.hostUrl) + "test/my.html";
+			this.manageStatus = SPListRepo.Helper.ensureTrailingSlash(this.context.hostUrl) + this.consts.HostLibraryUrl + "/Forms/" + this.consts.ManageAppView + ".aspx";
 
 			spservice.getHostCustomizationStatus()
 				.then(customized => {

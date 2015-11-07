@@ -161,6 +161,20 @@ gulp.task("build-host-manage-ts", function() {
 		.pipe(gulp.dest("HostWeb/build/"));
 });
 
+gulp.task("build-host-scriptlink-ts", function () {
+	return gulp.src(["./HostWeb/app/scriptlink/_references.ts"])
+		.pipe($.sourcemaps.init())
+		.pipe($.ts({
+			target: "ES5",
+			outFile: "sn.scriptlink.js",
+			declaration: false,
+			removeComments: true
+		}))
+		.js
+		.pipe($.sourcemaps.write({ includeContent: false, sourceRoot: "./app/scriptlink" }))
+		.pipe(gulp.dest("HostWeb/build/"));
+});
+
 gulp.task("build-app-jslink", function () {
 	return gulp.src(["./App/jslink/color-field/_references.ts"])
 		.pipe($.sourcemaps.init())
@@ -175,16 +189,17 @@ gulp.task("build-app-jslink", function () {
 		.pipe(gulp.dest("App/jslink/color-field/build/"));
 });
 
-gulp.task("build-app-only", ["build-host-manage-ts", "build-app-ts", "build-app-jslink", "sass", "host-sass"]);
+gulp.task("build-app-only", ["build-host-manage-ts", "build-host-scriptlink-ts", "build-app-ts", "build-app-jslink", "sass", "host-sass"]);
 
 gulp.task("debug", function (callback) {
-	runSequence(["build-external-js", "build-external-css", "template"], ["build-host-manage-ts", "build-app-ts", "build-app-jslink"], callback);
+	runSequence(["build-external-js", "build-external-css", "template"], ["build-app-only"], callback);
 });
 
 gulp.task("watch", function () {
 	gulp.watch("App/jslink/**/*.ts", ["build-app-jslink"]);
 	gulp.watch("App/ng/**/*.ts", ["build-app-ts"]);
 	gulp.watch("HostWeb/app/manage/**/*.ts", ["build-host-manage-ts"]);
+	gulp.watch("HostWeb/app/scriptlink/**/*.ts", ["build-host-scriptlink-ts"]);
 	gulp.watch("Content/css/**/*.scss", ["sass"]);
 	gulp.watch("HostWeb/css/**/*.scss", ["host-sass"]);
 	gulp.watch("App/index.tmpl", ["template"]);
@@ -206,6 +221,9 @@ gulp.task("watch", function () {
 
 	gulp.watch(["HostWeb/build/*.*", "HostWeb/template/*.html"], function(event) {
 		gulp.src(event.path, { base: "HostWeb" })
+			.pipe($.plumber({
+				errorHandler: onError
+			}))
 		.pipe($.spsave({
 			siteUrl: settings.siteUrl,
 			username: settings.username,
@@ -216,6 +234,9 @@ gulp.task("watch", function () {
 
 	gulp.watch(["HostWeb/app/manage/**/*.ts", "HostWeb/app/scriptlink/**/*.ts"], function (event) {
 		gulp.src(event.path, { base: "HostWeb" })
+			.pipe($.plumber({
+				errorHandler: onError
+			}))
 		.pipe($.spsave({
 			siteUrl: settings.siteUrl,
 			username: settings.username,

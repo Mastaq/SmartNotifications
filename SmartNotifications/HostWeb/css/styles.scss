@@ -1,4 +1,50 @@
-﻿label.btn > input[type='radio']
-{
-    display: none;
+﻿label.btn > input[type='radio'] {
+	display: none;
+}
+
+#sn-app-scriptlink {
+	display: inline-block;
+}
+
+.rectangle-set {
+	margin: 0 10px 0 0;
+	position: relative;
+	display: inline-block;
+	cursor:pointer;
+}
+
+.sn-rectangle {
+	border-radius: 2px;
+	border: 2px solid #6A6A6A;
+	display: inline;
+	width: 50px;
+}
+
+.rectangle-set .number {
+	display: inline;
+	position: absolute;
+	top: 0;
+	left: 7px;
+	color: #F2F2F2;
+	font-weight: bold;
+	font-size: 0.9em;
+	text-shadow: 0 0 3px black;
+}
+
+@keyframes textblink {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.rectangle-set .number {
+	animation: textblink 1s 2;
 }

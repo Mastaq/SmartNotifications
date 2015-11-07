@@ -10,5 +10,6 @@
     <ProjectItemFile Source="typings\toastr\toastr.d.ts" Target="typings\toastr\" Type="ElementFile" />
     <ProjectItemFile Source="typings\q\Q.d.ts" Target="typings\q\" Type="ElementFile" />
     <ProjectItemFile Source="typings\lz-string\lz-string.d.ts" Target="typings\lz-string\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\fabricjs\fabricjs.d.ts" Target="typings\fabricjs\" Type="ElementFile" />
   </Files>
 </ProjectItem>

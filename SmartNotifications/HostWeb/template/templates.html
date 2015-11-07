@@ -3,7 +3,7 @@
 		<h1>
 			<b>Access denied. You don't have enough permissions to manage the app.</b>
 		</h1>
-		<br/>
+		<br />
 		<h1>
 			Permissions required: Full Control.
 		</h1>
@@ -13,15 +13,26 @@
 		<div class="col-md-2 col-md-offset-3">
 			<div class="btn-group">
 				<label class="btn" data-bind="css: { 'active': snEnabled, 'btn-primary': snEnabled, 'btn-default': !snEnabled() }">
-					<input type="radio" name="options" data-bind="checked: snEnabled, 
-																	checkedValue: true, 
+					<input type="radio" name="options" data-bind="checked: snEnabled,
+																	checkedValue: true,
 																	click: toggleState" id="option1">Enable
 				</label>
 				<label class="btn btn-default" data-bind="css: { 'active': !snEnabled()}">
-					<input type="radio" name="options" data-bind="checked: snEnabled, 
-																   checkedValue: false, 
+					<input type="radio" name="options" data-bind="checked: snEnabled,
+																   checkedValue: false,
 																   click: toggleState" id="option2">Disable
 				</label>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="sn-app-scriptlink-tmpl">
+	<div data-bind="foreach: grouppedNotifications">
+		<div class="rectangle-set">
+			<div class="sn-rectangle" data-bind="style: {backgroundColor: rgba, boxShadow: isHovering() ? boxShadow : 'none'},
+													hover: isHovering">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="number" data-bind="text: notifications.length"></div>
 			</div>
 		</div>
 	</div>

@@ -267,6 +267,12 @@
     <TypeScriptCompile Include="HostWeb\app\manage\ManageAppViewModel.ts" />
     <TypeScriptCompile Include="HostWeb\app\manage\SPAsyncScript.ts" />
     <TypeScriptCompile Include="HostWeb\app\manage\_references.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\HoverBinding.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\Loader.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\Notification.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\NotificationItems.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\ScriptLinkViewModel.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\SPAsyncScript.ts" />
     <TypeScriptCompile Include="HostWeb\app\scriptlink\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
@@ -275,6 +281,7 @@
     <TypeScriptCompile Include="typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="typings\camljs\camljs.d.ts" />
+    <TypeScriptCompile Include="typings\fabricjs\fabricjs.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="typings\lz-string\lz-string.d.ts" />

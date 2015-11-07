@@ -1,4 +1,4 @@
-/// <reference path="./../../../../typings/tsd.d.ts" />
+/// <reference path="../../../../typings/tsd.d.ts" />
 declare namespace SPListRepo.Fields {
     var Modified: string;
     var Created: string;
