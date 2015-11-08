@@ -25,7 +25,6 @@ namespace SN {
 		var start = () => {
 			SP.SOD.executeOrDelayUntilScriptLoaded(() => {
 				if (!window.jQuery) {
-					window.registerCssLink(_spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/bootstrap.css");
 					window.registerCssLink(_spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/styles.css");
 					var jqLoader = new SPAsyncScript("snjquery", _spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/jquery.js", onjQueryLoaded);
 					jqLoader.load();

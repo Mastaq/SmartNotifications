@@ -23,6 +23,8 @@
 	<Field ID="{DE160796-483A-472B-8820-786E43D8580F}" Type="DateTime" Name="From_SN" Format="DateTime" Required="FALSE" StaticName="From_SN" DisplayName="From" />
 	<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Name="To_SN" Format="DateTime" Required="FALSE" StaticName="To_SN" DisplayName="To" />
 	<Field ID="{37D4FC53-CB04-4847-AF3D-9B9F27B24767}" Type="UserMulti" Name="AssignedTo_SN" Mult="TRUE" UserSelectionMode="1" UserSelectionScope="0" Required="TRUE" StaticName="AssignedTo_SN" DisplayName="Assigned To" />
-	<Field ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Type="Boolean" Name="Dismissable_SN" Required="FALSE" StaticName="Dismissable_SN" DisplayName="Can be dismissed" />
+	<Field ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Type="Boolean" Name="Dismissable_SN" Required="FALSE" StaticName="Dismissable_SN" DisplayName="Can be dismissed" >
+		<Default>1</Default>
+	</Field>
 	<Field ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Type="Text" Name="Color_SN" JSLink="~site/App/jslink/color-field/build/color.field.external.js|~site/App/jslink/color-field/build/color.field.js" Required="TRUE" StaticName="Color_SN" DisplayName="Color" />
 </Elements>

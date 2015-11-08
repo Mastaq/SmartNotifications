@@ -18,7 +18,8 @@ namespace SN {
 
 				for (let i = 0; i < uniqueColors.length; i++) {
 					var notificationItem = new NotificationItems();
-					notificationItem.notifications = this.getNotificationsByColor(uniqueColors[i], notifications);
+					ko.utils.arrayPushAll<Notification>(notificationItem.notifications, this.getNotificationsByColor(uniqueColors[i], notifications));
+					notificationItem.notifications.valueHasMutated();
 					notificationItem.key = uniqueColors[i];
 					notificationItem.rgba = this.hexToRgb(uniqueColors[i]);
 					notificationItem.boxShadow = String.format("0 0 5px {0}", uniqueColors[i]);
@@ -28,14 +29,27 @@ namespace SN {
 
 				this.grouppedNotifications.valueHasMutated();
 
-			}, 2 * 1000);
+			}, 300);
 		}
 
-		logMouseOver(data) {
-			console.log(data);
-			console.log("over");
-		}
+		showNotifications(notification: NotificationItems) {
+			var el = jQuery("#sn-notify-modal").clone().appendTo("#sn-notify-modal");
+			SP.UI.ModalDialog.showModalDialog({
+				title: "Notifications",
+				html: el[0],
+				autoSize: true
+			});
 
+			el.show();
+			
+			ko.applyBindings(notification, el[0]);
+
+			var dlg = <SP.UI.ModalDialog>(<any>SP.UI.ModalDialog).get_childDialog();
+			if (dlg) {
+				dlg.autoSize();
+			}
+		}
+		
 		private getNotificationsByColor(color: string, notifications: Notification[]): Notification[] {
 			return notifications.filter((notification) => {
 				return notification.color === color;

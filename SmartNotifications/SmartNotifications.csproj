@@ -86,6 +86,7 @@
     </Content>
     <Content Include="HostWeb\build\sn.manage.host.js" />
     <Content Include="HostWeb\build\styles.css" />
+    <Content Include="HostWeb\External\previous.png" />
     <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />

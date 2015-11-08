@@ -14,7 +14,7 @@ namespace SN {
 				hideAfterPaletteSelect: true,
 				togglePaletteMoreText: "more",
 				togglePaletteLessText: "less",
-				color: "blanchedalmond",
+				color: "#0072C6",
 				preferredFormat: "hex",
 				palette: [
 					["#000", "#444", "#666", "#999", "#ccc", "#eee", "#f3f3f3", "#fff"],
