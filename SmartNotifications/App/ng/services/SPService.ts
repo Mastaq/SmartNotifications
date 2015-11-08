@@ -65,30 +65,6 @@ namespace SN {
 			return dfd.promise;
 		}
 
-		uploadFileToFolder2(url: string, content: SP.Base64EncodedByteArray, folder: SP.Folder, overwrite: boolean = true): ng.IPromise<SP.File> {
-			var dfd = this.$q.defer<SP.File>();
-			var context = SP.ClientContext.get_current();
-
-			var fileCreateInfo = new SP.FileCreationInformation();
-
-			fileCreateInfo.set_url(url);
-			fileCreateInfo.set_overwrite(overwrite);
-			fileCreateInfo.set_content(content);
-
-			var newFile = folder.get_files().add(fileCreateInfo);
-
-			context.load(newFile);
-
-			Ex.executeQueryPromise(context)
-				.then(() => {
-					dfd.resolve(newFile);
-				}, e => {
-					dfd.reject(new SPListRepo.RequestError(e));
-				});
-
-			return dfd.promise;
-		}
-
 		createHostLibrary(): ng.IPromise<SP.List> {
 			var dfd = this.$q.defer<SP.List>();
 
@@ -152,47 +128,6 @@ namespace SN {
 				.then(data => {
 					return this.$q.all(this.fileList.map((file, indx) => {
 						return this.uploadFileToFolder(this.getFileName(file), (<any>data[indx]).data, folder);
-					}));
-				})
-				.then(() => {
-					dfd.resolve();
-				})
-				.catch((e: SP.ClientRequestFailedEventArgs | any) => {
-					if (e instanceof SP.ClientRequestFailedEventArgs) {
-						dfd.reject(new SPListRepo.RequestError(e));
-					} else {
-						dfd.reject(e);
-					}
-				});
-
-			return dfd.promise;
-		}
-
-		uploadFiles2(folder: SP.Folder): ng.IPromise<any> {
-			var dfd = this.$q.defer();
-			var fileList: SP.File[] = [];
-
-			var context = SP.ClientContext.get_current();
-			var web = context.get_web();
-			context.load(web, "ServerRelativeUrl");
-
-			Ex.executeQueryPromise(context)
-				.then(() => {
-					var webRelativeUrl = SPListRepo.Helper.ensureTrailingSlash(web.get_serverRelativeUrl());
-					for (var i = 0; i < this.newFileList.length; i++) {
-						var file = context.get_web().getFileByServerRelativeUrl(webRelativeUrl + this.newFileList[i]);
-						fileList.push(file);
-						context.load(file);
-					}
-
-					return Ex.executeQueryPromise(context);
-				})
-				.then(() => {
-					return this.$q.all(this.newFileList.map((file, indx) => {
-						var spFile = fileList[indx];
-						var binaryInfo = new SP.FileSaveBinaryInformation();
-						spFile.saveBinary(binaryInfo);
-						return this.uploadFileToFolder2(this.getFileName(file), binaryInfo.get_content(), folder);
 					}));
 				})
 				.then(() => {
