@@ -22,6 +22,7 @@ var externaljs = [
 		baseExternalPath + "jquery/dist/jquery.js",
 		baseExternalPath + "angular/angular.js",
 		baseExternalPath + "angular-*/**/*.js",
+		baseExternalPath + "moment/moment.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.js",
 		baseExternalPath + "eeh-navigation/dist/eeh-navigation.tpl.js",
 		baseExternalPath + "please-wait/build/please-wait.js",
@@ -114,7 +115,7 @@ gulp.task("template", function (callback) {
 			if (err) return callback(err);
 
 			gulp.src("App/index.tmpl")
-			.pipe($.template({ version: result.App.$.Version.replace(/\./g, ""), appUrl: result.App.$.Name }))
+			.pipe($.template({ version: result.App.$.Version.replace(/\./g, ""), appUrl: result.App.$.Name, debug: !isRelease }))
 			.pipe($.rename("index.html"))
 			.pipe(gulp.dest("App"))
 			.on("end", function () { callback(); });
@@ -204,7 +205,6 @@ gulp.task("copy-elements-xml", function () {
 	if (isRelease) {
 		var s1 = gulp.src("HostWeb/Elements.release.xml")
 			.pipe($.rename("Elements.xml"))
-			.pipe($.debug())
 			.pipe(gulp.dest("HostWeb"));
 
 		var s2 = gulp.src("App/Elements.release.xml")

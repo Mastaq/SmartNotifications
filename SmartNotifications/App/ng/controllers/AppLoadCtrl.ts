@@ -20,11 +20,19 @@ namespace SN {
 			"Consts",
 			"$http",
 			"$q",
-			"ContextService"
+			"ContextService",
+			"$state"
         ];
 
 		hasPermissions = false;
 		permissionChecked = false;
+		trialExpired = false;
+		underTrial = false;
+		licenseNotValid = false;
+		licensed = false;
+		daysLeft = 0;
+
+		private trialPeriodInDays = 30;
 
 		constructor(
 			private $scope: ICtrlScope<AppLoadCtrl>,
@@ -36,7 +44,8 @@ namespace SN {
 			private consts: Constants,
 			private $http: ng.IHttpService,
 			private $q: ng.IQService,
-			private context: ContextService) {
+			private context: ContextService,
+			private $state: angular.ui.IStateService) {
 
             $scope.vm = this;
 
@@ -70,6 +79,10 @@ namespace SN {
 				.then(() => {
 					var settings = new CommonAppSettings();
 					settings.version = this.context.version;
+					settings.licensed = false;
+					settings.invalidLicense = false;
+					settings.trial = true;
+					settings.installationDate = new Date();
 					var appSettingsModel = new AppSettingsBaseItem();
 					appSettingsModel.key_SN = this.consts.AppSettingsKey;
 					appSettingsModel.value_SN = LZString.compressToBase64(JSON.stringify(settings));
@@ -85,6 +98,36 @@ namespace SN {
 				.finally(() => {
 					this.pleaseWait.close();
 					this.permissionChecked = true;
+
+					this.loadLicense();
+				});
+		}
+
+		go(state: string) {
+			this.$state.go(state);
+		}
+
+		private loadLicense() {
+			this.spservice.settingsRepo.getSettingsByKey(this.consts.SettingsKey)
+				.then(settings => {
+					var appSettings = <CommonAppSettings>JSON.parse(LZString.decompressFromBase64(settings.value_SN));
+					this.licenseNotValid = appSettings.invalidLicense;
+					this.underTrial = appSettings.trial;
+					this.licensed = appSettings.licensed;
+					if (appSettings.trial) {
+						var dateNow = moment();
+
+						var dayDIff = dateNow.diff(moment(appSettings.installationDate), "days");
+
+						if (dayDIff > this.trialPeriodInDays) {
+							this.trialExpired = true;
+						} else {
+							this.underTrial = true;
+							this.daysLeft = this.trialPeriodInDays - dayDIff;
+						}
+					}
+
+					this.$scope.$apply();
 				});
 		}
 

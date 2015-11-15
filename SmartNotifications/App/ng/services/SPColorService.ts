@@ -24,7 +24,7 @@ namespace SN {
 
 		public applyBackgrounds() {
 			var background = this.getElementBackground(".ms-rteTable-1 tr.ms-rteTableHeaderRow-1");
-			this.$("head").append(String.format("<style type='text/css'>#eeh-navigation-page-wrapper, .eeh-navigation-sidebar {{background-color:{0};}} </style>", background));
+			this.$("head").append(String.format("<style type='text/css'>#sn-view, #sn-side, .navigation-menu > ul {{background-color:{0};}} </style>", background));
 		}
     }
 

@@ -10,5 +10,7 @@
     <File Path="typings\q\Q.d.ts" Url="typings/q/Q.d.ts" ReplaceContent="TRUE" />
     <File Path="typings\lz-string\lz-string.d.ts" Url="typings/lz-string/lz-string.d.ts" ReplaceContent="TRUE" />
     <File Path="typings\fabricjs\fabricjs.d.ts" Url="typings/fabricjs/fabricjs.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\moment\moment-node.d.ts" Url="typings/moment/moment-node.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\moment\moment.d.ts" Url="typings/moment/moment.d.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

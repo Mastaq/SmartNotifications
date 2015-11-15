@@ -28,6 +28,16 @@ namespace SN {
 						url: "/onoff",
 						templateUrl: "../App/templates/onoff.html",
 						controller: "OnOffCtrl"
+					})
+					.state("contactdev", {
+						url: "/contactdev",
+						templateUrl: "../App/templates/contactdev.html",
+						controller: "ContactDevCtrl"
+					})
+					.state("activate", {
+						url: "/activate",
+						templateUrl: "../App/templates/activate.html",
+						controller: "ActivateCtrl"
 					});
 
 				eehNavigationProvider
@@ -58,6 +68,16 @@ namespace SN {
 						iconClass: "glyphicon-plus",
 						target: "_blank",
 						href: "#"
+					})
+					.menuItem("SideNav.contactDev", {
+						text: "Contact Developer",
+						iconClass: "fa fa-envelope",
+						state:"contactdev"
+					})
+					.menuItem("SideNav.activate", {
+						text: "Activate the app",
+						iconClass: "fa fa-key",
+						state: "activate"
 					});
 			}])
 		.config(["$logProvider", ($logProvider: ng.ILogProvider) => {

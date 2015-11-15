@@ -25,6 +25,8 @@
 /// <reference path="controllers/SideNavCtrl.ts" />
 /// <reference path="controllers/AppLoadCtrl.ts" />
 /// <reference path="controllers/OnOffCtrl.ts" />
+/// <reference path="controllers/ContactDevCtrl.ts" />
+/// <reference path="controllers/ActivateCtrl.ts" />
 
 /*                 Interfaces                       */
 /// <reference path="interfaces/ICtrlScope.ts" />

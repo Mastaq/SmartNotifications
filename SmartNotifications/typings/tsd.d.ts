@@ -15,3 +15,5 @@
 /// <reference path="q/Q.d.ts" />
 /// <reference path="lz-string/lz-string.d.ts" />
 /// <reference path="fabricjs/fabricjs.d.ts" />
+/// <reference path="moment/moment-node.d.ts" />
+/// <reference path="moment/moment.d.ts" />

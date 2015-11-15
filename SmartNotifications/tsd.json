@@ -55,6 +55,12 @@
     },
     "fabricjs/fabricjs.d.ts": {
       "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+    },
+    "moment/moment.d.ts": {
+      "commit": "aed176536a202b9a2475ce1989ea6d2d0226a185"
+    },
+    "moment/moment-node.d.ts": {
+      "commit": "aed176536a202b9a2475ce1989ea6d2d0226a185"
     }
   }
 }

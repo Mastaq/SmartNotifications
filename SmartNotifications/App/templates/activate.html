@@ -1,0 +1,27 @@
+﻿<div ng-if="!vm.$scope.$parent.$parent.$parent.vm.licensed">
+	<div>
+		In order to obtain the license you need to send activation request to the developer - <a href="mailto:sergeev.srg@gmail.com">sergeev.srg@gmail.com</a>
+	</div>
+	<br/>
+	<div><b>Email subject: </b>Smart Notifications activation
+	</div>
+	<div>
+		<b>Emal body:</b> Hi, we would like to activate Smart Notifications app.
+	</div>
+	<br/>
+	<div>Activation is abolutly free and the only purpose is to collect information on how many users want to use the app on the regular basis.</div>
+	<br/>
+	<div>Once you received the activation code paste it into the input below and press "Activate" button</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" ng-model="vm.licenseKey"/>
+	</div>
+
+	<div class="buttons-group">
+		<button type="button" class="btn btn-default" title="{{Resources.Apply}}" ng-click="vm.activate()">
+			Activate
+		</button>
+	</div>
+</div>
+<div ng-if="vm.$scope.$parent.$parent.$parent.vm.licensed">
+	<h2>Your app is activated</h2>
+</div>

@@ -107,5 +107,10 @@
     <ProjectItemFile Source="lib\jquery\dist\jquery.js" Target="App\lib\jquery\dist\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap-toggle\css\bootstrap-toggle.min.css" Target="App\lib\bootstrap-toggle\css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap-toggle\js\bootstrap-toggle.min.js" Target="App\lib\bootstrap-toggle\js\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\contactdev.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\ContactDevCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\activate.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\moment\moment.js" Target="App\lib\moment\" Type="ElementFile" />
+    <ProjectItemFile Source="ng\controllers\ActivateCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
   </Files>
 </ProjectItem>

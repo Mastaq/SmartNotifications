@@ -71,13 +71,16 @@
     <Content Include="App\lib\jquery\dist\jquery.js" />
     <Content Include="App\lib\knockout\dist\knockout.js" />
     <Content Include="App\lib\lz-string\libs\lz-string.min.js" />
+    <Content Include="App\lib\moment\moment.js" />
     <Content Include="App\lib\please-wait\build\please-wait.css" />
     <Content Include="App\lib\please-wait\build\please-wait.js" />
     <Content Include="App\lib\sp-list-repository\build\sp.list.repository.min.js" />
     <Content Include="App\lib\spectrum\spectrum.css" />
     <Content Include="App\lib\spectrum\spectrum.js" />
     <Content Include="App\sp\chrome.loader.js" />
+    <Content Include="App\templates\activate.html" />
     <Content Include="App\templates\chrome.control.html" />
+    <Content Include="App\templates\contactdev.html" />
     <Content Include="App\templates\onoff.html" />
     <Content Include="Elements.xml" />
     <Content Include="External\camljs.js" />
@@ -244,8 +247,10 @@
     <TypeScriptCompile Include="App\lib\sp-list-repository\build\sp.list.repository.d.ts" />
     <TypeScriptCompile Include="App\ng\app.ts" />
     <TypeScriptCompile Include="App\ng\common\Fields.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\ActivateCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\ChromeNavCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\AppLoadCtrl.ts" />
+    <TypeScriptCompile Include="App\ng\controllers\ContactDevCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\HomeCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\OnOffCtrl.ts" />
     <TypeScriptCompile Include="App\ng\controllers\SideNavCtrl.ts" />
@@ -289,6 +294,8 @@
     <TypeScriptCompile Include="typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="typings\lz-string\lz-string.d.ts" />
     <TypeScriptCompile Include="typings\microsoft-ajax\microsoft.ajax.d.ts" />
+    <TypeScriptCompile Include="typings\moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="typings\moment\moment.d.ts" />
     <TypeScriptCompile Include="typings\q\Q.d.ts" />
     <TypeScriptCompile Include="typings\sharepoint\SharePoint.d.ts" />
     <TypeScriptCompile Include="typings\spectrum\spectrum.d.ts" />

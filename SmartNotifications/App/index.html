@@ -6,20 +6,41 @@
 	<link rel="stylesheet" type="text/css" href="build/sn.app.external.css?v=1000" />
 	<link rel="stylesheet" type="text/css" href="build/sn.app.css?v=1000" />
 
+	<script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+	<script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+	<script type="text/javascript" src="/_layouts/15/sp.js"></script>
+	<script type="text/javascript" src="build/sn.app.external.js?v=1000"></script>
+
 </head>
 <body class="ms-backgroundImage ms-backgroundImage">
 	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak>
 		<div ng-include src="'templates/chrome.control.html'"></div>
-		<div ng-show="vm.hasPermissions">
-			<div>
+		<div class="ng-hide bg-danger license-info text-danger" data-ng-show="vm.trialExpired || vm.underTrial || vm.licenseNotValid" ng-cloak>
+			<div class="ng-hide license-line" data-ng-show="vm.underTrial">{{vm.daysLeft}} days left on this trial</div>
+			<div class="ng-hide license-line" data-ng-show="vm.trialExpired">Trial expired</div>
+			<div class="ng-hide license-line" data-ng-show="vm.licenseNotValid">License not valid</div>
+				<button type="button" data-ng-click="vm.navigateToBuy()" class="btn btn-info">Activate the app</button>
+			
+		</div>
+		<div ng-if="vm.licensed || vm.underTrial" ng-show="vm.hasPermissions" class="sn-root">
+			<div class="sn-container ms-core-defaultFont">
 				<div ng-controller="SideNavCtrl">
-					<eeh-navigation-sidebar menu-name="'SideNav'" search-input-is-visible="false">
-						<div ui-view ng-cloak></div>
-					</eeh-navigation-sidebar>
+					<div class="row">
+						<div class="col-sm-2" id="sn-side">
+							<div class="menu-vertical">
+								<eeh-navigation-menu menu-name="'SideNav'" class="sidebar-nav">
+								</eeh-navigation-menu>
+							</div>
+						</div>
+						<div class="col-sm-10" id="sn-view">
+							<div ui-view ng-cloak></div>
+						</div>
+					</div>
 				</div>
+				<div id="contact-dev">Need solid SharePoint\Office 365 development? Please <a href ng-click="vm.go('contactdev')">contact</a> me directly</div>
 			</div>
 		</div>
-		<div ng-show="!vm.hasPermissions && vm.permissionChecked" ng-class="{hide: !vm.permissionChecked}" class="hide denied">
+		<div ng-show="!vm.hasPermissions" class="denied">
 			<h1>
 				<b>Access denied. You don't have enough permissions to manage the app.</b>
 			</h1>
@@ -29,7 +50,6 @@
 			</h1>
 		</div>
 	</div>
-
 	<div class="ng-hide">
 		<div id="suiteBarLeft">
 		</div>
@@ -39,16 +59,10 @@
 		</table>
 	</div>
 
-	<script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
-	<script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
-	<script type="text/javascript" src="/_layouts/15/sp.js"></script>
-	<script type="text/javascript" src="/_layouts/15/SP.RequestExecutor.js"></script>
-	<script type="text/javascript" src="build/sn.app.external.js?v=1000"></script>
 	<script type="text/javascript">
 		var SN = SN || {};
 		SN.version = "1000";
 		SN.appUrl = "SmartNotifications";
-		//TODO
 		SN.debug = true;
 	</script>
 	<script type="text/javascript" src="sp/chrome.loader.js?v=1000"></script>
