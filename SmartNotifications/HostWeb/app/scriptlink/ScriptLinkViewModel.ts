@@ -116,21 +116,8 @@ namespace SNScriptLink {
 			context.load(list);
 
 			context.executeQueryAsync(() => {
-				var queryString = "" +
-					"<Where>" +
-						"<Or>" +
-							"<Membership Type='CurrentUserGroups'>" +
-								"<FieldRef Name='AssignedTo_SN'/>" +
-							"</Membership>" +
-							"<Includes>" +
-								"<FieldRef Name='AssignedTo_SN'/>" +
-								"<Value Type='Integer'><UserID /></Value>" +
-							"</Includes>" +
-						"</Or>" +
-					"</Where>";
-
 				var caml = new SP.CamlQuery();
-				caml.set_viewXml(String.format("<View><Query>{0}</View></Query>", queryString));
+				caml.set_viewXml(String.format("<View><Query>{0}</View></Query>", Consts.CamlString));
 				var items = list.getItems(caml);
 				context.load(items);
 				context.executeQueryAsync(() => {
