@@ -58,27 +58,11 @@ namespace SN {
 						iconClass: "glyphicon-plus",
 						target: "_blank",
 						href: "#"
-					})
-					.menuItem("SideNav.permissions", {
-						text: "[Permissions]",
-						iconClass: "glyphicon-th-list",
-						target: "_blank",
-						href: "#"
-					})
-					.menuItem("SideNav.updates", {
-						text: "[Check for Updates]",
-						iconClass: "glyphicon-th-list",
-						target: "_blank",
-						href: "#"
-					})
-					.menuItem("SideNav.checkNotification", {
-						text: "[Check notification]",
-						iconClass: "glyphicon-th-list",
-						target: "_blank",
-						href: "#"
 					});
 			}])
 		.config(["$logProvider", ($logProvider: ng.ILogProvider) => {
-				$logProvider.debugEnabled((<any>window).SN.debug);
-			}]);
+			var globalDebug = (<any>window).SN.debug;
+			var queryStringDebug = window.location.search.indexOf("isdebug=1") !== -1;
+			$logProvider.debugEnabled(globalDebug || queryStringDebug);
+		}]);
 }

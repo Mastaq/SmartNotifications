@@ -24,5 +24,7 @@
     <ProjectItemFile Source="css\_bootstrap.scss" Target="HostWeb\css\" Type="ElementFile" />
     <ProjectItemFile Source="app\scriptlink\Storage.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
     <ProjectItemFile Source="app\scriptlink\Consts.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="Elements.debug.xml" Target="HostWeb\" Type="ElementFile" />
+    <ProjectItemFile Source="Elements.release.xml" Target="HostWeb\" Type="ElementFile" />
   </Files>
 </ProjectItem>

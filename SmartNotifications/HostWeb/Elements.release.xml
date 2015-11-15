@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
 	<Module Name="HostWeb">
 		<File Path="HostWeb\External\knockout.js" Url="HostWeb/External/knockout.js" ReplaceContent="TRUE" />

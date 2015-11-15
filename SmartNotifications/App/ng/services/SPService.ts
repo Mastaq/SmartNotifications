@@ -77,13 +77,7 @@ namespace SN {
 
 			Ex.executeQueryPromise(context)
 				.then(() => {
-					this.createManageAppView(library)
-						.then(() => {
-							dfd.resolve(library);
-						})
-						.catch(e => {
-							dfd.reject(new SPListRepo.RequestError(e));
-						});
+						dfd.resolve(library);
 				}, e => {
 					if (e.get_errorTypeName() === "System.ArgumentException") {
 						var listInfo = new SP.ListCreationInformation();

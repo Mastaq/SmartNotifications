@@ -9,18 +9,18 @@
 		</h1>
 	</div>
 	<div data-bind="if: loaded() && hasPermissions()">
-		<h3>Use button below to switch on or switch off Smart Notifications on this site:</h3>
+		<h3>Use button below to switch ON or switch OFF Smart Notifications on this site:</h3>
 		<div class="col-md-2 col-md-offset-3">
 			<div class="btn-group">
 				<label class="btn" data-bind="css: { 'active': snEnabled, 'btn-primary': snEnabled, 'btn-default': !snEnabled() }">
 					<input type="radio" name="options" data-bind="checked: snEnabled,
 																	checkedValue: true,
-																	click: toggleState" id="option1">Enable
+																	click: toggleState" id="option1">Enabled
 				</label>
 				<label class="btn btn-default" data-bind="css: { 'active': !snEnabled()}">
 					<input type="radio" name="options" data-bind="checked: snEnabled,
 																   checkedValue: false,
-																   click: toggleState" id="option2">Disable
+																   click: toggleState" id="option2">Disabled
 				</label>
 			</div>
 		</div>

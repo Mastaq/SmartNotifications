@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
 	<Module Name="App">
 		<File Path="App\build\sn.app.external.css" Url="App/build/sn.app.external.css" ReplaceContent="TRUE" />
@@ -22,8 +22,5 @@
 		<File Path="App\jslink\color-field\build\color.field.external.js" Url="App/jslink/color-field/build/color.field.external.js" ReplaceContent="TRUE" />
 		<File Path="App\jslink\color-field\build\color.field.external.css" Url="App/jslink/color-field/build/color.field.external.css" ReplaceContent="TRUE" />
 		<File Path="App\jslink\color-field\templates.html" Url="App/jslink/color-field/templates.html" ReplaceContent="TRUE" />
-		<File Path="App\templates\onoff.html" Url="App/templates/onoff.html" ReplaceContent="TRUE" />
-		<File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
-		<File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
 	</Module>
 </Elements>

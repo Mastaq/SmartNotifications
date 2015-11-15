@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="HostWeb">
+    <File Path="HostWeb\External\knockout.js" Url="HostWeb/External/knockout.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\build\sn.scriptlink.js" Url="HostWeb/build/sn.scriptlink.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\External\bootstrap.css" Url="HostWeb/External/bootstrap.css" ReplaceContent="TRUE" />
+    <File Path="HostWeb\External\jquery.js" Url="HostWeb/External/jquery.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\build\sn.manage.host.js" Url="HostWeb/build/sn.manage.host.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\manage\Loader.ts" Url="HostWeb/app/manage/Loader.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\manage\_references.ts" Url="HostWeb/app/manage/_references.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\_references.ts" Url="HostWeb/app/scriptlink/_references.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\manage\SPAsyncScript.ts" Url="HostWeb/app/manage/SPAsyncScript.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\css\styles.scss" Url="HostWeb/css/styles.scss" ReplaceContent="TRUE" />
+    <File Path="HostWeb\build\styles.css" Url="HostWeb/build/styles.css" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\manage\ManageAppViewModel.ts" Url="HostWeb/app/manage/ManageAppViewModel.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\template\templates.html" Url="HostWeb/template/templates.html" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Loader.ts" Url="HostWeb/app/scriptlink/Loader.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\ScriptLinkViewModel.ts" Url="HostWeb/app/scriptlink/ScriptLinkViewModel.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\SPAsyncScript.ts" Url="HostWeb/app/scriptlink/SPAsyncScript.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Notification.ts" Url="HostWeb/app/scriptlink/Notification.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\HoverBinding.ts" Url="HostWeb/app/scriptlink/HoverBinding.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\NotificationItems.ts" Url="HostWeb/app/scriptlink/NotificationItems.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\css\_bootstrap.scss" Url="HostWeb/css/_bootstrap.scss" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Storage.ts" Url="HostWeb/app/scriptlink/Storage.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Consts.ts" Url="HostWeb/app/scriptlink/Consts.ts" ReplaceContent="TRUE" />
+  </Module>
+</Elements>

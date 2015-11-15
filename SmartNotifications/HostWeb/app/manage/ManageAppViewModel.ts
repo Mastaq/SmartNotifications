@@ -54,7 +54,7 @@ namespace SN {
 				}
 
 				context.executeQueryAsync(() => {
-					var notify = SP.UI.Notify.addNotification("Smart Notifications switched OFF", true);
+					var notify = SP.UI.Notify.addNotification("Smart Notifications are switched OFF", true);
 					setTimeout(() => {
 						SP.UI.Notify.removeNotification(notify);
 					}, 2 * 1000);
@@ -79,7 +79,7 @@ namespace SN {
 			userCustomAction.update();
 
 			context.executeQueryAsync(() => {
-				var notify = SP.UI.Notify.addNotification("Smart Notifications switched ON", true);
+				var notify = SP.UI.Notify.addNotification("Smart Notifications are switched ON", true);
 				setTimeout(() => {
 					SP.UI.Notify.removeNotification(notify);
 				}, 2 * 1000);
