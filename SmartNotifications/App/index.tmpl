@@ -13,7 +13,7 @@
 
 </head>
 <body class="ms-backgroundImage ms-backgroundImage">
-	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak>
+	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak class="ms-core-overlay">
 		<div ng-include src="'templates/chrome.control.html'"></div>
 		<div class="ng-hide bg-danger license-info text-danger" data-ng-show="vm.trialExpired || vm.underTrial || vm.licenseNotValid" ng-cloak>
 			<div class="ng-hide license-line" data-ng-show="vm.underTrial">{{vm.daysLeft}} days left on this trial</div>
@@ -26,10 +26,8 @@
 				<div ng-controller="SideNavCtrl">
 					<div class="row">
 						<div class="col-sm-2" id="sn-side">
-							<div class="menu-vertical">
-								<eeh-navigation-menu menu-name="'SideNav'" class="sidebar-nav">
-								</eeh-navigation-menu>
-							</div>
+							<eeh-navigation-menu menu-name="'SideNav'" class="sidebar-nav">
+							</eeh-navigation-menu>
 						</div>
 						<div class="col-sm-10" id="sn-view">
 							<div ui-view ng-cloak></div>
@@ -56,6 +54,10 @@
 		<table class="ms-rteTable-1">
 			<tr class="ms-rteTableHeaderRow-1"></tr>
 		</table>
+		<ul>
+			<li><a class="ms-core-listMenu-item ms-HoverBackground-bgColor"></a></li>
+			<li><a class="ms-core-listMenu-selected"></a></li>
+		</ul>
 	</div>
 
 	<script type="text/javascript">

@@ -70,7 +70,8 @@
 .navigation-menu > ul {
   border: solid 1px #eeeeee;
   background: #f8f8f8;
-  padding: 0; }
+  padding: 0;
+  background-color: transparent; }
 
 .navigation-menu > ul li {
   font-size: 14px; }
@@ -78,8 +79,7 @@
 .navigation-menu ul li > a {
   position: relative;
   display: block;
-  padding: 10px 15px;
-  color: #777; }
+  padding: 10px 15px; }
 
 .navigation-menu ul li.active > a {
   color: #555;
