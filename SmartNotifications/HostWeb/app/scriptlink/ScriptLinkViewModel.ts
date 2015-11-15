@@ -1,6 +1,6 @@
 ﻿/// <reference path="_references.ts" />
 
-namespace SN {
+namespace SNScriptLink {
 	export class ScriptLinkViewModel {
 
 		grouppedNotifications: KnockoutObservableArray<NotificationItems>;
@@ -10,38 +10,61 @@ namespace SN {
 
 			this.getNotifications()
 				.then((data) => {
-					var enumerator = data.getEnumerator();
-					var notifications: Notification[] = [];
-					while (enumerator.moveNext()) {
-						var item = enumerator.get_current();
-						var notification = new Notification();
-						notification.color = item.get_item("Color_SN");
-						notification.dismissable = item.get_item("Dismissable_SN");
-						notification.title = item.get_item("Title");
-						notification.text = item.get_item("Message_SN");
 
-						notifications.push(notification);
-					}
+					var ctx = SP.ClientContext.get_current();
+					ctx.load(ctx.get_web(), "Id");
+					ctx.executeQueryAsync(() => {
+						var id = ctx.get_web().get_id().toString();
+						var dissmissed = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
 
-					var uniqueColors: string[] = [];
-					for (let i = 0; i < notifications.length; i++) {
-						if (uniqueColors.indexOf(notifications[i].color) === -1) {
-							uniqueColors.push(notifications[i].color);
+						if (dissmissed == null) {
+							dissmissed = {};
+							dissmissed[id] = [];
 						}
-					}
 
-					for (let i = 0; i < uniqueColors.length; i++) {
-						var notificationItem = new NotificationItems();
-						ko.utils.arrayPushAll<Notification>(notificationItem.notifications, this.getNotificationsByColor(uniqueColors[i], notifications));
-						notificationItem.notifications.valueHasMutated();
-						notificationItem.key = uniqueColors[i];
-						notificationItem.rgba = this.hexToRgb(uniqueColors[i]);
-						notificationItem.boxShadow = String.format("0 0 5px {0}", uniqueColors[i]);
+						var dissmissedItems = dissmissed[id];
+						var enumerator = data.getEnumerator();
+						var notifications: Notification[] = [];
+						while (enumerator.moveNext()) {
+							var item = enumerator.get_current();
+							var notification = new Notification();
+							notification.color = item.get_item("Color_SN");
+							notification.dismissable = item.get_item("Dismissable_SN");
+							notification.title = item.get_item("Title");
+							notification.text = item.get_item("Message_SN");
+							notification.id = item.get_id();
 
-						this.grouppedNotifications().push(notificationItem);
-					}
+							if (dissmissedItems && dissmissedItems.length > 0) {
+								if (dissmissedItems.indexOf(notification.id.toString()) !== -1) {
+									continue;
+								}
+							}
 
-					this.grouppedNotifications.valueHasMutated();
+							notifications.push(notification);
+						}
+
+						var uniqueColors: string[] = [];
+						for (let i = 0; i < notifications.length; i++) {
+							if (uniqueColors.indexOf(notifications[i].color) === -1) {
+								uniqueColors.push(notifications[i].color);
+							}
+						}
+
+						for (let i = 0; i < uniqueColors.length; i++) {
+							var notificationItem = new NotificationItems();
+							ko.utils.arrayPushAll<Notification>(notificationItem.notifications, this.getNotificationsByColor(uniqueColors[i], notifications));
+							notificationItem.notifications.valueHasMutated();
+							notificationItem.key = uniqueColors[i];
+							notificationItem.rgba = this.hexToRgb(uniqueColors[i]);
+							notificationItem.boxShadow = String.format("0 0 5px {0}", uniqueColors[i]);
+
+							this.grouppedNotifications().push(notificationItem);
+						}
+
+						this.grouppedNotifications.valueHasMutated();
+					}, (s, e) => {
+						this.onError(e);
+					});
 				});
 		}
 
@@ -63,6 +86,13 @@ namespace SN {
 			}
 		}
 
+		private onError(e: SP.ClientRequestFailedEventArgs) {
+			if (console.log) {
+				console.log(e);
+				console.log(e.get_message());
+			}
+		}
+
 		private getNotificationsByColor(color: string, notifications: Notification[]): Notification[] {
 			return notifications.filter((notification) => {
 				return notification.color === color;
@@ -81,8 +111,8 @@ namespace SN {
 		private getNotifications(): JQueryPromise<SP.ListItemCollection> {
 			var dfd = jQuery.Deferred();
 			var context = SP.ClientContext.get_current();
-			var appWeb = context.get_site().openWeb("SmartNotifications");
-			var list = appWeb.get_lists().getByTitle("Notifications");
+			var appWeb = context.get_site().openWeb(Consts.WebRelUrl);
+			var list = appWeb.get_lists().getByTitle(Consts.NotificationsListTitle);
 			context.load(list);
 
 			context.executeQueryAsync(() => {
@@ -106,11 +136,11 @@ namespace SN {
 				context.executeQueryAsync(() => {
 					dfd.resolve(items);
 				}, (s, e) => {
-					alert(e.get_message());
+					this.onError(e);
 				});
 
 			}, (s, e) => {
-				alert(e.get_message());
+				this.onError(e);
 			});
 
 			return dfd.promise();

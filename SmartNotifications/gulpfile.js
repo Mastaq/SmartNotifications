@@ -1,6 +1,5 @@
 ﻿var gulp = require("gulp"),
 	path = require("path"),
-	merge = require("merge-stream"),
 	baseExternalPath = "App/lib/",
 	autoprefixer = require("autoprefixer"),
 	runSequence = require("run-sequence"),
@@ -8,7 +7,6 @@
 	xml2js = require("xml2js"),
 	settings = require("./settings.js"),
 	merge = require("merge-stream");
-
 
 var $ = require("gulp-load-plugins")({
 	rename: {
@@ -96,6 +94,8 @@ gulp.task("sass", function () {
 });
 
 gulp.task("host-sass", function () {
+	//console.log(process.env);
+	process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 	gulp.src("HostWeb/css/**/*.scss")
 		.pipe($.sass().on("error", $.sass.logError))
 		.pipe($.postcss([autoprefixer({ browsers: ["last 2 versions", "ie >= 9"] })]))
@@ -213,6 +213,7 @@ gulp.task("watch", function () {
 				siteUrl: settings.siteUrl,
 				username: settings.username,
 				password: settings.password,
+				domain: settings.domain,
 				folder: "App",
 				appWebUrl: "SmartNotifications",
 				flatten: false
@@ -228,6 +229,7 @@ gulp.task("watch", function () {
 			siteUrl: settings.siteUrl,
 			username: settings.username,
 			password: settings.password,
+			domain: settings.domain,
 			folder: "SmartNotificationsAssets"
 		}));
 	});
@@ -241,6 +243,7 @@ gulp.task("watch", function () {
 			siteUrl: settings.siteUrl,
 			username: settings.username,
 			password: settings.password,
+			domain: settings.domain,
 			folder: "SmartNotificationsAssets",
 			flatten: false
 		}));
@@ -255,6 +258,7 @@ gulp.task("watch", function () {
 				siteUrl: settings.siteUrl,
 				username: settings.username,
 				password: settings.password,
+				domain: settings.domain,
 				folder: "App",
 				appWebUrl: "SmartNotifications",
 				flatten: false

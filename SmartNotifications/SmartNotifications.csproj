@@ -86,7 +86,6 @@
     </Content>
     <Content Include="HostWeb\build\sn.manage.host.js" />
     <Content Include="HostWeb\build\styles.css" />
-    <Content Include="HostWeb\External\previous.png" />
     <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />
@@ -149,6 +148,7 @@
       <FeatureId>{d10442b8-c412-42d1-b5d9-c77ffdd2fdcc}</FeatureId>
     </None>
     <None Include="HostWeb\css\styles.scss" />
+    <None Include="HostWeb\css\_bootstrap.scss" />
     <None Include="HostWeb\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{55a434c9-53cc-4691-af48-32f435d25ae8}</SharePointProjectItemId>
     </None>
@@ -274,6 +274,7 @@
     <TypeScriptCompile Include="HostWeb\app\scriptlink\NotificationItems.ts" />
     <TypeScriptCompile Include="HostWeb\app\scriptlink\ScriptLinkViewModel.ts" />
     <TypeScriptCompile Include="HostWeb\app\scriptlink\SPAsyncScript.ts" />
+    <TypeScriptCompile Include="HostWeb\app\scriptlink\Storage.ts" />
     <TypeScriptCompile Include="HostWeb\app\scriptlink\_references.ts" />
     <TypeScriptCompile Include="typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />

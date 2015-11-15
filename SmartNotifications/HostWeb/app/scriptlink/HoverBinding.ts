@@ -4,7 +4,7 @@ interface KnockoutBindingHandlers {
 	hover: KnockoutBindingHandler;
 }
 
-namespace SN {
+namespace SNScriptLink {
 
 	SP.SOD.executeOrDelayUntilScriptLoaded(() => {
 		ko.bindingHandlers.hover = {

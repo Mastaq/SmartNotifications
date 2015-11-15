@@ -22,5 +22,7 @@
     <ProjectItemFile Source="app\scriptlink\HoverBinding.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
     <ProjectItemFile Source="app\scriptlink\NotificationItems.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
     <ProjectItemFile Source="css\_bootstrap.scss" Target="HostWeb\css\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\Storage.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
+    <ProjectItemFile Source="app\scriptlink\Consts.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -21,5 +21,7 @@
     <File Path="HostWeb\app\scriptlink\HoverBinding.ts" Url="HostWeb/app/scriptlink/HoverBinding.ts" ReplaceContent="TRUE" />
     <File Path="HostWeb\app\scriptlink\NotificationItems.ts" Url="HostWeb/app/scriptlink/NotificationItems.ts" ReplaceContent="TRUE" />
     <File Path="HostWeb\css\_bootstrap.scss" Url="HostWeb/css/_bootstrap.scss" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Storage.ts" Url="HostWeb/app/scriptlink/Storage.ts" ReplaceContent="TRUE" />
+    <File Path="HostWeb\app\scriptlink\Consts.ts" Url="HostWeb/app/scriptlink/Consts.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

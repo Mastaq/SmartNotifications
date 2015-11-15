@@ -1,6 +1,6 @@
 ﻿  /// <reference path="_references.ts" />
 
-namespace SN {
+namespace SNScriptLink {
 	  
 	import sod = SP.SOD;
 

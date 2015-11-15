@@ -1,6 +1,6 @@
 ﻿/// <reference path="_references.ts" />
 
-namespace SN {
+namespace SNScriptLink {
 	export class NotificationItems {
 		notifications: KnockoutObservableArray<Notification>;
 		key: string;
@@ -30,6 +30,8 @@ namespace SN {
 			}
 			this.notifications.splice(index, 1);
 			this.notifications.valueHasMutated();
+
+			this.updateDissmissedItems(activeNotification);
 		}
 
 		go(direction: string) {
@@ -37,6 +39,28 @@ namespace SN {
 			direction === "prev" ? this.goPrev(activeNotification) : this.goNext(activeNotification);
 
 			(<SP.UI.ModalDialog>(<any>SP.UI.ModalDialog).get_childDialog()).autoSize();
+		}
+
+		private updateDissmissedItems(notification: Notification) {
+			var ctx = SP.ClientContext.get_current();
+			ctx.load(ctx.get_web(), "Id");
+			ctx.executeQueryAsync(() => {
+				var id = ctx.get_web().get_id().toString();
+				var dissmissedItems = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
+				if (dissmissedItems == null || !dissmissedItems[id]) {
+					dissmissedItems = dissmissedItems || {};
+					dissmissedItems[id] = [notification.id.toString()];
+				} else {
+					dissmissedItems[id].push(notification.id.toString());
+				}
+
+				Storage.save(Consts.StorageKey, dissmissedItems);
+			}, (s, e) => {
+				if (console.log) {
+					console.log(e);
+					console.log(e.get_message());
+				}
+			});
 		}
 
 		private goNext(activeNotification: Notification) {
