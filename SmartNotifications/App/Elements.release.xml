@@ -26,5 +26,6 @@
 		<File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
 		<File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
 		<File Path="App\templates\activate.html" Url="App/templates/activate.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\contactdev.html" Url="App/templates/contactdev.html" ReplaceContent="TRUE" />
 	</Module>
 </Elements>

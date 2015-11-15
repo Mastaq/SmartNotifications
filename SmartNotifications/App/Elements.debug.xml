@@ -99,6 +99,7 @@
 		<File Path="App\ng\model\Notifications.ts" Url="App/ng/model/Notifications.ts" ReplaceContent="TRUE" />
 		<File Path="App\templates\onoff.html" Url="App/templates/onoff.html" ReplaceContent="TRUE" />
 		<File Path="App\templates\activate.html" Url="App/templates/activate.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\contactdev.html" Url="App/templates/contactdev.html" ReplaceContent="TRUE" />
 		<File Path="App\ng\controllers\OnOffCtrl.ts" Url="App/ng/controllers/OnOffCtrl.ts" ReplaceContent="TRUE" />
 		<File Path="App\ng\services\Storage.ts" Url="App/ng/services/Storage.ts" ReplaceContent="TRUE" />
 		<File Path="App\ng\model\CommonAppSettings.ts" Url="App/ng/model/CommonAppSettings.ts" ReplaceContent="TRUE" />

@@ -9,6 +9,9 @@
   <Properties>
     <Title>Smart Notifications</Title>
     <StartPage>~appWebUrl/App/index.html?SPHostUrl={HostUrl}&amp;HostTitle={HostTitle}</StartPage>
+		<SupportedLocales>
+			<SupportedLocale CultureName="en-US" />
+		</SupportedLocales>
   </Properties>
 
   <AppPrincipal>
