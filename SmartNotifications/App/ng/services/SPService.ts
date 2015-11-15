@@ -18,6 +18,7 @@ namespace SN {
 			"./../HostWeb/template/templates.html",
 			"./../HostWeb/External/knockout.js",
 			"./../HostWeb/External/jquery.js",
+			"./../HostWeb/External/lz-string.min.js",
 			"./../HostWeb/External/bootstrap.css",
 			"./../HostWeb/build/styles.css",
 			"./../HostWeb/build/sn.manage.host.js",

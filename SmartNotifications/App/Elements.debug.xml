@@ -98,6 +98,7 @@
 		<File Path="App\lib\angular-toastr\dist\angular-toastr.tpls.js" Url="App/lib/angular-toastr/dist/angular-toastr.tpls.js" ReplaceContent="TRUE" />
 		<File Path="App\ng\model\Notifications.ts" Url="App/ng/model/Notifications.ts" ReplaceContent="TRUE" />
 		<File Path="App\templates\onoff.html" Url="App/templates/onoff.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\activate.html" Url="App/templates/activate.html" ReplaceContent="TRUE" />
 		<File Path="App\ng\controllers\OnOffCtrl.ts" Url="App/ng/controllers/OnOffCtrl.ts" ReplaceContent="TRUE" />
 		<File Path="App\ng\services\Storage.ts" Url="App/ng/services/Storage.ts" ReplaceContent="TRUE" />
 		<File Path="App\ng\model\CommonAppSettings.ts" Url="App/ng/model/CommonAppSettings.ts" ReplaceContent="TRUE" />
@@ -106,5 +107,6 @@
 		<File Path="App\lib\jquery\dist\jquery.js" Url="App/lib/jquery/dist/jquery.js" ReplaceContent="TRUE" />
 		<File Path="App\lib\bootstrap-toggle\css\bootstrap-toggle.min.css" Url="App/lib/bootstrap-toggle/css/bootstrap-toggle.min.css" ReplaceContent="TRUE" />
 		<File Path="App\lib\bootstrap-toggle\js\bootstrap-toggle.min.js" Url="App/lib/bootstrap-toggle/js/bootstrap-toggle.min.js" ReplaceContent="TRUE" />
+		<File Path="App\ng\controllers\ActivateCtrl.ts" Url="App/ng/controllers/ActivateCtrl.ts" ReplaceContent="TRUE" />
 	</Module>
 </Elements>

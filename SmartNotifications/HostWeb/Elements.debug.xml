@@ -2,6 +2,7 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="HostWeb">
     <File Path="HostWeb\External\knockout.js" Url="HostWeb/External/knockout.js" ReplaceContent="TRUE" />
+    <File Path="HostWeb\External\lz-string.min.js" Url="HostWeb/External/lz-string.min.js" ReplaceContent="TRUE" />
     <File Path="HostWeb\build\sn.scriptlink.js" Url="HostWeb/build/sn.scriptlink.js" ReplaceContent="TRUE" />
     <File Path="HostWeb\External\bootstrap.css" Url="HostWeb/External/bootstrap.css" ReplaceContent="TRUE" />
     <File Path="HostWeb\External\jquery.js" Url="HostWeb/External/jquery.js" ReplaceContent="TRUE" />

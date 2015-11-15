@@ -25,5 +25,6 @@
 		<File Path="App\templates\onoff.html" Url="App/templates/onoff.html" ReplaceContent="TRUE" />
 		<File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
 		<File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\activate.html" Url="App/templates/activate.html" ReplaceContent="TRUE" />
 	</Module>
 </Elements>

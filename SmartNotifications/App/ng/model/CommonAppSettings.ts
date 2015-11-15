@@ -1,4 +1,4 @@
-﻿/// <reference path="../_references.ts" />
+﻿/// <reference path="../../../typings/tsd.d.ts" />
 
 namespace SN {
 	export class CommonAppSettings {

@@ -95,6 +95,7 @@
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />
     <Content Include="HostWeb\External\bootstrap.css" />
+    <Content Include="HostWeb\External\lz-string.min.js" />
     <Content Include="HostWeb\template\templates.html" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\Elements.xml" />

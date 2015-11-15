@@ -3,14 +3,16 @@
 namespace SNScriptLink {
 	((window: any) => {
 		function onkoLoaded() {
+			var lzLoader = new SPAsyncScript("snlzstring", _spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/lz-string.min.js", () => {
+				jQuery.get(_spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/templates.html")
+					.then(data => {
+						jQuery("body").append("<div style=\"display:none\">" + data + "<\/div>");
+						jQuery("#RibbonContainer-TabRowRight").prepend("<div class=\"sn-app-bootstrap\" id=\"sn-app-scriptlink\" data-bind=\"template: {name: 'sn-app-scriptlink-tmpl'}\">hello</div>");
 
-			jQuery.get(_spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/templates.html")
-				.then(data => {
-					jQuery("body").append("<div style=\"display:none\">" + data + "<\/div>");
-					jQuery("#RibbonContainer-TabRowRight").prepend("<div class=\"sn-app-bootstrap\" id=\"sn-app-scriptlink\" data-bind=\"template: {name: 'sn-app-scriptlink-tmpl'}\">hello</div>");
-
-					ko.applyBindings(new ScriptLinkViewModel(), document.getElementById("sn-app-scriptlink"));
-				});
+						ko.applyBindings(new ScriptLinkViewModel(), document.getElementById("sn-app-scriptlink"));
+					});
+			});
+			lzLoader.load();
 		}
 
 		function onjQueryLoaded() {
@@ -32,7 +34,7 @@ namespace SNScriptLink {
 					onjQueryLoaded();
 				}
 			}, "sp.js");
-			SP.SOD.loadMultiple(["sp.js"], () => {});
+			SP.SOD.loadMultiple(["sp.js"], () => { });
 		}
 
 		if (_spBodyOnLoadCalled) {

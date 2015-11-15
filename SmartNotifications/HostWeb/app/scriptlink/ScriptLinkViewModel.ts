@@ -8,63 +8,80 @@ namespace SNScriptLink {
 		constructor() {
 			this.grouppedNotifications = ko.observableArray([]);
 
-			this.getNotifications()
-				.then((data) => {
+			this.getAppSettings()
+				.then((settingItem) => {
+					var appSettings = JSON.parse(LZString.decompressFromBase64(settingItem.get_item("Value_SN")));
+					if (appSettings.invalidLicense) {
+						return;
+					}
 
-					var ctx = SP.ClientContext.get_current();
-					ctx.load(ctx.get_web(), "Id");
-					ctx.executeQueryAsync(() => {
-						var id = ctx.get_web().get_id().toString();
-						var dissmissed = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
+					if (appSettings.trial) {
+						var dateNow = new Date();
+						var dateInstalled = new Date(appSettings.installationDate);
+						var timeDiff = Math.abs(dateNow.getTime() - dateInstalled.getTime());
+						var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-						if (dissmissed == null) {
-							dissmissed = {};
-							dissmissed[id] = [];
+						if (diffDays > 30) {
+							return;
 						}
+					}
 
-						var dissmissedItems = dissmissed[id];
-						var enumerator = data.getEnumerator();
-						var notifications: Notification[] = [];
-						while (enumerator.moveNext()) {
-							var item = enumerator.get_current();
-							var notification = new Notification();
-							notification.color = item.get_item("Color_SN");
-							notification.dismissable = item.get_item("Dismissable_SN");
-							notification.title = item.get_item("Title");
-							notification.text = item.get_item("Message_SN");
-							notification.id = item.get_id();
+					this.getNotifications()
+						.then((data) => {
 
-							if (dissmissedItems && dissmissedItems.length > 0) {
-								if (dissmissedItems.indexOf(notification.id.toString()) !== -1) {
-									continue;
+							var ctx = SP.ClientContext.get_current();
+							ctx.load(ctx.get_web(), "Id");
+							ctx.executeQueryAsync(() => {
+								var id = ctx.get_web().get_id().toString();
+								var dissmissed = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
+
+								if (dissmissed == null) {
+									dissmissed = {};
+									dissmissed[id] = [];
 								}
-							}
 
-							notifications.push(notification);
-						}
+								var dissmissedItems = dissmissed[id];
+								var enumerator = data.getEnumerator();
+								var notifications: Notification[] = [];
+								while (enumerator.moveNext()) {
+									var item = enumerator.get_current();
+									var notification = new Notification();
+									notification.color = item.get_item("Color_SN");
+									notification.dismissable = item.get_item("Dismissable_SN");
+									notification.title = item.get_item("Title");
+									notification.text = item.get_item("Message_SN");
+									notification.id = item.get_id();
 
-						var uniqueColors: string[] = [];
-						for (let i = 0; i < notifications.length; i++) {
-							if (uniqueColors.indexOf(notifications[i].color) === -1) {
-								uniqueColors.push(notifications[i].color);
-							}
-						}
+									if (dissmissedItems && dissmissedItems.length > 0) {
+										if (dissmissedItems.indexOf(notification.id.toString()) !== -1) {
+											continue;
+										}
+									}
 
-						for (let i = 0; i < uniqueColors.length; i++) {
-							var notificationItem = new NotificationItems();
-							ko.utils.arrayPushAll<Notification>(notificationItem.notifications, this.getNotificationsByColor(uniqueColors[i], notifications));
-							notificationItem.notifications.valueHasMutated();
-							notificationItem.key = uniqueColors[i];
-							notificationItem.rgba = this.hexToRgb(uniqueColors[i]);
-							notificationItem.boxShadow = String.format("0 0 5px {0}", uniqueColors[i]);
+									notifications.push(notification);
+								}
 
-							this.grouppedNotifications().push(notificationItem);
-						}
+								var uniqueColors: string[] = [];
+								for (let i = 0; i < notifications.length; i++) {
+									if (uniqueColors.indexOf(notifications[i].color) === -1) {
+										uniqueColors.push(notifications[i].color);
+									}
+								}
 
-						this.grouppedNotifications.valueHasMutated();
-					}, (s, e) => {
-						this.onError(e);
-					});
+								for (let i = 0; i < uniqueColors.length; i++) {
+									var notificationItem = new NotificationItems();
+									ko.utils.arrayPushAll<Notification>(notificationItem.notifications, this.getNotificationsByColor(uniqueColors[i], notifications));
+									notificationItem.notifications.valueHasMutated();
+									notificationItem.key = uniqueColors[i];
+									notificationItem.rgba = this.hexToRgb(uniqueColors[i]);
+									notificationItem.boxShadow = String.format("0 0 5px {0}", uniqueColors[i]);
+
+									this.grouppedNotifications().push(notificationItem);
+								}
+
+								this.grouppedNotifications.valueHasMutated();
+							});
+						});
 				});
 		}
 
@@ -108,8 +125,33 @@ namespace SNScriptLink {
 			return String.format("rgba({0},{1},{2},0.7)", r, g, b);
 		}
 
+		private getAppSettings(): JQueryPromise<SP.ListItem> {
+			var dfd = jQuery.Deferred<SP.ListItem>();
+			var context = SP.ClientContext.get_current();
+			var appWeb = context.get_site().openWeb(Consts.WebRelUrl);
+			var list = appWeb.get_lists().getByTitle(Consts.AppSettingsListTitle);
+			context.load(list);
+
+			context.executeQueryAsync(() => {
+				var caml = new SP.CamlQuery();
+				caml.set_viewXml(String.format("<View><Query>{0}</View></Query>", Consts.AppSettingsCaml));
+				var items = list.getItems(caml);
+				context.load(items);
+				context.executeQueryAsync(() => {
+					dfd.resolve(items.get_item(0));
+				}, (s, e) => {
+					this.onError(e);
+				});
+
+			}, (s, e) => {
+				this.onError(e);
+			});
+
+			return dfd.promise();
+		}
+
 		private getNotifications(): JQueryPromise<SP.ListItemCollection> {
-			var dfd = jQuery.Deferred();
+			var dfd = jQuery.Deferred<SP.ListItemCollection>();
 			var context = SP.ClientContext.get_current();
 			var appWeb = context.get_site().openWeb(Consts.WebRelUrl);
 			var list = appWeb.get_lists().getByTitle(Consts.NotificationsListTitle);

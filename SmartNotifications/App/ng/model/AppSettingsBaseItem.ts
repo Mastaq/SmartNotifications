@@ -1,4 +1,4 @@
-﻿/// <reference path="../_references.ts" />
+﻿/// <reference path="../../../typings/tsd.d.ts" />
 /// <reference path="../../lib/sp-list-repository/build/sp.list.repository.d.ts" />
 
 namespace SN {

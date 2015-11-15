@@ -5,6 +5,15 @@ namespace SNScriptLink {
 		static StorageKey = "sn_dismissed_items";
 		static WebRelUrl = "SmartNotifications";
 		static NotificationsListTitle = "Notifications";
+		static AppSettingsListTitle = "AppSettings";
+		static SettingsKey = "appsettings";
+		static AppSettingsCaml = `
+			<Where>
+				<Eq>
+					<FieldRef Name='Key_SN' /> 
+					<Value Type='Text'>appsettings</Value> 
+				</Eq>
+			</Where>`;
 		static CamlString = `
 			<Where>
 				<And>

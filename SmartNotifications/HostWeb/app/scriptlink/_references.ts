@@ -1,6 +1,5 @@
 ﻿/// <reference path="../../../typings/tsd.d.ts" />
 
-
 /// <reference path="SPAsyncScript.ts" />
 /// <reference path="Storage.ts" />
 /// <reference path="Consts.ts" />
