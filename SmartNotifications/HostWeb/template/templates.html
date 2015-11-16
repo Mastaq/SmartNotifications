@@ -3,14 +3,15 @@
 		<h1>
 			<b>Access denied. You don't have enough permissions to manage the app.</b>
 		</h1>
-		<br />
+		<br/>
 		<h1>
 			Permissions required: Full Control.
 		</h1>
 	</div>
 	<div data-bind="if: loaded() && hasPermissions()">
-		<h3>Use button below to switch ON or switch OFF Smart Notifications on this site:</h3>
-		<div class="col-md-2 col-md-offset-3">
+		<h4>Use button below to switch ON or switch OFF Smart Notifications on this site:</h4>
+		<br/>
+		<div class="col-md-2">
 			<div class="btn-group">
 				<label class="btn" data-bind="css: { 'active': snEnabled, 'btn-primary': snEnabled, 'btn-default': !snEnabled() }">
 					<input type="radio" name="options" data-bind="checked: snEnabled,
@@ -28,7 +29,7 @@
 </script>
 
 <script type="text/html" id="sn-app-scriptlink-tmpl">
-	<div data-bind="foreach: grouppedNotifications">
+	<div id="sn-notif" data-bind="foreach: grouppedNotifications">
 		<div class="rectangle-set" data-bind="visible: $data.notifications && $data.notifications().length > 0">
 			<div class="sn-rectangle" data-bind="style: {backgroundColor: rgba, boxShadow: isHovering() ? boxShadow : 'none'},
 													hover: isHovering,
