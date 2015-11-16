@@ -153,7 +153,11 @@ namespace SNScriptLink {
 		private getNotifications(): JQueryPromise<SP.ListItemCollection> {
 			var dfd = jQuery.Deferred<SP.ListItemCollection>();
 			var context = SP.ClientContext.get_current();
-			var appWeb = context.get_site().openWeb(Consts.WebRelUrl);
+			var subWeburl = _spPageContextInfo.webServerRelativeUrl.replace(_spPageContextInfo.siteServerRelativeUrl, "");
+			if (subWeburl !== "") {
+				subWeburl = subWeburl + "/";
+			}
+			var appWeb = context.get_site().openWeb(subWeburl + Consts.WebRelUrl);
 			var list = appWeb.get_lists().getByTitle(Consts.NotificationsListTitle);
 			context.load(list);
 
