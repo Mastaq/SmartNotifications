@@ -52,10 +52,11 @@ namespace SN {
 						target: "_blank",
 						href: "#"
 					})
-					.menuItem("SideNav.customizationStatus", {
-						text: "Switch On\\Off",
-						iconClass: "fa fa-cog",
-						state: "onoff"
+					.menuItem("SideNav.addNotification", {
+						text: "Add New Notification",
+						iconClass: "glyphicon-plus",
+						target: "_blank",
+						href: "#"
 					})
 					.menuItem("SideNav.allNotifications", {
 						text: "All Notifications",
@@ -63,11 +64,10 @@ namespace SN {
 						target: "_blank",
 						href: "#"
 					})
-					.menuItem("SideNav.addNotification", {
-						text: "Add New Notification",
-						iconClass: "glyphicon-plus",
-						target: "_blank",
-						href: "#"
+					.menuItem("SideNav.customizationStatus", {
+						text: "Switch On\\Off",
+						iconClass: "fa fa-cog",
+						state: "onoff"
 					})
 					.menuItem("SideNav.contactDev", {
 						text: "Contact Developer",
