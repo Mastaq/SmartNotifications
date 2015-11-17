@@ -2,18 +2,6 @@
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="App\" Type="ElementManifest" />
-    <ProjectItemFile Source="Elements.debug.xml" Target="App\" Type="ElementFile" />
-    <ProjectItemFile Source="Elements.release.xml" Target="App\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular\angular.js" Target="App\lib\angular\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-animate\angular-animate.js" Target="App\lib\angular-animate\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-bootstrap\ui-bootstrap-tpls.js" Target="App\lib\angular-bootstrap\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-route\angular-route.js" Target="App\lib\angular-route\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-sanitize\angular-sanitize.js" Target="App\lib\angular-sanitize\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-translate\angular-translate.js" Target="App\lib\angular-translate\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-ui-router\release\angular-ui-router.js" Target="App\lib\angular-ui-router\release\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-ui-select\dist\select.css" Target="App\lib\angular-ui-select\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-ui-select\dist\select.js" Target="App\lib\angular-ui-select\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\animate.css\animate.css" Target="App\lib\animate.css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.css.map" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.min.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
@@ -28,9 +16,6 @@
     <ProjectItemFile Source="lib\bootstrap\dist\js\bootstrap.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap\dist\js\bootstrap.min.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
     <ProjectItemFile Source="lib\bootstrap\dist\js\npm.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\eeh-navigation\dist\eeh-navigation.css" Target="App\lib\eeh-navigation\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\eeh-navigation\dist\eeh-navigation.js" Target="App\lib\eeh-navigation\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\eeh-navigation\dist\eeh-navigation.tpl.js" Target="App\lib\eeh-navigation\dist\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\css\font-awesome.css" Target="App\lib\font-awesome\css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\css\font-awesome.min.css" Target="App\lib\font-awesome\css\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.eot" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
@@ -39,11 +24,7 @@
     <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff2" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
     <ProjectItemFile Source="lib\font-awesome\fonts\FontAwesome.otf" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\app.ts" Target="App\ng\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\_references.ts" Target="App\ng\" Type="ElementFile" />
     <ProjectItemFile Source="templates\home.html" Target="App\templates\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\HomeCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\interfaces\ICtrlScope.ts" Target="App\ng\interfaces\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.external.css" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.external.js" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.app.js" Target="App\build\" Type="ElementFile" />
@@ -61,56 +42,14 @@
     <ProjectItemFile Source="build\sn.app.css" Target="App\build\" Type="ElementFile" />
     <ProjectItemFile Source="sp\chrome.loader.js" Target="App\sp\" Type="ElementFile" />
     <ProjectItemFile Source="templates\chrome.control.html" Target="App\templates\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\ChromeNavCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\ContextService.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\model\Context.ts" Target="App\ng\model\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\SideNavCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
     <ProjectItemFile Source="index.tmpl" Target="App\" Type="ElementFile" />
     <ProjectItemFile Source="index.html" Target="App\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\knockout\dist\knockout.js" Target="App\lib\knockout\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\spectrum\spectrum.css" Target="App\lib\spectrum\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\spectrum\spectrum.js" Target="App\lib\spectrum\" Type="ElementFile" />
-    <ProjectItemFile Source="jslink\color-field\ColorField.ts" Target="App\jslink\color-field\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\build\color.field.js" Target="App\jslink\color-field\build\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\build\color.field.external.js" Target="App\jslink\color-field\build\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\build\color.field.external.css" Target="App\jslink\color-field\build\" Type="ElementFile" />
-    <ProjectItemFile Source="jslink\color-field\_references.ts" Target="App\jslink\color-field\" Type="ElementFile" />
     <ProjectItemFile Source="jslink\color-field\templates.html" Target="App\jslink\color-field\" Type="ElementFile" />
-    <ProjectItemFile Source="jslink\color-field\ColorFieldViewModel.ts" Target="App\jslink\color-field\" Type="ElementFile" />
-    <ProjectItemFile Source="jslink\color-field\SpectrumBinding.ts" Target="App\jslink\color-field\" Type="ElementFile" />
-    <ProjectItemFile Source="jslink\color-field\Validator.ts" Target="App\jslink\color-field\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\please-wait\build\please-wait.css" Target="App\lib\please-wait\build\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\please-wait\build\please-wait.js" Target="App\lib\please-wait\build\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-busy\dist\angular-busy.css" Target="App\lib\angular-busy\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-busy\dist\angular-busy.js" Target="App\lib\angular-busy\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\PleaseWaitService.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\SPColorService.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\factories\VendorsFactory.ts" Target="App\ng\factories\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\AppLoadCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\model\AppSettingsBaseItem.ts" Target="App\ng\model\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\SPService.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\repositories\AppSettingsRepository.ts" Target="App\ng\repositories\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\common\Fields.ts" Target="App\ng\common\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\sp-list-repository\build\sp.list.repository.d.ts" Target="App\lib\sp-list-repository\build\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\sp-list-repository\build\sp.list.repository.min.js" Target="App\lib\sp-list-repository\build\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\camljs\index.js" Target="App\lib\camljs\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\Constants.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-toastr\dist\angular-toastr.css" Target="App\lib\angular-toastr\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\angular-toastr\dist\angular-toastr.tpls.js" Target="App\lib\angular-toastr\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\model\Notifications.ts" Target="App\ng\model\" Type="ElementFile" />
     <ProjectItemFile Source="templates\onoff.html" Target="App\templates\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\OnOffCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\Storage.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\model\CommonAppSettings.ts" Target="App\ng\model\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\lz-string\libs\lz-string.min.js" Target="App\lib\lz-string\libs\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\services\Extensions.ts" Target="App\ng\services\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\jquery\dist\jquery.js" Target="App\lib\jquery\dist\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\bootstrap-toggle\css\bootstrap-toggle.min.css" Target="App\lib\bootstrap-toggle\css\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\bootstrap-toggle\js\bootstrap-toggle.min.js" Target="App\lib\bootstrap-toggle\js\" Type="ElementFile" />
     <ProjectItemFile Source="templates\contactdev.html" Target="App\templates\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\ContactDevCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
     <ProjectItemFile Source="templates\activate.html" Target="App\templates\" Type="ElementFile" />
-    <ProjectItemFile Source="lib\moment\moment.js" Target="App\lib\moment\" Type="ElementFile" />
-    <ProjectItemFile Source="ng\controllers\ActivateCtrl.ts" Target="App\ng\controllers\" Type="ElementFile" />
   </Files>
 </ProjectItem>

@@ -7,25 +7,10 @@
     <ProjectItemFile Source="External\bootstrap.css" Target="HostWeb\External\" Type="ElementFile" />
     <ProjectItemFile Source="External\jquery.js" Target="HostWeb\External\" Type="ElementFile" />
     <ProjectItemFile Source="build\sn.manage.host.js" Target="HostWeb\build\" Type="ElementFile" />
-    <ProjectItemFile Source="app\manage\Loader.ts" Target="HostWeb\app\manage\" Type="ElementFile" />
-    <ProjectItemFile Source="app\manage\_references.ts" Target="HostWeb\app\manage\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\_references.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\manage\SPAsyncScript.ts" Target="HostWeb\app\manage\" Type="ElementFile" />
     <ProjectItemFile Source="css\styles.scss" Target="HostWeb\css\" Type="ElementFile" />
     <ProjectItemFile Source="build\styles.css" Target="HostWeb\build\" Type="ElementFile" />
-    <ProjectItemFile Source="app\manage\ManageAppViewModel.ts" Target="HostWeb\app\manage\" Type="ElementFile" />
     <ProjectItemFile Source="template\templates.html" Target="HostWeb\template\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\Loader.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\ScriptLinkViewModel.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\SPAsyncScript.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\Notification.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\HoverBinding.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\NotificationItems.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
     <ProjectItemFile Source="css\_bootstrap.scss" Target="HostWeb\css\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\Storage.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="app\scriptlink\Consts.ts" Target="HostWeb\app\scriptlink\" Type="ElementFile" />
-    <ProjectItemFile Source="Elements.debug.xml" Target="HostWeb\" Type="ElementFile" />
-    <ProjectItemFile Source="Elements.release.xml" Target="HostWeb\" Type="ElementFile" />
     <ProjectItemFile Source="External\lz-string.min.js" Target="HostWeb\External\" Type="ElementFile" />
   </Files>
 </ProjectItem>

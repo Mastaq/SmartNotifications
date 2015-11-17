@@ -121,6 +121,7 @@ namespace SN {
 
 						if (dayDIff > this.trialPeriodInDays) {
 							this.trialExpired = true;
+							this.underTrial = false;
 						} else {
 							this.underTrial = true;
 							this.daysLeft = this.trialPeriodInDays - dayDIff;

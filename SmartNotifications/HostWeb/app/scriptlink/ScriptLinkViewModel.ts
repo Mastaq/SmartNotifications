@@ -128,7 +128,7 @@ namespace SNScriptLink {
 		private getAppSettings(): JQueryPromise<SP.ListItem> {
 			var dfd = jQuery.Deferred<SP.ListItem>();
 			var context = SP.ClientContext.get_current();
-			var appWeb = context.get_site().openWeb(Consts.WebRelUrl);
+			var appWeb = context.get_site().openWeb(this.getSubWebUrl() + Consts.WebRelUrl);
 			var list = appWeb.get_lists().getByTitle(Consts.AppSettingsListTitle);
 			context.load(list);
 
@@ -150,14 +150,21 @@ namespace SNScriptLink {
 			return dfd.promise();
 		}
 
-		private getNotifications(): JQueryPromise<SP.ListItemCollection> {
-			var dfd = jQuery.Deferred<SP.ListItemCollection>();
-			var context = SP.ClientContext.get_current();
+		private getSubWebUrl(): string {
 			var subWeburl = _spPageContextInfo.webServerRelativeUrl.replace(_spPageContextInfo.siteServerRelativeUrl, "");
 			if (subWeburl !== "") {
 				subWeburl = subWeburl + "/";
 			}
-			var appWeb = context.get_site().openWeb(subWeburl + Consts.WebRelUrl);
+
+			subWeburl = subWeburl.indexOf("/") === 0 ? subWeburl.substring(1) : subWeburl;
+
+			return subWeburl;
+		}
+
+		private getNotifications(): JQueryPromise<SP.ListItemCollection> {
+			var dfd = jQuery.Deferred<SP.ListItemCollection>();
+			var context = SP.ClientContext.get_current();
+			var appWeb = context.get_site().openWeb(this.getSubWebUrl() + Consts.WebRelUrl);
 			var list = appWeb.get_lists().getByTitle(Consts.NotificationsListTitle);
 			context.load(list);
 

@@ -201,35 +201,10 @@ gulp.task("build-app-jslink", function () {
 		.pipe(gulp.dest("App/jslink/color-field/build/"));
 });
 
-gulp.task("copy-elements-xml", function () {
-	if (isRelease) {
-		var s1 = gulp.src("HostWeb/Elements.release.xml")
-			.pipe($.rename("Elements.xml"))
-			.pipe(gulp.dest("HostWeb"));
-
-		var s2 = gulp.src("App/Elements.release.xml")
-			.pipe($.rename("Elements.xml"))
-			.pipe(gulp.dest("App"));
-
-		return merge(s1, s2);
-	}
-
-	var s1 = gulp.src("HostWeb/Elements.debug.xml")
-			.pipe($.rename("Elements.xml"))
-			.pipe(gulp.dest("HostWeb"));
-
-	var s2 = gulp.src("App/Elements.debug.xml")
-			.pipe($.rename("Elements.xml"))
-			.pipe(gulp.dest("App"));
-
-	return merge(s1, s2);
-
-});
-
 gulp.task("build-app-only", ["build-host-manage-ts", "build-host-scriptlink-ts", "build-app-ts", "build-app-jslink", "sass", "host-sass"]);
 
 gulp.task("build", function (callback) {
-	runSequence(["build-external-js", "build-external-css", "template", "copy-elements-xml"], ["build-app-only"], callback);
+	runSequence(["build-external-js", "build-external-css", "template"], ["build-app-only"], callback);
 });
 
 gulp.task("watch", function () {

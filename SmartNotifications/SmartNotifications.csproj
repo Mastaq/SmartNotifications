@@ -89,8 +89,6 @@
     </Content>
     <Content Include="HostWeb\build\sn.manage.host.js" />
     <Content Include="HostWeb\build\styles.css" />
-    <Content Include="HostWeb\Elements.release.xml" />
-    <Content Include="HostWeb\Elements.debug.xml" />
     <Content Include="HostWeb\External\knockout.js" />
     <Content Include="HostWeb\Elements.xml" />
     <Content Include="HostWeb\build\sn.scriptlink.js" />
@@ -206,8 +204,6 @@
     <None Include="App\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{01dfdd70-5021-4430-8e29-88285af95977}</SharePointProjectItemId>
     </None>
-    <Content Include="App\Elements.release.xml" />
-    <Content Include="App\Elements.debug.xml" />
     <Content Include="App\Elements.xml" />
   </ItemGroup>
   <ItemGroup>

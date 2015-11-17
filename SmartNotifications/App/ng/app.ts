@@ -65,7 +65,7 @@ namespace SN {
 						href: "#"
 					})
 					.menuItem("SideNav.customizationStatus", {
-						text: "Switch On\\Off",
+						text: "Switch the app ON or OFF",
 						iconClass: "fa fa-cog",
 						state: "onoff"
 					})

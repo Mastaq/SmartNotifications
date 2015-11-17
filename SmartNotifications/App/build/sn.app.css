@@ -97,7 +97,8 @@
 
 #contact-dev a {
   text-decoration: underline;
-  color: #428bca; }
+  color: #428bca;
+  cursor: pointer; }
 
 @-webkit-keyframes fadeInUpSmall {
   from {

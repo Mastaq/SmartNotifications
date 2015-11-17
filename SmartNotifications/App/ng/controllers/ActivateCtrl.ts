@@ -44,7 +44,7 @@ namespace SN {
 					return this.spservice.settingsRepo.saveItem(settings).getUnderlyingPromise();
 				})
 				.then(() => {
-					this.toastr.success("", "Licensed applied", { timeOut: 2000 });
+					this.toastr.success("", "License applied", { timeOut: 2000 });
 					this.$timeout(() => {
 						this.$window.location.reload();
 					}, 1000);
