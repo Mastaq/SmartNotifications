@@ -13,6 +13,10 @@ namespace SN {
 				ScriptLinkId: "sn.app",
 				HostPageFolderUrl: "SmartNotificationsHost",
 				ManageAppView: "ManageApp",
+				ScriptingDisabledError: `
+					The error indicates that scripting capabilities are disabled for this site.<br>
+					To Smart Notifications functioning correctly you need to <b>turn on scripting capabilities.</b><br>
+					Use <a href='https://support.office.com/en-sg/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f?ui=en-US&rs=en-SG&ad=SG' target='_blank'>this link</a> to read more about scripting capabilities feature.`,
 				WebPartTemplate: "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
 				"<WebPart xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/WebPart/v2\">	" +
 					"<Title>Manage Smart Notifications</Title>" +
@@ -63,6 +67,7 @@ namespace SN {
 		HostPageFolderUrl: string;
 		ManageAppView: string;
 		WebPartTemplate: string;
+		ScriptingDisabledError: string;
 	}
 
 	angular.module("SN.app.services").constant("Consts", Constants.Default);

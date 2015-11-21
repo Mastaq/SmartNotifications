@@ -136,6 +136,10 @@ namespace SN {
 			if (err instanceof SPListRepo.RequestError) {
 				this.$log.error(err.message);
 				this.$log.error(err.stackTrace);
+				if ((<SPListRepo.RequestError>err).errorType === "System.UnauthorizedAccessException") {
+					this.toastr.error(this.consts.ScriptingDisabledError, this.consts.WentWrong, <any>{ timeOut: 0, closeButton: true, allowHtml: true, extendedTimeOut: 0, tapToDismiss: false });
+					return;
+				}
 			} else {
 				this.$log.error(err);
 			}

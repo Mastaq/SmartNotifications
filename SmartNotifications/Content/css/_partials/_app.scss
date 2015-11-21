@@ -93,3 +93,7 @@
 [ng-app] body{
 	overflow-y: auto;
 }
+
+#toast-container .toast-close-button{
+	min-width: initial;
+}

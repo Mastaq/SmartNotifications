@@ -30,9 +30,10 @@ namespace SNScriptLink {
 						.then((data) => {
 
 							var ctx = SP.ClientContext.get_current();
-							ctx.load(ctx.get_web(), "Id");
+							var appWeb = ctx.get_site().openWeb(this.getSubWebUrl() + Consts.WebRelUrl);
+							ctx.load(appWeb, "Id");
 							ctx.executeQueryAsync(() => {
-								var id = ctx.get_web().get_id().toString();
+								var id = appWeb.get_id().toString();
 								var dissmissed = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
 
 								if (dissmissed == null) {

@@ -17,6 +17,8 @@ var $ = require("gulp-load-plugins")({
 });
 
 var isRelease = process.env.NODE_ENV === "Release";
+settings = settings.DebugDevTen;
+console.log(isRelease);
 
 var externaljs = [
 		baseExternalPath + "jquery/dist/jquery.js",

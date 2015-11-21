@@ -41,11 +41,23 @@ namespace SNScriptLink {
 			(<SP.UI.ModalDialog>(<any>SP.UI.ModalDialog).get_childDialog()).autoSize();
 		}
 
+		private getSubWebUrl(): string {
+			var subWeburl = _spPageContextInfo.webServerRelativeUrl.replace(_spPageContextInfo.siteServerRelativeUrl, "");
+			if (subWeburl !== "") {
+				subWeburl = subWeburl + "/";
+			}
+
+			subWeburl = subWeburl.indexOf("/") === 0 ? subWeburl.substring(1) : subWeburl;
+
+			return subWeburl;
+		}
+
 		private updateDissmissedItems(notification: Notification) {
 			var ctx = SP.ClientContext.get_current();
-			ctx.load(ctx.get_web(), "Id");
+			var appWeb = ctx.get_site().openWeb(this.getSubWebUrl() + Consts.WebRelUrl);
+			ctx.load(appWeb, "Id");
 			ctx.executeQueryAsync(() => {
-				var id = ctx.get_web().get_id().toString();
+				var id = appWeb.get_id().toString();
 				var dissmissedItems = Storage.load<{ [key: string]: string[] }>(Consts.StorageKey);
 				if (dissmissedItems == null || !dissmissedItems[id]) {
 					dissmissedItems = dissmissedItems || {};

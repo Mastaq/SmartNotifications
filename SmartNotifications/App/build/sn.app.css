@@ -138,6 +138,9 @@
 [ng-app] body {
   overflow-y: auto; }
 
+#toast-container .toast-close-button {
+  min-width: initial; }
+
 .spinner {
   margin: 100px auto 0;
   width: 70px;
