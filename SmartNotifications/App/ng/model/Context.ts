@@ -8,5 +8,6 @@ namespace SN {
 		version: string;
 		appLeafUrl: string;
 		debug: boolean;
+		isOnline: boolean;
 	}
 }

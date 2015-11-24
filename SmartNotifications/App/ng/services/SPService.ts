@@ -203,6 +203,13 @@ namespace SN {
 			var view = library.get_views().add(viewInfo);
 			context.load(view);
 			context.load(context.get_web(), "ServerRelativeUrl");
+			var isOnline: boolean | SP.BooleanResult;
+
+			if ((<any>SP.ServerSettings).isSharePointOnline) {
+				isOnline = <SP.BooleanResult>(<any>SP.ServerSettings).isSharePointOnline(context);
+			} else {
+				isOnline = false;
+			}
 
 			Ex.executeQueryPromise(context)
 				.then(() => {
@@ -214,7 +221,11 @@ namespace SN {
 					var appFile = library.get_parentWeb().getFileByServerRelativeUrl(appFileUrl);
 					var appManager = appFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
 
-					var webPartDefinition = appManager.importWebPart(this.consts.WebPartTemplate);
+					if (isOnline instanceof SP.BooleanResult) {
+						isOnline = (<SP.BooleanResult>isOnline).get_value();
+					}
+
+					var webPartDefinition = appManager.importWebPart(String.format(this.consts.WebPartTemplate, isOnline ? "16" : "15"));
 					var webPart = webPartDefinition.get_webPart();
 					hostWpManager.addWebPart(webPart, "", 1);
 

@@ -5,10 +5,32 @@
 
 	<div>
 		<br/>
-		<h2> Click on the button below to manage Smart Notification status:</h2>
+		<h2> In order to enable Smart Notifications on your host web site, please do the following things:</h2>
 		<br/>
-		<div>
-			<a class="btn btn-default" target="_blank" href="{{vm.manageStatus}}">Manage Status</a>
-		</div>
+		<p>
+			<h3>1. Navigate to this page - <a class="btn btn-default" target="_blank" href="{{vm.manageStatus}}">Manage App</a>
+			</h3>
+		</p>
+		<p>
+			<h3>2. Edit the page</h3>
+		</p>
+		<p>
+			<h3>3. At the bottom of the page find Script Editor web part and click on "EDIT SNIPPET"</h3>
+		</p>
+		<p>
+			<h3>4. Insert below markup into the "Paste some script or embed code below." text input: </h3>
+			<br/>
+			<div class="row">
+				<div class="col-md-6">
+					<textarea ng-model="vm.scriptContent" class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+		</p>
+		<p>
+			<h3>5. Click on Stop Editing the page</h3>
+		</p>
+		<p>
+			<h3>6. Now you can switch Smart Notifications ON or OFF</h3>
+		</p>
 	</div>
 </div>

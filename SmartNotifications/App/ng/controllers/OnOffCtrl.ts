@@ -16,6 +16,7 @@ namespace SN {
 		private offStatus = "\"Switched Off\"";
 		status: string;
 		manageStatus: string;
+		scriptContent;
 
 		constructor(
 			private $scope: ICtrlScope<OnOffCtrl>,
@@ -28,6 +29,7 @@ namespace SN {
 			$scope.vm = this;
 
 			this.manageStatus = SPListRepo.Helper.ensureTrailingSlash(this.context.hostUrl) + this.consts.HostLibraryUrl + "/Forms/" + this.consts.ManageAppView + ".aspx";
+			this.scriptContent = "<div id=\"sn-manage-app\" class=\"sn-app-bootstrap\" data-bind=\"template: {name: 'sn-manage-app-tmpl'}\">Prepairing....</div><style>.ms-listviewtable, .ms-InlineSearch-DivBaseline, .ms-list-addnew{display:none;}</style><script type=\"text/javascript\" src=\"../sn.manage.host.js\"></script>";
 
 			spservice.getHostCustomizationStatus()
 				.then(customized => {

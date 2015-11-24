@@ -9,5 +9,5 @@
 		<File Path="HostWeb\build\sn.scriptlink.js" Url="HostWeb/build/sn.scriptlink.js" ReplaceContent="TRUE" />
 		<File Path="HostWeb\build\styles.css" Url="HostWeb/build/styles.css" ReplaceContent="TRUE" />
 		<File Path="HostWeb\template\templates.html" Url="HostWeb/template/templates.html" ReplaceContent="TRUE" />
-	</Module>
+  </Module>
 </Elements>

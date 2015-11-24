@@ -17,43 +17,39 @@ namespace SN {
 					The error indicates that scripting capabilities are disabled for this site.<br>
 					To Smart Notifications functioning correctly you need to <b>turn on scripting capabilities.</b><br>
 					Use <a href='https://support.office.com/en-sg/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f?ui=en-US&rs=en-SG&ad=SG' target='_blank'>this link</a> to read more about scripting capabilities feature.`,
-				WebPartTemplate: "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-				"<WebPart xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/WebPart/v2\">	" +
-					"<Title>Manage Smart Notifications</Title>" +
-					"<FrameType>Default</FrameType>	" +
-					"<Description>Manage Smart Notifications</Description>" +
-					"<IsIncluded>true</IsIncluded>" +
-					"<ZoneID></ZoneID>" +
-					"<PartOrder>0</PartOrder>" +
-					"<FrameState>Normal</FrameState>" +
-					"<Height />" +
-					"<Width />" +
-					"<AllowRemove>true</AllowRemove>" +
-					"<AllowZoneChange>true</AllowZoneChange>" +
-					"<AllowMinimize>true</AllowMinimize>" +
-					"<AllowConnect>true</AllowConnect>" +
-					"<AllowEdit>true</AllowEdit>" +
-					"<AllowHide>true</AllowHide>" +
-					"<IsVisible>true</IsVisible>" +
-					"<DetailLink />" +
-					"<HelpLink />" +
-					"<HelpMode>Modeless</HelpMode>" +
-					"<Dir>Default</Dir>" +
-					"<PartImageSmall />" +
-					"<MissingAssembly>Cannot import this Web Part.</MissingAssembly>" +
-					"<PartImageLarge>/_layouts/15/images/mscontl.gif</PartImageLarge>" +
-					"<IsIncludedFilter />" +
-					"<Assembly>Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c</Assembly>" +
-					"<TypeName>Microsoft.SharePoint.WebPartPages.ContentEditorWebPart</TypeName>" +
-					"<ContentLink xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" />" +
-					"<Content xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" >" +
-					"	<![CDATA[" +
-							"<div id=\"sn-manage-app\" class=\"sn-app-bootstrap\" data-bind=\"template: {name: 'sn-manage-app-tmpl'}\">Prepairing....</div>" +
-							"<style>.ms-listviewtable, .ms-InlineSearch-DivBaseline, .ms-list-addnew{display:none;}</style>" +
-							"<script type=\"text/javascript\" src=\"../sn.manage.host.js\"></script>" +
-						"]]></Content>" +
-					"<PartStorage xmlns=\"http://schemas.microsoft.com/WebPart/v2/ContentEditor\" />" +
-				"</WebPart>"
+				WebPartTemplate: "<webParts>  " +
+					"<webPart xmlns=\"http://schemas.microsoft.com/WebPart/v3\">    " +
+						"<metaData>      " +
+							"<type name=\"Microsoft.SharePoint.WebPartPages.ScriptEditorWebPart, Microsoft.SharePoint, Version={0}.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c\" />      " +
+							"<importErrorMessage>Cannot import this Web Part.</importErrorMessage>    " +
+						"</metaData>   " +
+						"<data>      " +
+							"<properties>        " +
+								"<property name=\"ExportMode\" type=\"exportmode\">All</property>        " +
+								"<property name=\"HelpUrl\" type=\"string\" />        " +
+								"<property name=\"Hidden\" type=\"bool\">False</property>        " +
+								"<property name=\"Description\" type=\"string\">Allows authors to insert HTML snippets or scripts.</property>        " +
+								"<property name=\"Content\" type=\"string\" />        " +
+								"<property name=\"CatalogIconImageUrl\" type=\"string\" />        " +
+								"<property name=\"Title\" type=\"string\">Script Editor</property>        " +
+								"<property name=\"AllowHide\" type=\"bool\">True</property>        " +
+								"<property name=\"AllowMinimize\" type=\"bool\">True</property>        " +
+								"<property name=\"AllowZoneChange\" type=\"bool\">True</property>        " +
+								"<property name=\"TitleUrl\" type=\"string\" />        " +
+								"<property name=\"ChromeType\" type=\"chrometype\">None</property>        " +
+								"<property name=\"AllowConnect\" type=\"bool\">True</property>        " +
+								"<property name=\"Width\" type=\"unit\" />        " +
+								"<property name=\"Height\" type=\"unit\" />        " +
+								"<property name=\"HelpMode\" type=\"helpmode\">Navigate</property>        " +
+								"<property name=\"AllowEdit\" type=\"bool\">True</property>        " +
+								"<property name=\"TitleIconImageUrl\" type=\"string\" />        " +
+								"<property name=\"Direction\" type=\"direction\">NotSet</property>        " +
+								"<property name=\"AllowClose\" type=\"bool\">True</property>        " +
+								"<property name=\"ChromeState\" type=\"chromestate\">Normal</property>      " +
+							"</properties>    " +
+						"</data>  " +
+						"</webPart>" +
+					"</webParts>"
 			}
 		}
 
