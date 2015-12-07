@@ -1,13 +1,13 @@
 ﻿module.exports = {
 	DebugLocal: {
-		siteUrl: "http://sp2013dev",
+		siteUrl: "http://sp2013dev/sites/dev",
 		username: "administrator",
 		password: "QazWsx123",
 		domain: "sp"
 	},
 
 	DebugMastek: {
-		siteUrl: "https://mastekapps.sharepoint.com/",
+		siteUrl: "https://mastekapps.sharepoint.com/sites/team",
 		username: "SergeiSergeev@mastekapps.onmicrosoft.com",
 		password: "QazWsx123"
 	},

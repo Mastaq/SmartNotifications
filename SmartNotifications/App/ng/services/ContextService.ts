@@ -14,7 +14,7 @@ namespace SN {
 			this.version = (<any>this.$window).SN.version;
 			this.appUrl = this.$location.absUrl().substr(0, this.$location.absUrl().indexOf(this.appLeafUrl) + this.appLeafUrl.length + 1);
 			this.hostTitle = this.getParameterByName("HostTitle");
-			this.hostUrl = this.getParameterByName("SPHostUrl");
+			this.hostUrl = SPListRepo.Helper.ensureTrailingSlash(this.getParameterByName("SPHostUrl"));
 			this.debug = (<any>this.$window).SN.debug;
 		}
 

@@ -17,7 +17,7 @@ var $ = require("gulp-load-plugins")({
 });
 
 var isRelease = process.env.NODE_ENV === "Release";
-settings = settings.DebugDevTen;
+settings = settings.DebugMastek;
 console.log(isRelease);
 
 var externaljs = [
@@ -166,7 +166,7 @@ gulp.task("build-host-manage-ts", function() {
 		}))
 		.js
 		.pipe($.if(isRelease, $.uglify()))
-		.pipe($.if(isRelease, $.obfuscate()))
+		//.pipe($.if(isRelease, $.obfuscate()))
 		.pipe($.if(!isRelease, $.sourcemaps.write({ includeContent: false, sourceRoot: "./app/manage" })))
 		.pipe(gulp.dest("HostWeb/build/"));
 });
@@ -182,7 +182,7 @@ gulp.task("build-host-scriptlink-ts", function () {
 		}))
 		.js
 		.pipe($.if(isRelease, $.uglify()))
-		.pipe($.if(isRelease, $.obfuscate()))
+		//.pipe($.if(isRelease, $.obfuscate()))
 		.pipe($.if(!isRelease, $.sourcemaps.write({ includeContent: false, sourceRoot: "./app/scriptlink" })))
 		.pipe(gulp.dest("HostWeb/build/"));
 });

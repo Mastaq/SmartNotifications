@@ -2,5 +2,10 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Images">
     <File Path="Images\AppIcon.png" Url="Images/AppIcon.png" ReplaceContent="TRUE" />
+    <File Path="Images\edit_page.png" Url="Images/edit_page.png" ReplaceContent="TRUE" />
+    <File Path="Images\edit_wp.png" Url="Images/edit_wp.png" ReplaceContent="TRUE" />
+    <File Path="Images\past_url.png" Url="Images/past_url.png" ReplaceContent="TRUE" />
+    <File Path="Images\stop_edit.png" Url="Images/stop_edit.png" ReplaceContent="TRUE" />
+    <File Path="Images\ok.png" Url="Images/ok.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

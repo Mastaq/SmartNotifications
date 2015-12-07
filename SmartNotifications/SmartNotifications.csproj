@@ -124,7 +124,13 @@
     <Content Include="HostWeb\build\sn.scriptlink.js" />
     <Content Include="HostWeb\External\bootstrap.css" />
     <Content Include="HostWeb\External\lz-string.min.js" />
+    <Content Include="HostWeb\template\cewp.html" />
     <Content Include="HostWeb\template\templates.html" />
+    <Content Include="Images\edit_page.png" />
+    <Content Include="Images\edit_wp.png" />
+    <Content Include="Images\ok.png" />
+    <Content Include="Images\past_url.png" />
+    <Content Include="Images\stop_edit.png" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="settings.js" />

@@ -3,5 +3,10 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Images\" Type="ElementManifest" />
     <ProjectItemFile Source="AppIcon.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="edit_page.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="edit_wp.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="past_url.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="stop_edit.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="ok.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

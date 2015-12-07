@@ -16,6 +16,7 @@ namespace SN {
 
 		private fileList = [
 			"./../HostWeb/template/templates.html",
+			"./../HostWeb/template/cewp.html",
 			"./../HostWeb/External/knockout.js",
 			"./../HostWeb/External/jquery.js",
 			"./../HostWeb/External/lz-string.min.js",
@@ -23,9 +24,6 @@ namespace SN {
 			"./../HostWeb/build/styles.css",
 			"./../HostWeb/build/sn.manage.host.js",
 			"./../HostWeb/build/sn.scriptlink.js"];
-
-		private newFileList = [
-			"HostWeb/template/templates.html"];
 
 		constructor(
 			vendorsFactory: { $: JQueryStatic },
@@ -89,10 +87,11 @@ namespace SN {
 						listInfo.set_templateFeatureId(new SP.Guid("00bfea71-e717-4e80-aa17-d0c71b360101"));
 						var newLibrary = hostWeb.get_lists().add(listInfo);
 						context.load(newLibrary, "RootFolder", "Title");
+						context.load(hostWeb, "ServerRelativeUrl");
 
 						Ex.executeQueryPromise(context)
 							.then(() => {
-								return this.createManageAppView(library);
+								return this.createManageAppPage(library, hostWeb);
 							})
 							.then(() => {
 								dfd.resolve(library);
@@ -193,39 +192,27 @@ namespace SN {
 			return input.replace(/^.*[\\\/]/, '');
 		}
 
-		private createManageAppView(library: SP.List): ng.IPromise<any> {
+		private createManageAppPage(library: SP.List, hostWeb: SP.Web): ng.IPromise<any> {
 			var dfd = this.$q.defer<any>();
 
 			var context = SP.ClientContext.get_current();
-			var viewInfo = new SP.ViewCreationInformation();
-			viewInfo.set_title(this.consts.ManageAppView);
-			viewInfo.set_viewTypeKind(SP.ViewType.html);
-			var view = library.get_views().add(viewInfo);
-			context.load(view);
+			var hostRelativeUrl = SPListRepo.Helper.ensureTrailingSlash(hostWeb.get_serverRelativeUrl());
+			var file = library.get_rootFolder().get_files().addTemplateFile(hostRelativeUrl + this.consts.HostLibraryUrl +
+				"/" + this.consts.ManageAppPage, SP.TemplateFileType.standardPage);
+			context.load(file);
 			context.load(context.get_web(), "ServerRelativeUrl");
-			var isOnline: boolean | SP.BooleanResult;
-
-			if ((<any>SP.ServerSettings).isSharePointOnline) {
-				isOnline = <SP.BooleanResult>(<any>SP.ServerSettings).isSharePointOnline(context);
-			} else {
-				isOnline = false;
-			}
 
 			Ex.executeQueryPromise(context)
 				.then(() => {
-					var viewFile = library.get_parentWeb().getFileByServerRelativeUrl(view.get_serverRelativeUrl());
-					var hostWpManager = viewFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
+					var manageAppFile = library.get_parentWeb().getFileByServerRelativeUrl(file.get_serverRelativeUrl());
+					var hostWpManager = manageAppFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
 
 					var appWebRelativeUrl = SPListRepo.Helper.ensureTrailingSlash(context.get_web().get_serverRelativeUrl());
 					var appFileUrl = String.format("{0}Pages/Default.aspx", appWebRelativeUrl);
 					var appFile = library.get_parentWeb().getFileByServerRelativeUrl(appFileUrl);
 					var appManager = appFile.getLimitedWebPartManager(SP.WebParts.PersonalizationScope.shared);
 
-					if (isOnline instanceof SP.BooleanResult) {
-						isOnline = (<SP.BooleanResult>isOnline).get_value();
-					}
-
-					var webPartDefinition = appManager.importWebPart(String.format(this.consts.WebPartTemplate, isOnline ? "16" : "15"));
+					var webPartDefinition = appManager.importWebPart(this.consts.WebPartTemplate);
 					var webPart = webPartDefinition.get_webPart();
 					hostWpManager.addWebPart(webPart, "", 1);
 

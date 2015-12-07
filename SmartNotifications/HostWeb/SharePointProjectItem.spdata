@@ -12,5 +12,6 @@
     <ProjectItemFile Source="template\templates.html" Target="HostWeb\template\" Type="ElementFile" />
     <ProjectItemFile Source="css\_bootstrap.scss" Target="HostWeb\css\" Type="ElementFile" />
     <ProjectItemFile Source="External\lz-string.min.js" Target="HostWeb\External\" Type="ElementFile" />
+    <ProjectItemFile Source="template\cewp.html" Target="HostWeb\template\" Type="ElementFile" />
   </Files>
 </ProjectItem>

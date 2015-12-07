@@ -59,7 +59,7 @@ namespace SNScriptLink {
 		if (typeof RegisterModuleInit == "function") {
 
 			function mystart() {
-				var url = _spPageContextInfo.siteServerRelativeUrl;
+				var url = _spPageContextInfo.webServerRelativeUrl;
 				url = url.endsWith("/") ? url : url + "/";
 				RegisterModuleInit(url + "SmartNotificationsAssets/sn.scriptlink.js", () => {
 					window.registerCssLink(_spPageContextInfo.webAbsoluteUrl + "/SmartNotificationsAssets/styles.css");
