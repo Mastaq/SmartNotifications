@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c82204c5-5306-4ba2-b4e0-37a6893b8357" featureId="c82204c5-5306-4ba2-b4e0-37a6893b8357" imageUrl="" solutionId="00000000-0000-0000-0000-000000000000" title="SmartNotifications " version="AAEAAAD/////AQAAAAAAAAAEAQAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVpbGQJX1JldmlzaW9uAAAAAAgICAgBAAAAAAAAAAAAAAAHAAAACw==" deploymentPath="$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
+<feature xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="c82204c5-5306-4ba2-b4e0-37a6893b8357" featureId="c82204c5-5306-4ba2-b4e0-37a6893b8357" imageUrl="" solutionId="00000000-0000-0000-0000-000000000000" title="SmartNotifications " version="AAEAAAD/////AQAAAAAAAAAEAQAAAA5TeXN0ZW0uVmVyc2lvbgQAAAAGX01ham9yBl9NaW5vcgZfQnVpbGQJX1JldmlzaW9uAAAAAAgICAgBAAAAAAAAAAAAAAAGAAAACw==" deploymentPath="$SharePoint.Feature.FileNameWithoutExtension$" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/FeatureModel">
   <projectItems>
     <projectItemReference itemId="01dfdd70-5021-4430-8e29-88285af95977" />
     <projectItemReference itemId="a2660b33-ebed-4af6-9d11-6122c3e8ea24" />
