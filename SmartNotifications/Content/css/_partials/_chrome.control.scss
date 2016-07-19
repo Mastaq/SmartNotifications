@@ -1,0 +1,63 @@
+﻿#chromeControl_navigation {
+	display: block;
+	overflow: visible;
+}
+
+#chromeControl_topheader {
+	overflow: visible;
+}
+
+#chromeControl_topheader #suiteBar {
+	width: 100%;
+	display: table;
+}
+
+#suiteBarLeft {
+	padding-left: 12px;
+}
+
+#suiteBarLeft1 {
+	display: table-cell;
+	padding-right: 0px;
+	vertical-align: middle;
+}
+
+#suiteBarLeft2 {
+	display: table-cell;
+	padding-right: 5px;
+	padding-left: 0px;
+	vertical-align: middle;
+}
+
+#suiteBarLeft3 {
+	display: table-cell;
+	padding-right: 2px;
+	vertical-align: middle;
+}
+
+#chromeControl_bottomheader_appicon {
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 27px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#suiteBarLeft4 {
+	padding-right: 2px;
+	display: table-cell;
+	float: left;
+}
+
+#chromeControl_bottomheader_apptitle {
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 27px;
+}
+
+#chromeControl_bottomheader {
+	width: 100%;
+	overflow: visible;
+	display: table-cell;
+}

@@ -1,0 +1,69 @@
+﻿<script type="text/html" id="sn-manage-app-tmpl">
+	<div data-bind="if: loaded() && !hasPermissions()">
+		<h1>
+			<b>Access denied. You don't have enough permissions to manage the app.</b>
+		</h1>
+		<br/>
+		<h1>
+			Permissions required: Full Control.
+		</h1>
+	</div>
+	<div data-bind="if: loaded() && hasPermissions()">
+		<h4>Use button below to switch ON or switch OFF Smart Notifications on this site:</h4>
+		<br/>
+		<div class="col-md-2">
+			<div class="btn-group">
+				<label class="btn" data-bind="css: { 'active': snEnabled, 'btn-primary': snEnabled, 'btn-default': !snEnabled() }">
+					<input type="radio" name="options" data-bind="checked: snEnabled,
+																	checkedValue: true,
+																	click: toggleState" id="option1">Enabled
+				</label>
+				<label class="btn btn-default" data-bind="css: { 'active': !snEnabled()}">
+					<input type="radio" name="options" data-bind="checked: snEnabled,
+																   checkedValue: false,
+																   click: toggleState" id="option2">Disabled
+				</label>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/html" id="sn-app-scriptlink-tmpl">
+	<div id="sn-notif" data-bind="foreach: grouppedNotifications">
+		<div class="rectangle-set" data-bind="visible: $data.notifications && $data.notifications().length > 0">
+			<div class="sn-rectangle" data-bind="style: {backgroundColor: rgba, boxShadow: isHovering() ? boxShadow : 'none'},
+													hover: isHovering,
+													click: function(){ $parent.showNotifications($data); }">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="number" data-bind="text: notifications().length"></div>
+			</div>
+		</div>
+	</div>
+	<div id="sn-notify-modal" data-bind="template:{name: 'sn-modal-tmpl'}"></div>
+</script>
+
+<script type="text/html" id="sn-modal-tmpl">
+	<div id="sn-modal" class="sn-app-bootstrap">
+		<div data-bind="foreach: { data: $data.notifications, afterRender: function(){ $data.onAfterRender($data); }}">
+			<div class="sn-notif-container panel panel-default" data-bind="visible: active">
+				<div class="sn-title panel-heading" data-bind="if: title">
+					<h2 data-bind="text: title"></h2>
+				</div>
+				<div class="sn-body-container panel-body">
+					<div class="sn-body" data-bind="html: text">
+					</div>
+					<div data-bind="if: dismissable">
+						<div class="sn-buttons sn-clearfix">
+							<input type="button" value="Dismiss" data-bind="click:function(){ $parent.dismiss($data); }" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sn-nav">
+			<div class="sn-nav-buttons" data-bind="visible: $data.notifications && $data.notifications().length > 1">
+				<div class="sn-nav-prev" data-bind="click: function(){ go('prev'); }"></div>
+				<div class="sn-nav-next" data-bind="click: function(){ go('next'); }"></div>
+			</div>
+		</div>
+	</div>
+</script>

@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package dslVersion="1.0.0.0" 
-        Id="c5adf7f1-2038-4818-be09-4a7f6ecd4d08" 
-        solutionId="c5adf7f1-2038-4818-be09-4a7f6ecd4d08" 
-        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
-        name="SmartNotifications"
-        sharePointProductVersion="16.0">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="58e8b688-1c86-47de-a690-eff933e0bbbe" solutionId="58e8b688-1c86-47de-a690-eff933e0bbbe" resetWebServer="false" sharePointProductVersion="16.0" name="SmartNotifications" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
-        <featureReference itemId="1e6932e4-2b3d-41ff-8916-635b58a2f67c" />
+    <featureReference itemId="d10442b8-c412-42d1-b5d9-c77ffdd2fdcc" />
   </features>
 </package>

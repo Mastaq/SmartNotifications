@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="HostWeb\" Type="ElementManifest" />
+    <ProjectItemFile Source="External\knockout.js" Target="HostWeb\External\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.scriptlink.js" Target="HostWeb\build\" Type="ElementFile" />
+    <ProjectItemFile Source="External\bootstrap.css" Target="HostWeb\External\" Type="ElementFile" />
+    <ProjectItemFile Source="External\jquery.js" Target="HostWeb\External\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.manage.host.js" Target="HostWeb\build\" Type="ElementFile" />
+    <ProjectItemFile Source="css\styles.scss" Target="HostWeb\css\" Type="ElementFile" />
+    <ProjectItemFile Source="build\styles.css" Target="HostWeb\build\" Type="ElementFile" />
+    <ProjectItemFile Source="template\templates.html" Target="HostWeb\template\" Type="ElementFile" />
+    <ProjectItemFile Source="css\_bootstrap.scss" Target="HostWeb\css\" Type="ElementFile" />
+    <ProjectItemFile Source="External\lz-string.min.js" Target="HostWeb\External\" Type="ElementFile" />
+    <ProjectItemFile Source="template\cewp.html" Target="HostWeb\template\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

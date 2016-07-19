@@ -1,19 +1,45 @@
-﻿{
-	"version": "0.0.0",
-	"name": "smart_notifications_app",
-	"description": "Smart Notifications app",
-	"private": true,
-	"repository": {
-		"type": "git",
-		"url": "git clone https://sergei_sergeev@bitbucket.org/sergei_sergeev/smart-notification.git"
-	},
-	"devDependencies": {
-		"grunt": "0.4.5",
-		"grunt-bower-task": "0.4.0",
-		"grunt-contrib-uglify": "~0.8.0",
-		"grunt-sass": "~0.18.0",
-		"grunt-contrib-cssmin": "~0.12.2",
-		"grunt-contrib-copy": "~0.8.0",
-		"xml2js": "0.4.5"
-	}
+{
+  "name": "SmartNotifications",
+  "version": "1.0.0",
+  "description": "SmartNotifications",
+  "private": true,
+  "author": {
+    "name": "s-KaiNet",
+    "url": "https://github.com/s-KaiNet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MastekApps/SmartNotifications"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.0.1",
+    "gulp-filter": "^2.0.2",
+    "gulp-if": "^1.2.5",
+    "gulp-js-obfuscator": "^1.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-main-bower-files": "^1.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-spsave": "^2.0.2",
+    "gulp-template": "^3.0.0",
+    "gulp-typescript": "^2.9.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-util": "^3.0.6",
+    "gutil": "^1.6.4",
+    "merge-stream": "^0.1.8",
+    "run-sequence": "^1.1.4",
+    "through2": "^2.0.0",
+    "tsd": "^0.6.4",
+    "typescript": "^1.6.2",
+    "xml2js": "^0.4.12",
+    "yargs": "^4.8.1"
+  }
 }

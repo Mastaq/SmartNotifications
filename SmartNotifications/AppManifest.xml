@@ -2,18 +2,22 @@
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="SmartNotifications"
-     ProductID="{645f466e-df59-4ab2-bf73-e599b7bc4b3a}"
-     Version="1.0.0.0"
-     SharePointMinVersion="16.0.0.0"
+     ProductID="{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}"
+     Version="1.0.0.7"
+     SharePointMinVersion="15.0.0.0"
 >
   <Properties>
-    <Title>SmartNotifications</Title>
-    <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
+    <Title>Smart Notifications</Title>
+    <StartPage>~appWebUrl/App/index.html?SPHostUrl={HostUrl}&amp;HostTitle={HostTitle}</StartPage>
+		<SupportedLocales>
+			<SupportedLocale CultureName="en-US" />
+		</SupportedLocales>
   </Properties>
 
   <AppPrincipal>
     <Internal />
   </AppPrincipal>
-
-
+  <AppPermissionRequests>
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection/web" Right="Manage" />
+  </AppPermissionRequests>
 </App>

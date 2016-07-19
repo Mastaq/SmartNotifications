@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="RootModule">
-    <File Path="bower.json" Url="bower.json" ReplaceContent="TRUE" />
-    <File Path="gruntfile.js" Url="gruntfile.js" ReplaceContent="TRUE" />
-    <File Path="package.json" Url="package.json" ReplaceContent="TRUE" />
+    <File Path="typings\knockout\knockout.d.ts" Url="typings/knockout/knockout.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\microsoft-ajax\microsoft.ajax.d.ts" Url="typings/microsoft-ajax/microsoft.ajax.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\sharepoint\SharePoint.d.ts" Url="typings/sharepoint/SharePoint.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\camljs\camljs.d.ts" Url="typings/camljs/camljs.d.ts" ReplaceContent="TRUE" />
+    <File Path="External\camljs.js" Url="External/camljs.js" ReplaceContent="TRUE" />
+    <File Path="typings\toastr\toastr.d.ts" Url="typings/toastr/toastr.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\q\Q.d.ts" Url="typings/q/Q.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\lz-string\lz-string.d.ts" Url="typings/lz-string/lz-string.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\fabricjs\fabricjs.d.ts" Url="typings/fabricjs/fabricjs.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\moment\moment-node.d.ts" Url="typings/moment/moment-node.d.ts" ReplaceContent="TRUE" />
+    <File Path="typings\moment\moment.d.ts" Url="typings/moment/moment.d.ts" ReplaceContent="TRUE" />
   </Module>
 </Elements>

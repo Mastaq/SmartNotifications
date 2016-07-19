@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html ng-app="SN.app">
+<head>
+	<title>Smart Notifications App</title>
+
+	<link rel="stylesheet" type="text/css" href="build/sn.app.external.css?v=<%= version %>" />
+	<link rel="stylesheet" type="text/css" href="build/sn.app.css?v=<%= version %>" />
+
+	<script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+	<script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
+	<script type="text/javascript" src="/_layouts/15/sp.js"></script>
+	<script type="text/javascript" src="build/sn.app.external.js?v=<%= version %>"></script>
+
+</head>
+<body class="ms-backgroundImage ms-backgroundImage">
+	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak class="ms-core-overlay">
+		<div ng-include src="'templates/chrome.control.html'"></div>
+		<div ng-show="vm.hasPermissions" class="sn-root">
+			<div class="sn-container ms-core-defaultFont">
+				<div ng-controller="SideNavCtrl">
+					<div class="row">
+						<div class="col-sm-2" id="sn-side">
+							<eeh-navigation-menu menu-name="'SideNav'" class="sidebar-nav">
+							</eeh-navigation-menu>
+						</div>
+						<div class="col-sm-10" id="sn-view">
+							<div ui-view ng-cloak></div>
+						</div>
+					</div>
+				</div>
+				<div id="contact-dev">Need solid SharePoint\Office 365 development? Please <a href ng-click="vm.go('contactdev')">contact</a> me directly</div>
+			</div>
+		</div>
+		<div ng-show="!vm.hasPermissions" class="denied">
+			<h1>
+				<b>Access denied. You don't have enough permissions to manage the app.</b>
+			</h1>
+			<br />
+			<h1>
+				Permissions required: Full Control.
+			</h1>
+		</div>
+	</div>
+	<div class="ng-hide">
+		<div id="suiteBarLeft">
+		</div>
+		<div class="ms-pub-background"></div>
+		<table class="ms-rteTable-1">
+			<tr class="ms-rteTableHeaderRow-1"></tr>
+		</table>
+		<ul>
+			<li><a class="ms-core-listMenu-item ms-HoverBackground-bgColor"></a></li>
+			<li><a class="ms-core-listMenu-selected"></a></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var SN = SN || {};
+		SN.version = "<%= version %>";
+		SN.appUrl = "<%= appUrl %>";
+		SN.debug = <%= debug %>;
+	</script>
+	<script type="text/javascript" src="sp/chrome.loader.js?v=<%= version %>"></script>
+	<script type="text/javascript" src="build/sn.app.js?v=<%= version %>"></script>
+</body>
+</html>

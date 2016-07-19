@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="App\" Type="ElementManifest" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.css.map" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap-theme.min.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap.css.map" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\css\bootstrap.min.css" Target="App\lib\bootstrap\dist\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" Target="App\lib\bootstrap\dist\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" Target="App\lib\bootstrap\dist\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" Target="App\lib\bootstrap\dist\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" Target="App\lib\bootstrap\dist\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" Target="App\lib\bootstrap\dist\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\js\bootstrap.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\js\bootstrap.min.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\bootstrap\dist\js\npm.js" Target="App\lib\bootstrap\dist\js\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\css\font-awesome.css" Target="App\lib\font-awesome\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\css\font-awesome.min.css" Target="App\lib\font-awesome\css\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.eot" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.svg" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.ttf" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\fontawesome-webfont.woff2" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="lib\font-awesome\fonts\FontAwesome.otf" Target="App\lib\font-awesome\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\home.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.app.external.css" Target="App\build\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.app.external.js" Target="App\build\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.app.js" Target="App\build\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.woff2" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.woff" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.ttf" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.svg" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\glyphicons-halflings-regular.eot" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\FontAwesome.otf" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\fontawesome-webfont.woff2" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\fontawesome-webfont.woff" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\fontawesome-webfont.ttf" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\fontawesome-webfont.svg" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="fonts\fontawesome-webfont.eot" Target="App\fonts\" Type="ElementFile" />
+    <ProjectItemFile Source="build\sn.app.css" Target="App\build\" Type="ElementFile" />
+    <ProjectItemFile Source="sp\chrome.loader.js" Target="App\sp\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\chrome.control.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="index.tmpl" Target="App\" Type="ElementFile" />
+    <ProjectItemFile Source="index.html" Target="App\" Type="ElementFile" />
+    <ProjectItemFile Source="jslink\color-field\build\color.field.js" Target="App\jslink\color-field\build\" Type="ElementFile" />
+    <ProjectItemFile Source="jslink\color-field\build\color.field.external.js" Target="App\jslink\color-field\build\" Type="ElementFile" />
+    <ProjectItemFile Source="jslink\color-field\build\color.field.external.css" Target="App\jslink\color-field\build\" Type="ElementFile" />
+    <ProjectItemFile Source="jslink\color-field\templates.html" Target="App\jslink\color-field\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\onoff.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\contactdev.html" Target="App\templates\" Type="ElementFile" />
+    <ProjectItemFile Source="templates\activate.html" Target="App\templates\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

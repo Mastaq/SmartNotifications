@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<Module Name="App">
+		<File Path="App\build\sn.app.external.css" Url="App/build/sn.app.external.css" ReplaceContent="TRUE" />
+		<File Path="App\build\sn.app.external.js" Url="App/build/sn.app.external.js" ReplaceContent="TRUE" />
+		<File Path="App\build\sn.app.js" Url="App/build/sn.app.js" ReplaceContent="TRUE" />
+		<File Path="App\fonts\glyphicons-halflings-regular.woff2" Url="App/fonts/glyphicons-halflings-regular.woff2" ReplaceContent="TRUE" />
+		<File Path="App\fonts\glyphicons-halflings-regular.woff" Url="App/fonts/glyphicons-halflings-regular.woff" ReplaceContent="TRUE" />
+		<File Path="App\fonts\glyphicons-halflings-regular.ttf" Url="App/fonts/glyphicons-halflings-regular.ttf" ReplaceContent="TRUE" />
+		<File Path="App\fonts\glyphicons-halflings-regular.svg" Url="App/fonts/glyphicons-halflings-regular.svg" ReplaceContent="TRUE" />
+		<File Path="App\fonts\glyphicons-halflings-regular.eot" Url="App/fonts/glyphicons-halflings-regular.eot" ReplaceContent="TRUE" />
+		<File Path="App\fonts\FontAwesome.otf" Url="App/fonts/FontAwesome.otf" ReplaceContent="TRUE" />
+		<File Path="App\fonts\fontawesome-webfont.woff2" Url="App/fonts/fontawesome-webfont.woff2" ReplaceContent="TRUE" />
+		<File Path="App\fonts\fontawesome-webfont.woff" Url="App/fonts/fontawesome-webfont.woff" ReplaceContent="TRUE" />
+		<File Path="App\fonts\fontawesome-webfont.ttf" Url="App/fonts/fontawesome-webfont.ttf" ReplaceContent="TRUE" />
+		<File Path="App\fonts\fontawesome-webfont.svg" Url="App/fonts/fontawesome-webfont.svg" ReplaceContent="TRUE" />
+		<File Path="App\fonts\fontawesome-webfont.eot" Url="App/fonts/fontawesome-webfont.eot" ReplaceContent="TRUE" />
+		<File Path="App\build\sn.app.css" Url="App/build/sn.app.css" ReplaceContent="TRUE" />
+		<File Path="App\sp\chrome.loader.js" Url="App/sp/chrome.loader.js" ReplaceContent="TRUE" />
+		<File Path="App\index.html" Url="App/index.html" ReplaceContent="TRUE" />
+		<File Path="App\jslink\color-field\build\color.field.js" Url="App/jslink/color-field/build/color.field.js" ReplaceContent="TRUE" />
+		<File Path="App\jslink\color-field\build\color.field.external.js" Url="App/jslink/color-field/build/color.field.external.js" ReplaceContent="TRUE" />
+		<File Path="App\jslink\color-field\build\color.field.external.css" Url="App/jslink/color-field/build/color.field.external.css" ReplaceContent="TRUE" />
+		<File Path="App\jslink\color-field\templates.html" Url="App/jslink/color-field/templates.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\onoff.html" Url="App/templates/onoff.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\chrome.control.html" Url="App/templates/chrome.control.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\home.html" Url="App/templates/home.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\activate.html" Url="App/templates/activate.html" ReplaceContent="TRUE" />
+		<File Path="App\templates\contactdev.html" Url="App/templates/contactdev.html" ReplaceContent="TRUE" />
+	</Module>
+</Elements>

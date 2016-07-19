@@ -2,8 +2,16 @@
 <ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
   <Files>
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
-    <ProjectItemFile Source="bower.json" Type="ElementFile" />
-    <ProjectItemFile Source="gruntfile.js" Type="ElementFile" />
-    <ProjectItemFile Source="package.json" Type="ElementFile" />
+    <ProjectItemFile Source="typings\knockout\knockout.d.ts" Target="typings\knockout\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\microsoft-ajax\microsoft.ajax.d.ts" Target="typings\microsoft-ajax\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\sharepoint\SharePoint.d.ts" Target="typings\sharepoint\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\camljs\camljs.d.ts" Target="typings\camljs\" Type="ElementFile" />
+    <ProjectItemFile Source="External\camljs.js" Target="External\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\toastr\toastr.d.ts" Target="typings\toastr\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\q\Q.d.ts" Target="typings\q\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\lz-string\lz-string.d.ts" Target="typings\lz-string\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\fabricjs\fabricjs.d.ts" Target="typings\fabricjs\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\moment\moment-node.d.ts" Target="typings\moment\" Type="ElementFile" />
+    <ProjectItemFile Source="typings\moment\moment.d.ts" Target="typings\moment\" Type="ElementFile" />
   </Files>
 </ProjectItem>

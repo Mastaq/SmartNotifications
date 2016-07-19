@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <!-- Parent ContentType: Item (0x01) -->
+  <ContentType ID="0x01002614BDD3DCFB49F3837C7D7572FD0569"
+               Name="AppSettings"
+               Group="SmartNotifications"
+               Description=""
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+			<FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" Hidden="TRUE" Required="FALSE" />
+			<FieldRef ID="{B2DAED3C-E2A8-48AB-91B2-DBDF3A1F15A6}" Name="Value_SN" />
+			<FieldRef ID="{56A82487-F0B7-4738-B4C3-A99567C1E0E6}" Name="Key_SN" />
+		</FieldRefs>
+  </ContentType>
+	<Field ID="{B2DAED3C-E2A8-48AB-91B2-DBDF3A1F15A6}" Type="Note" Mult="TRUE" RichText="FALSE" Name="Value_SN" Required="TRUE" StaticName="Value_SN" DisplayName="Value" />
+	<Field ID="{56A82487-F0B7-4738-B4C3-A99567C1E0E6}" Type="Text"  Name="Key_SN" Required="TRUE" StaticName="Key_SN" DisplayName="Key" />
+
+</Elements>

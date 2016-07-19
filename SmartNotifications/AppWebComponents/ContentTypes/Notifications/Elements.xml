@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<!-- Parent ContentType: Item (0x01) -->
+	<ContentType ID="0x0100316EBA2815CB4BE28599CFE7124DF7AD"
+               Name="Notifications"
+               Group="SmartNotifications"
+               Description=""
+               Inherits="FALSE"
+               Version="0">
+		<FieldRefs>
+			<FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" Required="FALSE" />
+			<FieldRef ID="{24EAD03D-FF71-4835-AFC8-2C52AA4B3884}" Name="Message_SN" />
+			<FieldRef ID="{DE160796-483A-472B-8820-786E43D8580F}" Name="From_SN" />
+			<FieldRef ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Name="To_SN" />
+			<FieldRef ID="{37D4FC53-CB04-4847-AF3D-9B9F27B24767}" Name="AssignedTo_SN" />
+			<FieldRef ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Name="Dismissable_SN" />
+			<FieldRef ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Name="Color_SN" />
+
+		</FieldRefs>
+	</ContentType>
+
+	<Field ID="{24EAD03D-FF71-4835-AFC8-2C52AA4B3884}" Type="Note" Name="Message_SN" Mult="TRUE" RichText="TRUE" RichTextMode="FullHtml" Required="TRUE" StaticName="Message_SN" DisplayName="Message" />
+	<Field ID="{DE160796-483A-472B-8820-786E43D8580F}" Type="DateTime" Name="From_SN" Format="DateTime" Required="FALSE" StaticName="From_SN" DisplayName="Start Date" />
+	<Field ID="{1BA155F5-BFAA-4F91-B3EA-BFF5292D6BED}" Type="DateTime" Name="To_SN" Format="DateTime" Required="FALSE" StaticName="To_SN" DisplayName="End Date" />
+	<Field ID="{37D4FC53-CB04-4847-AF3D-9B9F27B24767}" Type="UserMulti" Name="AssignedTo_SN" Mult="TRUE" UserSelectionMode="1" UserSelectionScope="0" Required="TRUE" StaticName="AssignedTo_SN" DisplayName="Assigned To" />
+	<Field ID="{4D0773D9-952E-41A3-B5DF-4CEEBC0B6A85}" Type="Boolean" Name="Dismissable_SN" Required="FALSE" StaticName="Dismissable_SN" DisplayName="Can be dismissed" >
+		<Default>1</Default>
+	</Field>
+	<Field ID="{2505ED24-2884-4211-8D9D-82F5F13BB947}" Type="Text" Name="Color_SN" JSLink="~site/App/jslink/color-field/build/color.field.external.js|~site/App/jslink/color-field/build/color.field.js" Required="TRUE" StaticName="Color_SN" DisplayName="Color" />
+</Elements>
