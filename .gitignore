@@ -7,3 +7,7 @@
 /packages
 **/node_modules
 **/bower_components
+SmartNotifications/settings.js
+SmartNotifications/App/build/*.*
+SmartNotifications/App/jslink/color-field/build/*.*
+SmartNotifications/HostWeb/build/*.*
