@@ -6,7 +6,8 @@
 	fs = require("fs"),
 	xml2js = require("xml2js"),
 	settings = require("./settings.js"),
-	merge = require("merge-stream");
+	merge = require("merge-stream"),
+	yargs = require("yargs");
 
 var $ = require("gulp-load-plugins")({
 	rename: {
@@ -17,8 +18,17 @@ var $ = require("gulp-load-plugins")({
 });
 
 var isRelease = process.env.NODE_ENV === "Release";
-settings = settings.DebugMastek;
-console.log(isRelease);
+settings = settings[process.env.NODE_ENV] || settings[yargs.argv.env];
+
+if (!settings) {
+	console.log("WARNING: Unable to define environment");
+}
+
+if (isRelease) {
+	console.log("RELEASE MODE");
+} else {
+	console.log("DEBUG mode");
+}
 
 var externaljs = [
 		baseExternalPath + "jquery/dist/jquery.js",
@@ -127,18 +137,6 @@ gulp.task("template", function (callback) {
 	});
 });
 
-gulp.task("spsave", ["ts", "build-app-only"], function () {
-	return gulp.src(["App/build/*.*"])
-		.pipe($.spsave({
-			siteUrl: settings.siteUrl,
-			username: settings.username,
-			password: settings.password,
-			folder: "App/build",
-			appWebUrl: "SmartNotifications",
-			flatten: true
-		}));
-});
-
 gulp.task("build-app-ts", function () {
 	return gulp.src(["./App/ng/_references.ts"])
 		.pipe($.if(!isRelease, $.sourcemaps.init()))
@@ -224,13 +222,13 @@ gulp.task("watch", function () {
 				errorHandler: onError
 			}))
 			.pipe($.spsave({
-				siteUrl: settings.siteUrl,
+				siteUrl: settings.appUrl,
 				username: settings.username,
 				password: settings.password,
 				domain: settings.domain,
 				folder: "App",
-				appWebUrl: "SmartNotifications",
-				flatten: false
+				flatten: false,
+				notification: true
 			}));
 	});
 
@@ -244,7 +242,8 @@ gulp.task("watch", function () {
 			username: settings.username,
 			password: settings.password,
 			domain: settings.domain,
-			folder: "SmartNotificationsAssets"
+			folder: "SmartNotificationsAssets",
+			notification: true
 		}));
 	});
 
@@ -259,7 +258,8 @@ gulp.task("watch", function () {
 			password: settings.password,
 			domain: settings.domain,
 			folder: "SmartNotificationsAssets",
-			flatten: false
+			flatten: false,
+			notification: true
 		}));
 	});
 
@@ -269,13 +269,13 @@ gulp.task("watch", function () {
 				errorHandler: onError
 			}))
 			.pipe($.spsave({
-				siteUrl: settings.siteUrl,
+				siteUrl: settings.appUrl,
 				username: settings.username,
 				password: settings.password,
 				domain: settings.domain,
 				folder: "App",
-				appWebUrl: "SmartNotifications",
-				flatten: false
+				flatten: false,
+				notification: true
 			}));
 	});
 });

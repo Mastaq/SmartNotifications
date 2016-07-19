@@ -15,12 +15,6 @@
 <body class="ms-backgroundImage ms-backgroundImage">
 	<div id="sn-app" ng-controller="AppLoadCtrl" ng-cloak class="ms-core-overlay">
 		<div ng-include src="'templates/chrome.control.html'"></div>
-		<div class="ng-hide bg-danger license-info text-danger" data-ng-show="vm.trialExpired || vm.underTrial || vm.licenseNotValid" ng-cloak>
-			<div class="ng-hide license-line" data-ng-show="vm.underTrial">{{vm.daysLeft}} days left on this trial</div>
-			<div class="ng-hide license-line" data-ng-show="vm.trialExpired">Trial is expired. Smart Notifications won't work.</div>
-			<div class="ng-hide license-line" data-ng-show="vm.licenseNotValid">License is not valid. Smart Notifications won't work.</div>
-			<button type="button" data-ng-click="vm.go('activate')" class="btn btn-info">Activate the app</button>
-		</div>
 		<div ng-show="vm.hasPermissions" class="sn-root">
 			<div class="sn-container ms-core-defaultFont">
 				<div ng-controller="SideNavCtrl">

@@ -98,38 +98,11 @@ namespace SN {
 				.finally(() => {
 					this.pleaseWait.close();
 					this.permissionChecked = true;
-
-					this.loadLicense();
 				});
 		}
 
 		go(state: string) {
 			this.$state.go(state);
-		}
-
-		private loadLicense() {
-			this.spservice.settingsRepo.getSettingsByKey(this.consts.SettingsKey)
-				.then(settings => {
-					var appSettings = <CommonAppSettings>JSON.parse(LZString.decompressFromBase64(settings.value_SN));
-					this.licenseNotValid = appSettings.invalidLicense;
-					this.underTrial = appSettings.trial;
-					this.licensed = appSettings.licensed;
-					if (appSettings.trial) {
-						var dateNow = moment();
-
-						var dayDIff = dateNow.diff(moment(appSettings.installationDate), "days");
-
-						if (dayDIff > this.trialPeriodInDays) {
-							this.trialExpired = true;
-							this.underTrial = false;
-						} else {
-							this.underTrial = true;
-							this.daysLeft = this.trialPeriodInDays - dayDIff;
-						}
-					}
-
-					this.$scope.$apply();
-				});
 		}
 
 		private onError(err: SPListRepo.RequestError | any) {

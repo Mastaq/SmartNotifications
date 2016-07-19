@@ -133,7 +133,6 @@
     <Content Include="Images\stop_edit.png" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\Elements.xml" />
-    <Content Include="settings.js" />
     <None Include="AppWebComponents\ContentTypes\AppSettings\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{d2099c83-b2bf-49cb-83f6-3e763389b503}</SharePointProjectItemId>
     </None>
