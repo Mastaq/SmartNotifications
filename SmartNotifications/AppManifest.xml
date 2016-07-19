@@ -3,7 +3,7 @@
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="SmartNotifications"
      ProductID="{549d53fc-f0d4-4e2c-971c-e0cbd3c4bd4e}"
-     Version="1.0.0.7"
+     Version="1.0.0.8"
      SharePointMinVersion="15.0.0.0"
 >
   <Properties>
