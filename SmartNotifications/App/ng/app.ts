@@ -73,11 +73,6 @@ namespace SN {
 						text: "Contact Developer",
 						iconClass: "fa fa-envelope",
 						state:"contactdev"
-					})
-					.menuItem("SideNav.activate", {
-						text: "Activate the app",
-						iconClass: "fa fa-key",
-						state: "activate"
 					});
 			}])
 		.config(["$logProvider", ($logProvider: ng.ILogProvider) => {
